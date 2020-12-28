@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/auth/impact.dart';
+import 'package:project_polymer/screens/auth/start.dart';
 
 class Intro extends StatefulWidget {
   @override
@@ -10,6 +11,10 @@ class _IntroState extends State<Intro> {
 
   Future navigate(context) async {
   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Impact()));
+}
+
+  Future skip(context) async {
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Start()));
 }
 
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class _IntroState extends State<Intro> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Take Control', textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 29.0),),
+            Text('Take Control', textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 22.0),),
             Padding(
                     padding: EdgeInsets.fromLTRB(44, 10, 44, 30),
                     child: Text('With Polymer, you can take control of your SAT score and increase it in a smarter way.', textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0),),
@@ -49,9 +54,12 @@ class _IntroState extends State<Intro> {
                 child: RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.0),), textColor: Color(0xffE2E2E2), color: Color(0xff0099FF), child: Text('See How', textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 15.0),), onPressed: () {navigate(context);}),
               ),
             ),
-            InkWell(
-              onTap: () {}, 
-              child: Text('Skip', textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popSBold', fontSize: 15.0),)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: () {skip(context);}, 
+                child: Text('Skip', textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popSBold', fontSize: 15.0),)
+              ),
             ),
           ],
         ),

@@ -26,164 +26,174 @@ class _RegisterState extends State<Register> {
         ? Loading()
         : Scaffold(
             backgroundColor: Color(0xff181818),
-            appBar: AppBar(
-              centerTitle: true,
-              leading: IconButton(icon: Icon(Icons.keyboard_arrow_left), onPressed: () {widget.toggleView();}),
-              backgroundColor: Color(0xff181818),
-              title: Column(
-                children: [
-                  Image.asset(
-                    'assets/logo.png',
-                    fit: BoxFit.contain,
-                    height: 20,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('sonder',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          fontFamily: 'Nunito',
-                        )),
-                  ),
-                ],
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(20),
-                ),
-              ),
-            ),
-            body: SingleChildScrollView(
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.fromLTRB(0, 10, 0, 30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Text(
-                              'New User?',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Color(0xffEDF7F6),
-                                  fontFamily: 'Nunito',
-                                  fontSize: 42),
-                            ),
-                            Text(
-                              'Create an account here',
-                              style: TextStyle(
-                                  color: Color(0xffEDF7F6),
-                                  fontFamily: 'Nunito',
-                                  fontSize: 15),
-                            ),
-                          ],
-                        ),
+        appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Color(0xff181818),
+        title: Container(
+          padding: const EdgeInsets.all(10.0),
+          child: Image.asset(
+                        'assets/logo.jpeg',
+                        fit: BoxFit.contain,
+                        height: 45,
                       ),
-                      SizedBox(height: 20),
-                      TextFormField(
-                        style: TextStyle(
-                          color: Color(0xffEDF7F6),
-                        ),
-                        decoration: textInputDecoration.copyWith(
-                          hintText: 'Email',
-                          prefixIcon:
-                              Icon(Icons.email, color: Color(0xffEDF7F6)),
-                        ),
-                        validator: (val) =>
-                            val.isEmpty ? 'Enter an email' : null,
-                        onChanged: (val) {
-                          setState(() => email = val);
-                        },
+        ),
+      ),
+            body: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Form(
+                            key: _formKey,
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(0, 10, 0, 30),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                Text("Welcome!", textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 22.0),),
+                Padding(
+                        padding: EdgeInsets.fromLTRB(44, 10, 44, 30),
+                        child: Text("Let's get some basic information", textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0),),
                       ),
-                      SizedBox(height: 20),
-                      TextFormField(
-                          style: TextStyle(
-                            color: Color(0xffEDF7F6),
-                          ),
-                          decoration: textInputDecoration.copyWith(
-                            hintText: 'Password',
-                            prefixIcon:
-                                Icon(Icons.lock, color: Color(0xffEDF7F6)),
-                          ),
-                          validator: (val) => val.length < 8
-                              ? 'Enter a password at least 8 characters long'
-                              : null,
-                          obscureText: true,
-                          onChanged: (val) {
-                            setState(() => password = val);
-                          }),
-                      SizedBox(height: 20),
-                      SizedBox(
-                        height: 35,
-                        width: 70,
-                        child: Ink(
-                          decoration: ShapeDecoration(
-                            color: Color(0xffEDF7F6),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
+                               ],
+                              ),
                             ),
                           ),
-                          child: IconButton(
-                              padding: EdgeInsets.zero,
-                              icon: Icon(Icons.keyboard_arrow_right,
-                                  color: Color(0xff181818)),
-                              onPressed: () async {
-                                if (_formKey.currentState.validate()) {
-                                  setState(() => loading = true);
-                                  dynamic result =
-                                      await _auth.registerEP(email, password);
-                                  if (result == null) {
-                                    setState(() {
-                                      error = 'Unable to create user';
-                                      loading = false;
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20.0))),
-                                            backgroundColor: Color(0xff181818),
-                                            title: new Text("Error",
-                                                style: TextStyle(
-                                                    color: Color(0xffEDF7F6),
-                                                    fontFamily: 'Nunito')),
-                                            content: new Text(error,
-                                                style: TextStyle(
-                                                    color: Color(0xffEDF7F6),
-                                                    fontFamily: 'Nunito')),
-                                            actions: <Widget>[
-                                              new FlatButton(
-                                                child: new Text("Close",
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xffEDF7F6),
-                                                        fontFamily: 'Nunito')),
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    });
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(44, 0, 44, 20),
+                          child: Container(
+                              alignment: Alignment.center,
+                              height: 60.0,
+                            child: TextFormField(
+                              style: TextStyle(
+                                color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0,
+                              ),
+                              decoration: textInputDecoration.copyWith(
+                                hintText: 'First Name'
+                              ),
+                              validator: (val) =>
+                                  val.isEmpty ? 'Enter your first name' : null,
+                              onChanged: (val) {
+                                setState(() => email = val);
+                              },
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(44, 0, 44, 20),
+                          child: Container(
+                              alignment: Alignment.center,
+                              height: 60.0,
+                            child: TextFormField(
+                              style: TextStyle(
+                                color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0,
+                              ),
+                              decoration: textInputDecoration.copyWith(
+                                hintText: 'Last Name'
+                              ),
+                              validator: (val) =>
+                                  val.isEmpty ? 'Enter your last name' : null,
+                              onChanged: (val) {
+                                setState(() => email = val);
+                              },
+                            ),
+                          ),
+                        ),
+                      Padding(
+                          padding: const EdgeInsets.fromLTRB(44, 0, 44, 20),
+                          child: Container(
+                              alignment: Alignment.center,
+                              height: 60.0,
+                            child: TextFormField(
+                              style: TextStyle(
+                                color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0,
+                              ),
+                              decoration: textInputDecoration.copyWith(
+                                hintText: 'Username'
+                              ),
+                              validator: (val) =>
+                                  val.isEmpty ? 'Enter a username' : null,
+                              onChanged: (val) {
+                                setState(() => email = val);
+                              },
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(44, 0, 44, 40),
+                          child: Container(
+                              alignment: Alignment.center,
+                              height: 60.0,
+                            child: TextFormField(
+                                style: TextStyle(
+                                  color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0,
+                                ),
+                                decoration: textInputDecoration.copyWith(
+                                  hintText: 'Email',
+                                ),
+                              validator: (val) =>
+                                  val.isEmpty ? 'Enter an email' : null,
+                              onChanged: (val) {
+                                setState(() => email = val);
+                              },
+                                ),
+                          ),
+                        ),
+                        Padding(
+                  padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
+                  child: ButtonTheme(
+                    minWidth: 225.0,
+                    height: 40.0,
+                    child: RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.0),), textColor: Color(0xffE2E2E2), color: Color(0xff0099FF), child: Text('Sign Up', textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 15.0),), onPressed: () async {
+                                  if (_formKey.currentState.validate()) {
+                                    setState(() => loading = true);
+                                    dynamic result =
+                                        await _auth.registerEP(email, password);
+                                    if (result == null) {
+                                      setState(() {
+                                        error = 'Unable to create user';
+                                        loading = false;
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(20.0))),
+                                              backgroundColor: Color(0xff181818),
+                                              title: new Text("Error",
+                                                  style: TextStyle(
+                                                      color: Color(0xffEDF7F6),
+                                                      fontFamily: 'Nunito')),
+                                              content: new Text(error,
+                                                  style: TextStyle(
+                                                      color: Color(0xffEDF7F6),
+                                                      fontFamily: 'Nunito')),
+                                              actions: <Widget>[
+                                                new FlatButton(
+                                                  child: new Text("Close",
+                                                      style: TextStyle(
+                                                          color:
+                                                              Color(0xffEDF7F6),
+                                                          fontFamily: 'Nunito')),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      });
+                                    }
                                   }
-                                }
-                              }),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          );
+                                }),
+                          ),
+                        )]),
+                        )),
+            );
   }
 }

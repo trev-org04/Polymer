@@ -26,184 +26,122 @@ class _SignInState extends State<SignIn> {
         ? Loading()
         : Scaffold(
             backgroundColor: Color(0xff181818),
-            appBar: AppBar(
-              backgroundColor: Color(0xff181818),
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/logo.png',
-                    fit: BoxFit.contain,
-                    height: 20,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Text('sonder',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          fontFamily: 'Nunito',
-                        )),
-                  ),
-                ],
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(20),
-                ),
-              ),
-            ),
-            body: SingleChildScrollView(
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.fromLTRB(0, 10, 0, 30),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Text(
-                              'Welcome',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  color: Color(0xffEDF7F6),
-                                  fontFamily: 'Nunito',
-                                  fontSize: 42),
-                            ),
-                            Text(
-                              'Sign in to your account',
-                              style: TextStyle(
-                                  color: Color(0xffEDF7F6),
-                                  fontFamily: 'Nunito',
-                                  fontSize: 15),
-                            ),
-                          ],
-                        ),
+          appBar: AppBar(
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Color(0xff181818),
+        title: Container(
+          padding: const EdgeInsets.all(10.0),
+          child: Image.asset(
+                        'assets/logo.jpeg',
+                        fit: BoxFit.contain,
+                        height: 45,
                       ),
-                      SizedBox(height: 20),
-                      TextFormField(
-                        style: TextStyle(
-                          color: Color(0xffEDF7F6),
-                        ),
-                        decoration: textInputDecoration.copyWith(
-                            hintText: 'Email',
-                            prefixIcon:
-                                Icon(Icons.email, color: Color(0xffEDF7F6))),
-                        validator: (val) =>
-                            val.isEmpty ? 'Enter an email' : null,
-                        onChanged: (val) {
-                          setState(() => email = val);
-                        },
+        ),
+      ),
+            body: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Form(
+                            key: _formKey,
+                            child: Container(
+                              margin: EdgeInsets.fromLTRB(0, 10, 0, 30),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                Text("Welcome Back!", textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 22.0),),
+                Padding(
+                        padding: EdgeInsets.fromLTRB(44, 10, 44, 30),
+                        child: Text('Log into an existing account', textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0),),
                       ),
-                      SizedBox(height: 20),
-                      TextFormField(
-                          style: TextStyle(
-                            color: Color(0xffEDF7F6),
-                          ),
-                          decoration: textInputDecoration.copyWith(
-                              hintText: 'Password',
-                              prefixIcon:
-                                  Icon(Icons.lock, color: Color(0xffEDF7F6))),
-                          validator: (val) =>
-                              val.isEmpty ? 'Enter a password' : null,
-                          obscureText: true,
-                          onChanged: (val) {
-                            setState(() => password = val);
-                          }),
-                      SizedBox(height: 20),
-                      SizedBox(
-                        height: 35,
-                        width: 70,
-                        child: Ink(
-                          decoration: ShapeDecoration(
-                            color: Color(0xffEDF7F6),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
+                                ],
+                              ),
                             ),
                           ),
-                          child: IconButton(
-                              padding: EdgeInsets.zero,
-                              icon: Icon(Icons.keyboard_arrow_right,
-                                  color: Color(0xff181818)),
-                              onPressed: () async {
-                                if (_formKey.currentState.validate()) {
-                                  setState(() => loading = true);
-                                  dynamic result =
-                                      await _auth.signInEP(email, password);
-                                  if (result == null) {
-                                    setState(() {
-                                      error = 'Invalid credentials';
-                                      loading = false;
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20.0))),
-                                            backgroundColor: Color(0xff181818),
-                                            title: new Text("Error",
-                                                style: TextStyle(
-                                                    color: Color(0xffEDF7F6),
-                                                    fontFamily: 'Nunito')),
-                                            content: new Text(error,
-                                                style: TextStyle(
-                                                    color: Color(0xffEDF7F6),
-                                                    fontFamily: 'Nunito')),
-                                            actions: <Widget>[
-                                              new FlatButton(
-                                                child: new Text("Close",
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xffEDF7F6),
-                                                        fontFamily: 'Nunito')),
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    });
-                                  }
-                                }
-                              }),
-                        ),
-                      ),
-                      SizedBox(height: 70),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("Don't have an account?",
-                              style: TextStyle(
-                                  fontFamily: 'Nunito',
-                                  color: Color(0xffEDF7F6))),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: InkWell(
-                              onTap: () {
-                                widget.toggleView();
-                              },
-                              child: Text("Create",
-                                  style: TextStyle(
-                                      fontFamily: 'Nunito',
-                                      color: Color(0xffEDF7F6))),
+                            padding: const EdgeInsets.fromLTRB(44, 0, 44, 20),
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 60.0,
+                              child: TextFormField(
+                                style: TextStyle(
+                                  color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0,
+                                ),
+                                decoration: textInputDecoration.copyWith(
+                                    hintText: 'Email/Username'),
+                                validator: (val) =>
+                                    val.isEmpty ? 'Enter an email or username' : null,
+                                onChanged: (val) {
+                                  setState(() => email = val);
+                                },
+                              ),
                             ),
                           ),
-                        ],
-                      ),
-                      SizedBox(height: 10)
-                    ],
-                  ),
-                ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(44, 0, 44, 40),
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: 60.0,
+                              child: TextFormField(
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0
+                                  ),
+                                  decoration: textInputDecoration.copyWith(
+                                      hintText: 'Password'),
+                                  validator: (val) =>
+                                      val.isEmpty ? 'Enter a password' : null,
+                                  obscureText: true,
+                                  onChanged: (val) {
+                                    setState(() => password = val);
+                                  }),
+                            ),
+                          ),
+                                      Padding(
+                  padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
+                  child: ButtonTheme(
+                    minWidth: 225.0,
+                    height: 40.0,
+                    child: RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.0),), textColor: Color(0xffE2E2E2), color: Color(0xff0099FF), child: Text('Sign Up', textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 15.0),), onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      setState(() => loading = true);
+                                      dynamic result =
+                                          await _auth.signInEP(email, password);
+                                      if (result == null) {
+                                        setState(() {
+                                          error = 'Invalid credentials';
+                                          loading = false;
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.all(
+                                                        Radius.circular(15.0))),
+                                                backgroundColor: Color(0xff181818),
+                                                title: new Text("Error",
+                                                    style: TextStyle(
+                                                        color: Color(0xffEDF7F6),
+                                                        fontFamily: 'popSBold')),
+                                                content: new Text(error,
+                                                    style: TextStyle(
+                                                        color: Color.fromRGBO(226, 226, 226, 0.65),
+                                                        fontFamily: 'popMed', fontSize: 15.0)),
+                                                actions: <Widget>[
+                                                  new FlatButton(
+                                                    child: new Text("Close",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Color(0xffEDF7F6),
+                                                            fontFamily: 'popMed')),
+                                                    onPressed: () {
+                                                      Navigator.of(context).pop();}),]);}
+                );});}}}
+          )))]),
               ),
-            ),
-          );
+            ));
   }
 }
