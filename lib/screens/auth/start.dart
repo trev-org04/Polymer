@@ -55,7 +55,7 @@ class _StartState extends State<Start> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(15.0),
               child: InkWell(
                 onTap: () {signIn(context);}, 
                 child: Text('Sign In', textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popSBold', fontSize: 15.0),)

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "405569056986",
+    "project_id": "project-polymer-7b812",
+    "storage_bucket": "project-polymer-7b812.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405569056986:android:99be015a5ce2655c7035e3",
+        "android_client_info": {
+          "package_name": "com.polymer.project_polymer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405569056986-vdbe5lj6t86nvha2mnpnan9ohmj7kcut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxOU8YpCB2Gr7ZrJAfVhmCvyo7jjPi8xY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405569056986-vdbe5lj6t86nvha2mnpnan9ohmj7kcut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/service/database.dart';
+import 'package:project_polymer/models/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -13,11 +13,11 @@ class AuthService {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
-Future registerEP(String email, String password) async  {
+Future registerEP(String firstName, String lastName, String username, String email, String password) async  {
   try {
     AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
     FirebaseUser user = result.user;
-    await DatabaseService(uid: user.uid).updateUserData('2CNFLNE5XB6255666', 'Vision', 'New User');
+    await DatabaseService(uid: user.uid).updateUserData(firstName, lastName, username);
     return _userFromFirebaseUser(user); 
   }
   catch (e) {
@@ -39,7 +39,8 @@ Future signInEP(String email, String password) async  {
   Future signOut() async {
     try {
       return await _auth.signOut();
-    } catch (e) {
+    } 
+    catch (e) {
       return null;
     }
   }

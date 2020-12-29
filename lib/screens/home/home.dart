@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
- final AuthService _auth = AuthService();
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -44,57 +44,57 @@ class _HomeState extends State<Home> {
                 backgroundColor: Color(0xff181818),
                 appBar: AppBar(
                   centerTitle: true,
+                  elevation: 0,
                   backgroundColor: Color(0xff181818),
-                  title: Column(
-                    children: [
-                      Image.asset(
-                        'assets/logo.png',
-                        fit: BoxFit.contain,
-                        height: 20,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Text('sonder',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 12.0,
-                              fontFamily: 'Nunito',
-                            )),
-                      ),
-                    ],
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(20),
+                  title: Container(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Image.asset(
+                      'assets/logo.jpeg',
+                      fit: BoxFit.contain,
+                      height: 45,
                     ),
                   ),
                 ),
                 body: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 20, 0, 5),
-                    child: Text('Welcome, ' + userData.firstName + '!', style: TextStyle(color: Color(0xffEDF7F6), fontFamily: 'Nunito', fontSize: 30)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 0, 5, 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text('Your Vehicles', style: TextStyle(color: Color(0xffEDF7F6), fontFamily: 'Nunito', fontSize: 15)),
-                      ],
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 20, 0, 5),
+                        child: Text('Welcome, ' + userData.firstName + '!',
+                            style: TextStyle(
+                                color: Color(0xffEDF7F6),
+                                fontFamily: 'Nunito',
+                                fontSize: 30)),
                       ),
-                  ),
-                  DataList(),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(15, 10, 5, 5),
-                    child: Text('Analytics', style: TextStyle(color: Color(0xffEDF7F6), fontFamily: 'Nunito', fontSize: 15)),
-                  ),
-                  Analytics(),
-                ]),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 0, 5, 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text('Your Vehicles',
+                                style: TextStyle(
+                                    color: Color(0xffEDF7F6),
+                                    fontFamily: 'Nunito',
+                                    fontSize: 15)),
+                          ],
+                        ),
+                      ),
+                      DataList(),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(15, 10, 5, 5),
+                        child: Text('Analytics',
+                            style: TextStyle(
+                                color: Color(0xffEDF7F6),
+                                fontFamily: 'Nunito',
+                                fontSize: 15)),
+                      ),
+                      Analytics(),
+                    ]),
                 endDrawer: ClipRRect(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      bottomLeft: Radius.circular(30)),
                   child: Drawer(
                     child: ListView(
                       padding: EdgeInsets.all(5),
@@ -161,8 +161,8 @@ class _HomeState extends State<Home> {
                           endIndent: 25,
                         ),
                         ListTile(
-                          leading:
-                              Icon(Icons.help_outline, color: Color(0xffAF7A6D)),
+                          leading: Icon(Icons.help_outline,
+                              color: Color(0xffAF7A6D)),
                           title: Text('Help and Feedback',
                               style: TextStyle(color: Color(0xffEDF7F6))),
                           onTap: () {},
