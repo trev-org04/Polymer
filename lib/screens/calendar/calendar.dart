@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/home/suggested_tiles/suggested_tile.dart';
-import 'package:project_polymer/screens/home/resume_tiles/resume_tile.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/database.dart';
@@ -8,14 +7,13 @@ import 'package:project_polymer/screens/home/adaptive_tiles/adaptive_tile_list.d
 import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
-import 'package:project_polymer/screens/home/modals.dart';
 
-class Home extends StatefulWidget {
+class Calendar extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _CalendarState createState() => _CalendarState();
 }
 
-class _HomeState extends State<Home> {
+class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -46,7 +44,7 @@ class _HomeState extends State<Home> {
                               Padding(
                                 padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                                 child: Text(
-                                  'Welcome,',
+                                  'Calendar',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       color: Color(0xffE2E2E2),
@@ -77,12 +75,8 @@ class _HomeState extends State<Home> {
                                       fontSize: 15.0,
                                       fontFamily: 'popSBold',
                                       color: white)),
-                                            IconButton(
-                icon: Icon(Icons.keyboard_arrow_right, color: Color(0xffE2E2E2), size: 22),
-                splashRadius: 0.1,
-                splashColor: Color(0xff181818),
-                onPressed: () {suggestedLessonsModal(context);},
-              )
+                              Icon(Icons.keyboard_arrow_right,
+                                  color: white, size: 22)
                             ],
                           ),
                         ),
@@ -90,19 +84,52 @@ class _HomeState extends State<Home> {
                             padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
                             child: SuggestedTile()),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text('Resume Lessons',
-                                      style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontFamily: 'popSBold',
-                                          color: white)),
-                            ],
-                          )
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            child: SuggestedTile()),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
+                          child: ButtonTheme(
+                            minWidth: 250.0,
+                            height: 40.0,
+                            child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(11.0),
+                                ),
+                                textColor: Color(0xffE2E2E2),
+                                color: Color(0xff0099FF),
+                                child: Text(
+                                  'See How',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Color(0xffE2E2E2),
+                                      fontFamily: 'popSBold',
+                                      fontSize: 15.0),
+                                ),
+                                onPressed: () {}),
+                          ),
                         ),
-                        ResumeTile(),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
+                          child: ButtonTheme(
+                            minWidth: 250.0,
+                            height: 40.0,
+                            child: RaisedButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(11.0),
+                                ),
+                                textColor: Color(0xffE2E2E2),
+                                color: Color(0xff0099FF),
+                                child: Text(
+                                  'See How',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Color(0xffE2E2E2),
+                                      fontFamily: 'popSBold',
+                                      fontSize: 15.0),
+                                ),
+                                onPressed: () {}),
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project_polymer/screens/base/base.dart';
 import 'package:project_polymer/service/auth.dart';
 import 'package:project_polymer/shared/loading.dart';
 import 'package:project_polymer/shared/constants.dart';
-import 'package:project_polymer/screens/home/home.dart';
 
 class Password extends StatefulWidget {
   final String firstName;
@@ -33,7 +33,7 @@ class _PasswordState extends State<Password> {
   String email = widget.email;
 
      Future navigate(context) async {
-  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Base()), (route)=>false);
 }
 
     return loading
@@ -67,7 +67,7 @@ class _PasswordState extends State<Password> {
                             children: [
                 Text("Secure Your Account", textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 22.0),),
                 Padding(
-                        padding: EdgeInsets.fromLTRB(44, 10, 44, 30),
+                        padding: EdgeInsets.fromLTRB(44, 10, 44, 0),
                         child: Text("Let's get some basic information", textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0),),
                       ),
                                ],
@@ -93,7 +93,7 @@ class _PasswordState extends State<Password> {
                                   ),
                                   obscureText: true,
                               validator: (val) => val.length < 8
-                                  ? 'Enter a password at least 8 characters long'
+                                  ? 'Password must be at least 8 characters'
                                   : null,
                                   onChanged: (val) {
                                     setState(() => password = val);
@@ -114,7 +114,7 @@ class _PasswordState extends State<Password> {
                               ),
                               obscureText: true,
                               validator: (val) =>
-                                  val != password ? 'Enter the same password as the field above' : null,
+                                  val != password ? "Password doesn't match" : null,
                               onChanged: (val) {
                                 setState(() => confirmPassword = val);
                               },

@@ -3,13 +3,14 @@ import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 
 class DatabaseService {
-
   final String uid;
-  DatabaseService({ this.uid });
+  DatabaseService({this.uid});
 
-  final CollectionReference dataCollection = Firestore.instance.collection('Data');
+  final CollectionReference dataCollection =
+      Firestore.instance.collection('Data');
 
-  Future updateUserData (String firstName, String lastName, String username) async {
+  Future updateUserData(
+      String firstName, String lastName, String username) async {
     return await dataCollection.document(uid).setData({
       'firstName': firstName,
       'lastName': lastName,
@@ -17,13 +18,13 @@ class DatabaseService {
     });
   }
 
-  List<Data> _dataListFromSnapshot (QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc){
-        return Data(
-          firstName: doc.data['firstName'] ?? '',
-          lastName: doc.data['lastName'] ?? '',
-          username: doc.data['username'] ?? '',
-        );
+  List<Data> _dataListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Data(
+        firstName: doc.data['firstName'] ?? '',
+        lastName: doc.data['lastName'] ?? '',
+        username: doc.data['username'] ?? '',
+      );
     }).toList();
   }
 
@@ -37,12 +38,10 @@ class DatabaseService {
   }
 
   Stream<List<Data>> get data {
-    return dataCollection.snapshots()
-    .map(_dataListFromSnapshot);
+    return dataCollection.snapshots().map(_dataListFromSnapshot);
   }
 
   Stream<UserData> get userData {
-    return dataCollection.document(uid).snapshots()
-      .map(_userDataFromSnapshot);
+    return dataCollection.document(uid).snapshots().map(_userDataFromSnapshot);
   }
 }

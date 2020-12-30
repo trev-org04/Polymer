@@ -13,34 +13,35 @@ class AuthService {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
-Future registerEP(String firstName, String lastName, String username, String email, String password) async  {
-  try {
-    AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-    FirebaseUser user = result.user;
-    await DatabaseService(uid: user.uid).updateUserData(firstName, lastName, username);
-    return _userFromFirebaseUser(user); 
+  Future registerEP(String firstName, String lastName, String username,
+      String email, String password) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+      await DatabaseService(uid: user.uid)
+          .updateUserData(firstName, lastName, username);
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      return null;
+    }
   }
-  catch (e) {
-    return null;
-  }
-}
 
-Future signInEP(String email, String password) async  {
-  try {
-    AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
-    FirebaseUser user = result.user;
-    return _userFromFirebaseUser(user); 
+  Future signInEP(String email, String password) async {
+    try {
+      AuthResult result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      return null;
+    }
   }
-  catch (e) {
-    return null;
-  }
-}
 
   Future signOut() async {
     try {
       return await _auth.signOut();
-    } 
-    catch (e) {
+    } catch (e) {
       return null;
     }
   }

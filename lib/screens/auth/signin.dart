@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:project_polymer/screens/base/base.dart';
 import 'package:project_polymer/service/auth.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:project_polymer/shared/loading.dart';
-import 'package:project_polymer/screens/home/home.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -22,7 +22,7 @@ class _SignInState extends State<SignIn> {
   String error = '';
 
      Future navigate(context) async {
-  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Base()), (route)=>false);
 }
 
   @override
@@ -67,7 +67,7 @@ class _SignInState extends State<SignIn> {
                                     fontSize: 22.0),
                               ),
                               Padding(
-                                padding: EdgeInsets.fromLTRB(44, 10, 44, 30),
+                                padding: EdgeInsets.fromLTRB(44, 10, 44, 0),
                                 child: Text(
                                   'Log into an existing account',
                                   textAlign: TextAlign.center,

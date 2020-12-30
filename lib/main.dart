@@ -12,11 +12,26 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
+        builder: (context, child) {
+          return ScrollConfiguration(
+            behavior: RemoveScrollGlow(),
+            child: child,
+          );
+        },
         theme: new ThemeData(
-       canvasColor: Color(0xff181818),),
+          canvasColor: Color(0xff181818),
+        ),
         home: Wrapper(),
         debugShowCheckedModeBanner: false,
       ),
     );
+  }
+}
+
+class RemoveScrollGlow extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
   }
 }

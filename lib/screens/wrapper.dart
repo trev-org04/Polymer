@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_polymer/screens/base/base.dart';
 import 'package:provider/provider.dart';
-import 'package:project_polymer/screens/home/home.dart';
 import 'package:project_polymer/screens/auth/intro.dart';
 import 'package:project_polymer/models/user.dart';
 
@@ -11,9 +11,8 @@ class Wrapper extends StatelessWidget {
 
     if (user == null) {
       return Intro();
-    }
-    else {
-      return Home();
+    } else {
+      return Base();
     }
   }
 }
