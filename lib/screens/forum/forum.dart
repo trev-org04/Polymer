@@ -8,12 +8,12 @@ import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
 
-class Calendar extends StatefulWidget {
+class Forum extends StatefulWidget {
   @override
-  _CalendarState createState() => _CalendarState();
+  _ForumState createState() => _ForumState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _ForumState extends State<Forum> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -42,7 +42,7 @@ class _CalendarState extends State<Calendar> {
                               Padding(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                                 child: Text(
-                                  'Calendar',
+                                  'Forum',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       color: Color(0xffE2E2E2),

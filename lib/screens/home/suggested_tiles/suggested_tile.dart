@@ -14,7 +14,6 @@ class SuggestedTile extends StatelessWidget {
 
   Container buildSuggestedLesson(logo, String title, String lessonDesc) {
     return Container(
-    height: 98.0,
     padding: EdgeInsets.fromLTRB(7, 7, 7, 7),
     decoration: BoxDecoration(
       color: elementColor,
@@ -22,6 +21,7 @@ class SuggestedTile extends StatelessWidget {
     ),
     margin: EdgeInsets.symmetric(vertical: 7.5, horizontal: 5.0),
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /*content from database eventually*/ Padding(
           padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),

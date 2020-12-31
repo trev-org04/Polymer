@@ -20,7 +20,7 @@ const elementColor = Color(0xff232323);
 
 const mathColor = Color(0xff8855FF);
 
-const scienceColor = Color(0xffECBD00);
+const scienceColor = Color(0xffCCA000);
 
 const englishColor = Color(0xffEA3160);
 
@@ -197,5 +197,22 @@ var readingLogo = Container(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Icon(MdiIcons.book, size: 14, color: white),
+      ],
+    ));
+
+var notiLogo = Container(
+    height: 24.0,
+    width: 24.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: buttonBlue,
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(Icons.account_circle, size: 14, color: white),
       ],
     ));

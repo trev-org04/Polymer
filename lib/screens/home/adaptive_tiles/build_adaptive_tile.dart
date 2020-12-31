@@ -14,7 +14,7 @@ class AdaptiveTile extends StatelessWidget {
 
   Widget buildAdaptiveTile(IconData icon, String title, String desc, Color color) {
     return Container(
-    height: 100.0,
+    height: 110.0,
     padding: EdgeInsets.fromLTRB(7, 10, 7, 10),
     decoration: BoxDecoration(
       color: color,
@@ -22,10 +22,11 @@ class AdaptiveTile extends StatelessWidget {
     ),
     margin: EdgeInsets.symmetric(vertical: 7.5, horizontal: 5.0),
     child: Row(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
       Padding(
-        padding: EdgeInsets.fromLTRB(5, 10, 20, 5),
+        padding: EdgeInsets.fromLTRB(5, 10, 20, 10),
         child: Icon(
           icon,
           size: 36,
@@ -33,7 +34,7 @@ class AdaptiveTile extends StatelessWidget {
         ),
       ),
       Padding(
-        padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+        padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/screens/calendar/calendar.dart';
+import 'package:project_polymer/screens/forum/forum.dart';
 import 'package:project_polymer/screens/home/home.dart';
 import 'package:project_polymer/screens/home/modals.dart';
+import 'package:project_polymer/screens/subjects/subjects.dart';
 import 'package:project_polymer/shared/constants.dart';
 
 class Base extends StatefulWidget {
@@ -16,8 +18,8 @@ class _BaseState extends State<Base> {
   final pageOptions = [
     Home(),
     Calendar(),
-    Home(),
-    Home(),
+    Subjects(),
+    Forum(),
   ];
 
   @override
@@ -58,15 +60,18 @@ class _BaseState extends State<Base> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                decoration:
-                    BoxDecoration(color: Color.fromRGBO(24, 24, 24, 0.85)),
-                child: Row(children: [
-                  buildNavBarItem(Icons.dashboard, 0, true),
-                  buildNavBarItem(Icons.calendar_today, 1, false),
-                  buildNavBarItem(MdiIcons.tableLarge, 2, false),
-                  buildNavBarItem(Icons.question_answer, 3, false),
-                ]),
-              ),
+                  height: 55.0,
+                  decoration:
+                      BoxDecoration(color: Color.fromRGBO(24, 24, 24, 0.85)),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                    buildNavBarItem(Icons.dashboard, 0, true),
+                    buildNavBarItem(Icons.calendar_today, 1, false),
+                    buildNavBarItem(MdiIcons.tableLarge, 2, false),
+                    buildNavBarItem(Icons.question_answer, 3, false),
+                  ]),
+                ),
             )
           ],
         ));
