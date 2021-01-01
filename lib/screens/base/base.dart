@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:project_polymer/screens/calendar/calendar.dart';
+import 'package:project_polymer/screens/events/events.dart';
 import 'package:project_polymer/screens/forum/forum.dart';
 import 'package:project_polymer/screens/home/home.dart';
 import 'package:project_polymer/screens/home/modals.dart';
-import 'package:project_polymer/screens/subjects/subjects.dart';
+import 'package:project_polymer/screens/lessons/lessons.dart';
 import 'package:project_polymer/shared/constants.dart';
 
 class Base extends StatefulWidget {
@@ -17,8 +17,8 @@ class _BaseState extends State<Base> {
 
   final pageOptions = [
     Home(),
-    Calendar(),
-    Subjects(),
+    Events(),
+    Lessons(),
     Forum(),
   ];
 

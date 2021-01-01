@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:project_polymer/screens/home/suggested_tiles/suggested_tile.dart';
+import 'package:project_polymer/screens/home/resume_tiles/resume_tile.dart';
+import 'package:project_polymer/screens/lessons/subjects_grid/subjects_grid.dart';
+import 'package:project_polymer/screens/lessons/suggested_tiles/suggested_lesson_tile.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/database.dart';
-import 'package:project_polymer/screens/home/adaptive_tiles/adaptive_tile_list.dart';
 import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
 
-class Subjects extends StatefulWidget {
+class Lessons extends StatefulWidget {
   @override
-  _SubjectsState createState() => _SubjectsState();
+  _LessonsState createState() => _LessonsState();
 }
 
-class _SubjectsState extends State<Subjects> {
+class _LessonsState extends State<Lessons> {
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -42,7 +44,7 @@ class _SubjectsState extends State<Subjects> {
                               Padding(
                                 padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                                 child: Text(
-                                  'Subjects',
+                                  'Lessons',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                       color: Color(0xffE2E2E2),
@@ -51,7 +53,7 @@ class _SubjectsState extends State<Subjects> {
                                 ),
                               ),
                             ]),
-                        AdaptiveTileList(),
+                        SubjectsGrid(),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
                           child: Row(
@@ -62,61 +64,24 @@ class _SubjectsState extends State<Subjects> {
                                       fontSize: 15.0,
                                       fontFamily: 'popSBold',
                                       color: white)),
-                              Icon(Icons.keyboard_arrow_right,
-                                  color: white, size: 22)
                             ],
                           ),
                         ),
+                        SuggestedLessonCarousel(),
                         Padding(
-                            padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                            child: SuggestedTile()),
-                        Padding(
-                            padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                            child: SuggestedTile()),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
-                          child: ButtonTheme(
-                            minWidth: 250.0,
-                            height: 40.0,
-                            child: RaisedButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(11.0),
-                                ),
-                                textColor: Color(0xffE2E2E2),
-                                color: Color(0xff0099FF),
-                                child: Text(
-                                  'See How',
-                                  textAlign: TextAlign.center,
+                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Resume Lessons',
                                   style: TextStyle(
-                                      color: Color(0xffE2E2E2),
+                                      fontSize: 15.0,
                                       fontFamily: 'popSBold',
-                                      fontSize: 15.0),
-                                ),
-                                onPressed: () {}),
+                                      color: white)),
+                            ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
-                          child: ButtonTheme(
-                            minWidth: 250.0,
-                            height: 40.0,
-                            child: RaisedButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(11.0),
-                                ),
-                                textColor: Color(0xffE2E2E2),
-                                color: Color(0xff0099FF),
-                                child: Text(
-                                  'See How',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Color(0xffE2E2E2),
-                                      fontFamily: 'popSBold',
-                                      fontSize: 15.0),
-                                ),
-                                onPressed: () {}),
-                          ),
-                        ),
+                        ResumeTile(),
                       ],
                     ),
                   ),

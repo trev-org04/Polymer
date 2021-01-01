@@ -187,7 +187,10 @@ Container buildSuggestedLessonsTile(
             Container(
               child: Row(
                 children: [
-                  Icon(Icons.schedule, color: white, size: 10),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.schedule, color: white, size: 15),
+                  ),
                   /*content from database eventually*/ Text(time + ' mins',
                       style: TextStyle(
                           fontFamily: 'popMed', fontSize: 12.0, color: white))
@@ -197,7 +200,10 @@ Container buildSuggestedLessonsTile(
             Container(
               child: Row(
                 children: [
-                  Icon(Icons.help, color: white, size: 10),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 7, 0),
+                    child: Icon(Icons.help, color: white, size: 15),
+                  ),
                   /*content from database eventually*/ Text(
                       questions + ' questions',
                       style: TextStyle(
@@ -355,7 +361,7 @@ void accountModal(context) {
 Widget buildAccountTile(IconData icon, String desc) {
   return Container(
     height: 140.0,
-    padding: EdgeInsets.fromLTRB(7, 10, 7, 10),
+    padding: EdgeInsets.all(7),
     decoration: BoxDecoration(
       color: elementColor,
       borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -419,7 +425,7 @@ Widget buildAccountTile(IconData icon, String desc) {
 Widget buildPlanTile(IconData icon, bool isAdaptive, Key key, double width, double progressWidth) {
   return Container(
     height: 140.0,
-    padding: EdgeInsets.fromLTRB(7, 10, 7, 10),
+    padding: EdgeInsets.all(7),
     decoration: BoxDecoration(
       color: elementColor,
       borderRadius: BorderRadius.all(Radius.circular(12)),

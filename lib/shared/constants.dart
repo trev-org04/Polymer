@@ -14,6 +14,16 @@ const textInputDecoration = InputDecoration(
       color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed'),
 );
 
+const searchbarDecoration = InputDecoration(
+  fillColor: Colors.transparent,
+  border: InputBorder.none,
+  helperStyle: TextStyle(
+      fontFamily: 'popMed', color: Color.fromRGBO(226, 226, 226, 0.65)),
+  errorStyle: TextStyle(fontFamily: 'popMed'),
+  hintStyle: TextStyle(
+      color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed'),
+);
+
 const buttonBlue = Color(0xff0099FF);
 
 const elementColor = Color(0xff232323);
@@ -133,86 +143,154 @@ var index3 = Row(
 );
 
 var mathLogo = Container(
-    height: 24.0,
-    width: 24.0,
+    height: 20.0,
+    width: 20.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: mathColor,
+      borderRadius: BorderRadius.all(Radius.circular(7)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.division, size: 10, color: white),
+      ],
+    ));
+
+var scienceLogo = Container(
+    height: 20.0,
+    width: 20.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: scienceColor,
+      borderRadius: BorderRadius.all(Radius.circular(7)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.beaker, size: 10, color: white),
+      ],
+    ));
+
+var englishLogo = Container(
+    height: 20.0,
+    width: 20.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: englishColor,
+      borderRadius: BorderRadius.all(Radius.circular(7)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.pencil, size: 10, color: white),
+      ],
+    ));
+
+var readingLogo = Container(
+    height: 20.0,
+    width: 20.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: readingColor,
+      borderRadius: BorderRadius.all(Radius.circular(7)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.book, size: 10, color: white),
+      ],
+    ));
+
+var notiLogo = Container(
+    height: 20.0,
+    width: 20.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: buttonBlue,
+      borderRadius: BorderRadius.all(Radius.circular(7)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(Icons.account_circle, size: 10, color: white),
+      ],
+    ));
+
+var mathLogoBig = Container(
+    height: 36.0,
+    width: 36.0,
     padding: EdgeInsets.all(5.0),
     decoration: BoxDecoration(
       color: mathColor,
       borderRadius: BorderRadius.all(Radius.circular(8)),
     ),
-    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Icon(MdiIcons.mathCompass, size: 14, color: white),
+        Icon(MdiIcons.division, size: 20, color: white),
       ],
     ));
 
-var scienceLogo = Container(
-    height: 24.0,
-    width: 24.0,
+var scienceLogoBig = Container(
+    height: 36.0,
+    width: 36.0,
     padding: EdgeInsets.all(5.0),
     decoration: BoxDecoration(
       color: scienceColor,
       borderRadius: BorderRadius.all(Radius.circular(8)),
     ),
-    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Icon(MdiIcons.beaker, size: 14, color: white),
+        Icon(MdiIcons.beaker, size: 20, color: white),
       ],
     ));
 
-var englishLogo = Container(
-    height: 24.0,
-    width: 24.0,
+var englishLogoBig = Container(
+    height: 36.0,
+    width: 36.0,
     padding: EdgeInsets.all(5.0),
     decoration: BoxDecoration(
       color: englishColor,
       borderRadius: BorderRadius.all(Radius.circular(8)),
     ),
-    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Icon(MdiIcons.pencil, size: 14, color: white),
+        Icon(MdiIcons.pencil, size: 20, color: white),
       ],
     ));
 
-var readingLogo = Container(
-    height: 24.0,
-    width: 24.0,
+var readingLogoBig = Container(
+    height: 36.0,
+    width: 36.0,
     padding: EdgeInsets.all(5.0),
     decoration: BoxDecoration(
       color: readingColor,
       borderRadius: BorderRadius.all(Radius.circular(8)),
     ),
-    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Icon(MdiIcons.book, size: 14, color: white),
-      ],
-    ));
-
-var notiLogo = Container(
-    height: 24.0,
-    width: 24.0,
-    padding: EdgeInsets.all(5.0),
-    decoration: BoxDecoration(
-      color: buttonBlue,
-      borderRadius: BorderRadius.all(Radius.circular(8)),
-    ),
-    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Icon(Icons.account_circle, size: 14, color: white),
+        Icon(MdiIcons.book, size: 20, color: white),
       ],
     ));

@@ -52,9 +52,9 @@ class _AdaptiveTileListState extends State<AdaptiveTileList> {
           Flexible(
             child: buildAdaptiveTileList(
                 AdaptiveTile(
-                    icon: Icons.emoji_events,
-                    title: 'Rewards',
-                    desc: 'Learn how to use your points',
+                    icon: Icons.calendar_today,
+                    title: 'Calendar',
+                    desc: 'Jelo calendar is on the way',
                     color: buttonBlue),
                 AdaptiveTile(
                     icon: Icons.mail_outline_sharp,
@@ -73,7 +73,7 @@ class _AdaptiveTileListState extends State<AdaptiveTileList> {
     );
   }
 
-  Widget buildAdaptiveTileList(Widget tile, Widget tile2, Widget tile3) {
+Widget buildAdaptiveTileList(Widget tile, Widget tile2, Widget tile3) {
     return PageView(
         controller: _controller,
         onPageChanged: updateIndicator,

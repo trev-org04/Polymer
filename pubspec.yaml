@@ -36,6 +36,7 @@ dependencies:
   battery: ^1.0.7
   flutter_spinkit: ^4.1.2+1
   material_design_icons_flutter: 4.0.5755
+  table_calendar: ^2.3.3
 
 dev_dependencies:
   flutter_test:

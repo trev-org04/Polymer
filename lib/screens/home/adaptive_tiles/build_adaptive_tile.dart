@@ -15,7 +15,7 @@ class AdaptiveTile extends StatelessWidget {
   Widget buildAdaptiveTile(IconData icon, String title, String desc, Color color) {
     return Container(
     height: 110.0,
-    padding: EdgeInsets.fromLTRB(7, 10, 7, 10),
+    padding: EdgeInsets.all(7),
     decoration: BoxDecoration(
       color: color,
       borderRadius: BorderRadius.all(Radius.circular(12)),

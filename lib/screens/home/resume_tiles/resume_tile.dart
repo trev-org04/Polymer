@@ -44,15 +44,15 @@ class _ResumeTileState extends State<ResumeTile> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
       child: Container(
-          height: 98.0,
           width: (MediaQuery.of(context).size.width / 2) - 35,
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
           decoration: BoxDecoration(
             color: elementColor,
             borderRadius: BorderRadius.all(Radius.circular(12)),
           ),
           margin: EdgeInsets.symmetric(vertical: 7.5, horizontal: 5.0),
-          child: Column(children: [
+          child: Column(
+            children: [
             /*content from database eventually*/ Padding(
                 padding: const EdgeInsets.fromLTRB(5, 5, 5, 8),
                 child: Row(
