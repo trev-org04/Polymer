@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/shared/constants.dart';
 
 class SuggestedLessonCarousel extends StatefulWidget {
@@ -24,7 +25,7 @@ class _SuggestedLessonCarouselState extends State<SuggestedLessonCarousel> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 275,
+      height: 260,
       margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
       child: Center(
         child: buildSuggestedLessonList(
@@ -119,7 +120,7 @@ Container buildSLTile(
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 7, 0),
-                    child: Icon(Icons.help, color: white, size: 15),
+                    child: Icon(MdiIcons.help, color: white, size: 15),
                   ),
                   /*content from database eventually*/ Text(
                       questions + ' questions',

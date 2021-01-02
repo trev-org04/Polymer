@@ -7,7 +7,12 @@ class QuestionTileList extends StatefulWidget {
 }
 
 class _QuestionTileListState extends State<QuestionTileList> {
-  
+ updateVoted(bool vote) {
+    setState(() {
+      vote = !vote;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -129,34 +134,39 @@ class _QuestionTileListState extends State<QuestionTileList> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isVoted = true;
-                    });
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
-                          child:
-                              Icon(Icons.thumb_up, size: 13, color: isVoted ? buttonBlue : whiteOpacity),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
-                          child: Text(votes,
-                              style: TextStyle(
-                                  color: isVoted ? buttonBlue: Color.fromRGBO(226, 226, 226, 0.65),
-                                  fontFamily: isVoted ? 'popMed' : 'popReg',
-                                  fontSize: 12)),
-                        )
-                      ],
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(
+                      color: isVoted ? buttonBlue : Colors.transparent,
+                      borderRadius: BorderRadius.circular(6)),
+                  child: GestureDetector(
+                    onTap: updateVoted(isVoted),
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
+                            child: Icon(Icons.thumb_up,
+                                size: 13,
+                                color: isVoted ? white : whiteOpacity),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
+                            child: Text(votes,
+                                style: TextStyle(
+                                    color:
+                                        isVoted ? white : whiteOpacity,
+                                    fontFamily:
+                                        isVoted ? 'popMed' : 'popReg',
+                                    fontSize: 12)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -12,16 +12,16 @@ class Base extends StatefulWidget {
   _BaseState createState() => _BaseState();
 }
 
+final pageOptions = [
+  Home(),
+  Events(),
+  Lessons(),
+  Forum(),
+];
+
+int _selectedIndex = 0;
+
 class _BaseState extends State<Base> {
-  int _selectedIndex = 0;
-
-  final pageOptions = [
-    Home(),
-    Events(),
-    Lessons(),
-    Forum(),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,10 +35,13 @@ class _BaseState extends State<Base> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               IconButton(
-                icon: Icon(Icons.account_circle, color: Color(0xffE2E2E2), size: 30),
+                icon: Icon(Icons.account_circle,
+                    color: Color(0xffE2E2E2), size: 30),
                 splashColor: Color(0xff181818),
                 splashRadius: 0.1,
-                onPressed: () {accountModal(context);},
+                onPressed: () {
+                  accountModal(context);
+                },
               ),
               Image.asset(
                 'assets/logo.jpeg',
@@ -46,10 +49,13 @@ class _BaseState extends State<Base> {
                 height: 30,
               ),
               IconButton(
-                icon: Icon(Icons.notifications, color: Color(0xffE2E2E2), size: 30),
+                icon: Icon(Icons.notifications,
+                    color: Color(0xffE2E2E2), size: 30),
                 splashColor: Color(0xff181818),
                 splashRadius: 0.1,
-                onPressed: () {notificationsModal(context);},
+                onPressed: () {
+                  notificationsModal(context);
+                },
               )
             ],
           ),
@@ -60,18 +66,18 @@ class _BaseState extends State<Base> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                  height: 55.0,
-                  decoration:
-                      BoxDecoration(color: Color.fromRGBO(24, 24, 24, 0.85)),
-                  child: Row(
+                height: 55.0,
+                decoration:
+                    BoxDecoration(color: Color.fromRGBO(24, 24, 24, 0.85)),
+                child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                    buildNavBarItem(Icons.dashboard, 0, true),
-                    buildNavBarItem(Icons.calendar_today, 1, false),
-                    buildNavBarItem(MdiIcons.tableLarge, 2, false),
-                    buildNavBarItem(Icons.question_answer, 3, false),
-                  ]),
-                ),
+                      buildNavBarItem(Icons.dashboard, 0, true),
+                      buildNavBarItem(Icons.calendar_today, 1, false),
+                      buildNavBarItem(MdiIcons.tableLarge, 2, false),
+                      buildNavBarItem(Icons.question_answer, 3, false),
+                    ]),
+              ),
             )
           ],
         ));
@@ -95,36 +101,3 @@ class _BaseState extends State<Base> {
     );
   }
 }
-
-//https://stackoverflow.com/questions/57509373/bottom-navigation-bar-transition-in-flutter
-/*BottomNavigationBar(
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.calendar_today),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(MdiIcons.viewModule),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.question_answer),
-                label: '',
-              )
-            ],
-            type: BottomNavigationBarType.fixed,
-            elevation: 0,
-            backgroundColor: Colors.black.withOpacity(0.1),
-            currentIndex: _selectedIndex,
-            selectedItemColor: buttonBlue,
-            unselectedItemColor: whiteOpacity,
-            onTap: navigate,
-            selectedFontSize: 0,
-            unselectedFontSize: 0,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-          ),*/

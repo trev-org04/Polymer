@@ -15,7 +15,6 @@ class Lessons extends StatefulWidget {
 }
 
 class _LessonsState extends State<Lessons> {
-
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -53,6 +52,19 @@ class _LessonsState extends State<Lessons> {
                                 ),
                               ),
                             ]),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Subjects',
+                                  style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontFamily: 'popSBold',
+                                      color: white)),
+                            ],
+                          ),
+                        ),
                         SubjectsGrid(),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),

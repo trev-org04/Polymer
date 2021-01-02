@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:project_polymer/screens/lessons/subject_page.dart';
 import 'package:project_polymer/shared/constants.dart';
 
 class SubjectsGrid extends StatefulWidget {
@@ -8,6 +9,11 @@ class SubjectsGrid extends StatefulWidget {
 }
 
 class _SubjectsGridState extends State<SubjectsGrid> {
+  Future navigate(context, String subject) async {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => SubjectPage(subject)));
+  }
+
   @override
   Widget build(BuildContext context) {
     GlobalKey _key = GlobalKey();
@@ -18,9 +24,7 @@ class _SubjectsGridState extends State<SubjectsGrid> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           buildSubjectTile(MdiIcons.beaker, 'Science', _key, .87, scienceColor),
           buildSubjectTile(MdiIcons.book, 'Reading', _key1, .19, readingColor)
         ]),
@@ -29,8 +33,10 @@ class _SubjectsGridState extends State<SubjectsGrid> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              buildSubjectTile(MdiIcons.mathCompass, 'Math', _key2, .23, mathColor),
-              buildSubjectTile(MdiIcons.pencil, 'English', _key3, .72, englishColor)
+              buildSubjectTile(
+                  MdiIcons.division, 'Math', _key2, .23, mathColor),
+              buildSubjectTile(
+                  MdiIcons.pencil, 'English', _key3, .72, englishColor),
             ],
           ),
         ),
@@ -38,48 +44,52 @@ class _SubjectsGridState extends State<SubjectsGrid> {
     );
   }
 
-  Container buildSubjectTile(IconData icon, String subject, Key key,
+  Widget buildSubjectTile(IconData icon, String subject, Key key,
       double percentageCompleted, Color color) {
-    return Container(
-      width: 140,
-      padding: EdgeInsets.all(7),
-      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.all(Radius.circular(12))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
-          child: Icon(icon, color: white),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
-          child: Text(subject,
-              style:
-                  TextStyle(color: white, fontFamily: 'popSBold', fontSize: 18)),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
-          child: Stack(children: [
-            Container(
-                decoration: BoxDecoration(
-                  color: Color(0xff181818),
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                ),
-                width: (MediaQuery.of(context).size.width / 2) - 65,
-                height: 4.0,
-                key: key),
-            Container(
-              decoration: BoxDecoration(
-                /*content from database eventually*/ color: white,
-                borderRadius: BorderRadius.all(Radius.circular(12)),
+    return GestureDetector(
+      onTap: () => navigate(context, subject),
+          child: Container(
+          width: (MediaQuery.of(context).size.width / 2) - 40,
+          padding: EdgeInsets.all(7),
+          decoration: BoxDecoration(
+              color: color, borderRadius: BorderRadius.all(Radius.circular(12))),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
+                child: Icon(icon, color: white),
               ),
-              width: ((MediaQuery.of(context).size.width / 2) - 65) *
-                  percentageCompleted,
-              height: 4.0,
-            )
-          ]),
-        ),
-      ],
-    ));
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
+                child: Text(subject,
+                    style: TextStyle(
+                        color: white, fontFamily: 'popSBold', fontSize: 18)),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                child: Stack(children: [
+                  Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xff181818),
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      ),
+                      width: (MediaQuery.of(context).size.width / 2) - 65,
+                      height: 4.0,
+                      key: key),
+                  Container(
+                    decoration: BoxDecoration(
+                      /*content from database eventually*/ color: white,
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                    ),
+                    width: ((MediaQuery.of(context).size.width / 2) - 65) *
+                        percentageCompleted,
+                    height: 4.0,
+                  )
+                ]),
+              ),
+            ],
+          )),
+    );
   }
 }

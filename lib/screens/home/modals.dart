@@ -131,10 +131,10 @@ void suggestedLessonsModal(context) {
                   buildSuggestedLessonsTile(
                       readingLogo,
                       'Science Passage',
-                      'Learn how to interpret science passages and quickly indentify the correct answers.',
+                      'Learn how to interpret science passages and quickly identify the correct answers.',
                       '13',
                       '11',
-                      'This lessons was recommended to you based on your placement test.',
+                      'This lesson was recommended to you based on your placement test.',
                       readingColor)
                 ],
               ),
@@ -153,12 +153,12 @@ Container buildSuggestedLessonsTile(
     String recommendText,
     Color subjectColor) {
   return Container(
-    padding: EdgeInsets.all(10.0),
+    padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
     decoration: BoxDecoration(
       color: elementColor,
       borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
-    margin: EdgeInsets.symmetric(vertical: 7.5, horizontal: 5.0),
+    margin: EdgeInsets.all(10),
     child: Column(children: [
       /*content from database eventually*/ Padding(
         padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
@@ -172,7 +172,7 @@ Container buildSuggestedLessonsTile(
         ),
       ),
       /*content from database eventually*/ Padding(
-        padding: const EdgeInsets.fromLTRB(5, 0, 5, 8),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
         child: Text(lessonDesc,
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -202,7 +202,7 @@ Container buildSuggestedLessonsTile(
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 7, 0),
-                    child: Icon(Icons.help, color: white, size: 15),
+                    child: Icon(MdiIcons.help, color: white, size: 15),
                   ),
                   /*content from database eventually*/ Text(
                       questions + ' questions',
@@ -215,11 +215,11 @@ Container buildSuggestedLessonsTile(
         ),
       ),
       Padding(
-        padding: const EdgeInsets.fromLTRB(5, 0, 5, 8),
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
         child: Text(recommendText,
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontFamily: 'popMed', fontSize: 12.0, color: whiteOpacity)),
+                fontFamily: 'popReg', fontSize: 12.0, color: whiteOpacity)),
       ),
       Padding(
         padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
