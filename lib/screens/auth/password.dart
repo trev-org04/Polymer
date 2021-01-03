@@ -47,7 +47,7 @@ class _PasswordState extends State<Password> {
         title: Container(
           padding: const EdgeInsets.all(10.0),
           child: Image.asset(
-                        'assets/logo.jpeg',
+                        'assets/logo.png',
                         fit: BoxFit.contain,
                         height: 45,
                       ),
@@ -68,7 +68,7 @@ class _PasswordState extends State<Password> {
                 Text("Secure Your Account", textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 22.0),),
                 Padding(
                         padding: EdgeInsets.fromLTRB(44, 10, 44, 0),
-                        child: Text("Let's get some basic information", textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0),),
+                        child: Text("Create your account by setting a password", textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0),),
                       ),
                                ],
                               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_polymer/screens/home/plan_progress/plan_progress.dart';
 import 'package:project_polymer/screens/home/suggested_tiles/suggested_tile.dart';
 import 'package:project_polymer/screens/home/resume_tiles/resume_tile.dart';
 import 'package:project_polymer/shared/constants.dart';
@@ -67,8 +68,8 @@ class _HomeState extends State<Home> {
                               ),
                             ]),
                         AdaptiveTileList(),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                                                Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -77,12 +78,15 @@ class _HomeState extends State<Home> {
                                       fontSize: 15.0,
                                       fontFamily: 'popSBold',
                                       color: white)),
-                                            IconButton(
-                icon: Icon(Icons.keyboard_arrow_right, color: Color(0xffE2E2E2), size: 22),
-                splashRadius: 0.1,
-                splashColor: Color(0xff181818),
-                onPressed: () {suggestedLessonsModal(context);},
-              )
+                                                                    IconButton(
+                                icon: Icon(Icons.keyboard_arrow_right,
+                                    color: Color(0xffE2E2E2), size: 22),
+                                splashRadius: 0.1,
+                                splashColor: Color(0xff181818),
+                                onPressed: () {
+                                  suggestedLessonsModal(context);
+                                },
+                              )
                             ],
                           ),
                         ),
@@ -92,17 +96,39 @@ class _HomeState extends State<Home> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Resume Lessons',
-                                      style: TextStyle(
-                                          fontSize: 15.0,
-                                          fontFamily: 'popSBold',
-                                          color: white)),
+                                  style: TextStyle(
+                                      fontSize: 15.0,
+                                      fontFamily: 'popSBold',
+                                      color: white)),
                             ],
-                          )
+                          ),
                         ),
                         ResumeTile(),
+                        Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('Plan Progress',
+                                    style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontFamily: 'popSBold',
+                                        color: white)),
+                                IconButton(
+                                  icon: Icon(Icons.keyboard_arrow_right,
+                                      color: Color(0xffE2E2E2), size: 22),
+                                  splashRadius: 0.1,
+                                  splashColor: Color(0xff181818),
+                                  onPressed: () {
+                                    planProgressModal(context);
+                                  },
+                                )
+                              ],
+                            )),
+                        PlanProgress(),
                       ],
                     ),
                   ),

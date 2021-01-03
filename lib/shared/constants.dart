@@ -47,7 +47,7 @@ var index1 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+        padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff0099FF)),
@@ -56,7 +56,7 @@ var index1 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff272727)),
@@ -65,7 +65,7 @@ var index1 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff272727)),
@@ -81,7 +81,7 @@ var index2 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff272727)),
@@ -90,7 +90,7 @@ var index2 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+        padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff0099FF)),
@@ -99,7 +99,7 @@ var index2 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff272727)),
@@ -115,7 +115,7 @@ var index3 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff272727)),
@@ -124,7 +124,7 @@ var index3 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+        padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff272727)),
@@ -133,7 +133,7 @@ var index3 = Row(
     Padding(
       padding: const EdgeInsets.all(5.0),
       child: Container(
-        padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+        padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
             color: Color(0xff0099FF)),

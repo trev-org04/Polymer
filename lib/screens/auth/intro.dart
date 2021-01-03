@@ -27,7 +27,7 @@ class _IntroState extends State<Intro> {
         title: Container(
           padding: const EdgeInsets.all(10.0),
           child: Image.asset(
-            'assets/logo.jpeg',
+            'assets/logo.png',
             fit: BoxFit.contain,
             height: 45,
           ),
@@ -91,12 +91,12 @@ class _IntroState extends State<Intro> {
                     }),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: InkWell(
-                  onTap: () {
-                    skip(context);
-                  },
+            GestureDetector(
+                onTap: () {
+                  skip(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Skip',
                     textAlign: TextAlign.center,
@@ -104,8 +104,8 @@ class _IntroState extends State<Intro> {
                         color: Color.fromRGBO(226, 226, 226, 0.65),
                         fontFamily: 'popSBold',
                         fontSize: 15.0),
-                  )),
-            ),
+                  ),
+                )),
           ],
         ),
       ),

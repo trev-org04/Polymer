@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/screens/base/base.dart';
 import 'package:project_polymer/screens/home/modals.dart';
-import 'package:project_polymer/screens/lessons/suggested_tiles/subject_specific_carousel.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/database.dart';
@@ -10,15 +9,12 @@ import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
 
-class SubjectPage extends StatefulWidget {
-  final String subject;
-  const SubjectPage(this.subject);
-
+class PointHistory extends StatefulWidget {
   @override
-  _SubjectPageState createState() => _SubjectPageState();
+  _PointHistoryState createState() => _PointHistoryState();
 }
 
-class _SubjectPageState extends State<SubjectPage> {
+class _PointHistoryState extends State<PointHistory> {
   Future navigate(context) async {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Base()));
@@ -26,7 +22,6 @@ class _SubjectPageState extends State<SubjectPage> {
 
   @override
   Widget build(BuildContext context) {
-    String subjectName = widget.subject;
     final user = Provider.of<User>(context);
 
     return StreamBuilder<UserData>(
@@ -90,7 +85,7 @@ class _SubjectPageState extends State<SubjectPage> {
                                             padding: EdgeInsets.fromLTRB(
                                                 0, 0, 0, 20),
                                             child: Text(
-                                              subjectName,
+                                              'Point History',
                                               textAlign: TextAlign.left,
                                               style: TextStyle(
                                                   color: Color(0xffE2E2E2),
@@ -106,7 +101,7 @@ class _SubjectPageState extends State<SubjectPage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text('Suggested Lessons',
+                                          Text('Lessons',
                                               style: TextStyle(
                                                   fontSize: 15.0,
                                                   fontFamily: 'popSBold',
@@ -114,7 +109,10 @@ class _SubjectPageState extends State<SubjectPage> {
                                         ],
                                       ),
                                     ),
-                                    SubjectCarousel(),
+                                    /*from da db soon yk*/buildPointHistoryTile(mathLogoBig, 'Topic', '46', mathColor),
+                                    buildPointHistoryTile(mathLogoBig, 'Topic', '46', mathColor),
+                                    buildPointHistoryTile(mathLogoBig, 'Topic', '46', mathColor),
+                                    buildPointHistoryTile(mathLogoBig, 'Topic', '46', mathColor),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           0, 20, 0, 15),
@@ -122,7 +120,7 @@ class _SubjectPageState extends State<SubjectPage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text('Topics',
+                                          Text('Tests',
                                               style: TextStyle(
                                                   fontSize: 15.0,
                                                   fontFamily: 'popSBold',
@@ -130,10 +128,10 @@ class _SubjectPageState extends State<SubjectPage> {
                                         ],
                                       ),
                                     ),
-                                    /*from da db soon yk*/buildTopicTile(mathLogoBig, 'Topic', '46', mathColor),
-                                    buildTopicTile(mathLogoBig, 'Topic', '46', mathColor),
-                                    buildTopicTile(mathLogoBig, 'Topic', '46', mathColor),
-                                    buildTopicTile(mathLogoBig, 'Topic', '46', mathColor)
+                                    /*from da db soon yk*/buildPointHistoryTile(mathLogoBig, 'Test', '46', mathColor),
+                                    buildPointHistoryTile(mathLogoBig, 'Test', '46', mathColor),
+                                    buildPointHistoryTile(mathLogoBig, 'Test', '46', mathColor),
+                                    buildPointHistoryTile(mathLogoBig, 'Test', '46', mathColor),
                                   ]),
                             )))));
           } else {
@@ -141,7 +139,7 @@ class _SubjectPageState extends State<SubjectPage> {
           }
         });
   }
-  Widget buildTopicTile(Widget icon, String title, String progress, Color color) {
+  Widget buildPointHistoryTile(Widget icon, String title, String progress, Color color) {
     return Container(
       padding: EdgeInsets.all(7),
       decoration: BoxDecoration(
@@ -170,7 +168,7 @@ class _SubjectPageState extends State<SubjectPage> {
                               color: Color(0xffE2E2E2),
                               fontFamily: 'popSBold',
                               fontSize: 15)),
-                      Text(progress + '% Completed',
+                      Text(progress + ' Points',
                           style: TextStyle(
                               color: Color.fromRGBO(226, 226, 226, 0.65),
                               fontFamily: 'popReg',

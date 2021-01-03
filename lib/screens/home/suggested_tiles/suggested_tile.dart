@@ -5,6 +5,7 @@ class SuggestedTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         buildSuggestedLesson(mathLogo, 'Exponents', 'Learn how to properly add, subtract, divide, and multiply terms with exponents.'),
         buildSuggestedLesson(scienceLogo, 'Interpret Data', 'Learn how to interpret the data presented in various types of graphs.'),
@@ -19,7 +20,7 @@ class SuggestedTile extends StatelessWidget {
       color: elementColor,
       borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
-    margin: EdgeInsets.symmetric(vertical: 7.5, horizontal: 5.0),
+    margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

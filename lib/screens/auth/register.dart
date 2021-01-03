@@ -41,7 +41,7 @@ class _RegisterState extends State<Register> {
               title: Container(
                 padding: const EdgeInsets.all(10.0),
                 child: Image.asset(
-                  'assets/logo.jpeg',
+                  'assets/logo.png',
                   fit: BoxFit.contain,
                   height: 45,
                 ),

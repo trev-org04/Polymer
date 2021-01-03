@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/screens/auth/start.dart';
+import 'package:project_polymer/screens/home/point_history.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/auth.dart';
@@ -46,10 +49,10 @@ void notificationsModal(context) {
                     ),
                   ],
                 ),
-                buildNotificationTile(notiLogo, 'Notification',
-                    'Content for notification'),
-                buildNotificationTile(notiLogo, 'Notification',
-                    'Content for notification')
+                buildNotificationTile(
+                    notiLogo, 'Notification', 'Content for notification'),
+                buildNotificationTile(
+                    notiLogo, 'Notification', 'Content for notification')
               ],
             ),
           ),
@@ -65,9 +68,7 @@ Container buildNotificationTile(Widget logo, String title, String desc) {
       borderRadius: BorderRadius.all(Radius.circular(12)),
     ),
     margin: EdgeInsets.symmetric(vertical: 7.5, horizontal: 5.0),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       /*content from database eventually*/ Padding(
         padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
         child: Row(
@@ -277,8 +278,6 @@ class _AccountNameState extends State<AccountName> {
 }
 
 void accountModal(context) {
-      GlobalKey _key = GlobalKey();
-      double wid = MediaQuery.of(context).size.width / 1.85;
   showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -288,7 +287,7 @@ void accountModal(context) {
       builder: (BuildContext context) {
         final AuthService _auth = AuthService();
         Future navigate(context) async {
-          Navigator.push(
+          Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => Start()));
         }
         return FractionallySizedBox(
@@ -323,8 +322,8 @@ void accountModal(context) {
                 ),
                 /*icon and desc from db soon*/ buildAccountTile(
                     Icons.account_circle, 'Premium Plan'),
-                /*icon and desc from db soon*/ buildPlanTile(
-                    MdiIcons.mapMarkerPath, true, _key, wid, wid*.53),
+                /*icon and desc from db soon*/ buildPointTile(
+                    MdiIcons.currencyUsdCircle, '10,315', context),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                   child: ButtonTheme(
@@ -422,7 +421,11 @@ Widget buildAccountTile(IconData icon, String desc) {
   );
 }
 
-Widget buildPlanTile(IconData icon, bool isAdaptive, Key key, double width, double progressWidth) {
+  Future viewPointHistory(context) async {
+Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PointHistory()), (route)=>false);
+  }
+
+Widget buildPointTile(IconData icon, String points, dynamic _context) {
   return Container(
     height: 140.0,
     padding: EdgeInsets.all(7),
@@ -446,38 +449,25 @@ Widget buildPlanTile(IconData icon, bool isAdaptive, Key key, double width, doub
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 5, 0, 17.5),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 5),
-                      child: Text( (isAdaptive ? 'Adaptive' : 'Structured') + ' Plan',
-                  style: TextStyle(
-                        color: white, fontFamily: 'popSBold', fontSize: 15.0)),
-                    ),
-            Stack(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xff181818),
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                  ),
-                  width: width,
-                  height: 8.0,
-                  key: key),
-                Container(
-                    decoration: BoxDecoration(
-                      /*content from database eventually*/ color: buttonBlue,
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
-                    ),
-                    width: progressWidth,
-                    height: 8.0,
-                  )]),
-                  ],
-                ),
-              )
+                  padding: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Points',
+                        style: TextStyle(
+                            color: white,
+                            fontFamily: 'popSBold',
+                            fontSize: 15.0),
+                      ),
+                      Text(points + ' Points',
+                          style: TextStyle(
+                              color: whiteOpacity,
+                              fontFamily: 'popMed',
+                              fontSize: 12)),
+                    ],
+                  )),
             ]),
         ButtonTheme(
           minWidth: 250.0,
@@ -489,17 +479,96 @@ Widget buildPlanTile(IconData icon, bool isAdaptive, Key key, double width, doub
             textColor: Color(0xffE2E2E2),
             color: Color(0xff0099FF),
             child: Text(
-              'View Plan',
+              'View Point History',
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Color(0xffE2E2E2),
                   fontFamily: 'popSBold',
                   fontSize: 15.0),
             ),
-            onPressed: () {},
+            onPressed: () {
+              viewPointHistory(_context);
+              },
           ),
         ),
       ],
     ),
   );
+}
+
+void planProgressModal(context) {
+  showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0))),
+      builder: (BuildContext context) {
+        return FractionallySizedBox(
+          heightFactor: 0.8,
+          child: Container(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 12.5),
+              child: Column(
+                children: [
+                  Container(
+                    height: 6.5,
+                    width: 60.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(110.0),
+                        color: Color.fromRGBO(226, 226, 226, 0.65)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 25, 0, 10),
+                        child: Text(
+                          'Plan Progress',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: white,
+                              fontFamily: 'popSBold',
+                              fontSize: 25.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 15),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          height: 125,
+                          width: 125,
+                          child: CircularProgressIndicator(
+                            value: 1 * .88, //from db soon
+                            backgroundColor: elementColor,
+                            strokeWidth: 10,
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Text('88%',
+                                style: TextStyle(
+                                    color: white,
+                                    fontFamily: 'popMed',
+                                    fontSize: 20)),
+                            Text('completed',
+                                style: TextStyle(
+                                    color: white,
+                                    fontFamily: 'popMed',
+                                    fontSize: 12)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+      });
 }

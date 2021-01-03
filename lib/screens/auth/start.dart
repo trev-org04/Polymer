@@ -26,7 +26,7 @@ class _StartState extends State<Start> {
         title: Container(
           padding: const EdgeInsets.all(10.0),
           child: Image.asset(
-            'assets/logo.jpeg',
+            'assets/logo.png',
             fit: BoxFit.contain,
             height: 45,
           ),
@@ -90,12 +90,12 @@ class _StartState extends State<Start> {
                     }),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: InkWell(
-                  onTap: () {
-                    signIn(context);
-                  },
+            GestureDetector(
+                onTap: () {
+                  signIn(context);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Sign In',
                     textAlign: TextAlign.center,
@@ -103,8 +103,8 @@ class _StartState extends State<Start> {
                         color: Color.fromRGBO(226, 226, 226, 0.65),
                         fontFamily: 'popSBold',
                         fontSize: 15.0),
-                  )),
-            ),
+                  ),
+                )),
           ],
         ),
       ),

@@ -38,7 +38,7 @@ class _SignInState extends State<SignIn> {
               title: Container(
                 padding: const EdgeInsets.all(10.0),
                 child: Image.asset(
-                  'assets/logo.jpeg',
+                  'assets/logo.png',
                   fit: BoxFit.contain,
                   height: 45,
                 ),

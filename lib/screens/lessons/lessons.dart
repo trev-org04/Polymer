@@ -53,7 +53,7 @@ class _LessonsState extends State<Lessons> {
                               ),
                             ]),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -67,7 +67,7 @@ class _LessonsState extends State<Lessons> {
                         ),
                         SubjectsGrid(),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                          padding: const EdgeInsets.fromLTRB(0, 20, 0, 15),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -93,7 +93,10 @@ class _LessonsState extends State<Lessons> {
                             ],
                           ),
                         ),
-                        ResumeTile(),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                          child: ResumeTile(),
+                        ),
                       ],
                     ),
                   ),

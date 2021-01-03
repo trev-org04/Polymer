@@ -44,7 +44,7 @@ class _BaseState extends State<Base> {
                 },
               ),
               Image.asset(
-                'assets/logo.jpeg',
+                'assets/logo.png',
                 fit: BoxFit.contain,
                 height: 30,
               ),

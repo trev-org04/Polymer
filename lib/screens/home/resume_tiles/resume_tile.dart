@@ -42,7 +42,7 @@ class _ResumeTileState extends State<ResumeTile> {
 
   Widget buildResumeLessons(Color color, Key key, String title, String percentage, double width) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: Container(
           width: (MediaQuery.of(context).size.width / 2) - 35,
           padding: EdgeInsets.fromLTRB(10, 10, 10, 20),

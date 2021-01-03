@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/wrapper.dart';
+import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/auth.dart';
 import 'package:project_polymer/models/user.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         },
         theme: new ThemeData(
           canvasColor: Color(0xff181818),
+          accentColor: buttonBlue,
         ),
         home: Wrapper(),
         debugShowCheckedModeBanner: false,
