@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:project_polymer/shared/constants.dart';
 
 class UpcomingCarousel extends StatefulWidget {
@@ -61,14 +62,14 @@ class _UpcomingCarouselState extends State<UpcomingCarousel> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(event,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Color(0xffE2E2E2),
-                              fontFamily: 'popSBold',
+                              fontWeight: FontWeight.w600,
                               fontSize: 15)),
                       Text(date,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Color.fromRGBO(226, 226, 226, 0.65),
-                              fontFamily: 'popReg',
+                              fontWeight: FontWeight.w400,
                               fontSize: 12)),
                     ],
                   ),

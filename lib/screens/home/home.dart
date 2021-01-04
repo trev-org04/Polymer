@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:project_polymer/screens/home/adaptive_tiles/adaptive_tile.dart';
 import 'package:project_polymer/screens/home/plan_progress/plan_progress.dart';
 import 'package:project_polymer/screens/home/suggested_tiles/suggested_tile.dart';
 import 'package:project_polymer/screens/home/resume_tiles/resume_tile.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/database.dart';
-import 'package:project_polymer/screens/home/adaptive_tiles/adaptive_tile_list.dart';
 import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
 import 'package:project_polymer/screens/home/modals.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -49,9 +50,9 @@ class _HomeState extends State<Home> {
                                 child: Text(
                                   'Welcome,',
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       color: Color(0xffE2E2E2),
-                                      fontFamily: 'popReg',
+                                      fontWeight: FontWeight.w400,
                                       fontSize: 25.0),
                                 ),
                               ),
@@ -60,9 +61,9 @@ class _HomeState extends State<Home> {
                                 child: Text(
                                   userData.firstName,
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       color: Color(0xffE2E2E2),
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       fontSize: 25.0),
                                 ),
                               ),
@@ -74,9 +75,9 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Suggested Lessons',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       fontSize: 15.0,
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       color: white)),
                                                                     IconButton(
                                 icon: Icon(Icons.keyboard_arrow_right,
@@ -99,9 +100,9 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Resume Lessons',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       fontSize: 15.0,
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       color: white)),
                             ],
                           ),
@@ -113,9 +114,9 @@ class _HomeState extends State<Home> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text('Plan Progress',
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
                                         fontSize: 15.0,
-                                        fontFamily: 'popSBold',
+                                        fontWeight: FontWeight.w600,
                                         color: white)),
                                 IconButton(
                                   icon: Icon(Icons.keyboard_arrow_right,

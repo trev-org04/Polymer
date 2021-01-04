@@ -3,6 +3,7 @@ import 'package:project_polymer/screens/base/base.dart';
 import 'package:project_polymer/service/auth.dart';
 import 'package:project_polymer/shared/loading.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Password extends StatefulWidget {
   final String firstName;
@@ -65,10 +66,10 @@ class _PasswordState extends State<Password> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                Text("Secure Your Account", textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 22.0),),
+                Text("Secure Your Account", textAlign: TextAlign.center, style: GoogleFonts.poppins(color: Color(0xffE2E2E2), fontWeight: FontWeight.w600, fontSize: 22.0),),
                 Padding(
                         padding: EdgeInsets.fromLTRB(44, 10, 44, 0),
-                        child: Text("Create your account by setting a password", textAlign: TextAlign.center, style: TextStyle(color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0),),
+                        child: Text("Create your account by setting a password", textAlign: TextAlign.center, style: GoogleFonts.poppins(color: Color.fromRGBO(226, 226, 226, 0.65), fontWeight: FontWeight.w500, fontSize: 15.0),),
                       ),
                                ],
                               ),
@@ -85,8 +86,8 @@ class _PasswordState extends State<Password> {
                               child: Container(
                                   alignment: Alignment.center,
                                 child: TextFormField(
-                                  style: TextStyle(
-                                    color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0,
+                                  style: GoogleFonts.poppins(
+                                    color: Color.fromRGBO(226, 226, 226, 0.65), fontWeight: FontWeight.w500, fontSize: 15.0,
                                   ),
                                   decoration: textInputDecoration.copyWith(
                                     hintText: 'Password'
@@ -106,8 +107,8 @@ class _PasswordState extends State<Password> {
                           child: Container(
                               alignment: Alignment.center,
                             child: TextFormField(
-                              style: TextStyle(
-                                color: Color.fromRGBO(226, 226, 226, 0.65), fontFamily: 'popMed', fontSize: 15.0,
+                              style: GoogleFonts.poppins(
+                                color: Color.fromRGBO(226, 226, 226, 0.65), fontWeight: FontWeight.w500, fontSize: 15.0,
                               ),
                               decoration: textInputDecoration.copyWith(
                                 hintText: 'Confirm Password'
@@ -129,7 +130,7 @@ class _PasswordState extends State<Password> {
                   child: ButtonTheme(
                     minWidth: 225.0,
                     height: 40.0,
-                    child: RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.0),), textColor: Color(0xffE2E2E2), color: Color(0xff0099FF), child: Text('Sign Up', textAlign: TextAlign.center, style: TextStyle(color: Color(0xffE2E2E2), fontFamily: 'popSBold', fontSize: 15.0),), onPressed: () async {
+                    child: RaisedButton(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.0),), textColor: Color(0xffE2E2E2), color: Color(0xff0099FF), child: Text('Sign Up', textAlign: TextAlign.center, style: GoogleFonts.poppins(color: Color(0xffE2E2E2), fontWeight: FontWeight.w600, fontSize: 15.0),), onPressed: () async {
                                   if (_formKey.currentState.validate()) {
                                     setState(() => loading = true);
                                     dynamic result =
@@ -147,20 +148,20 @@ class _PasswordState extends State<Password> {
                                                       Radius.circular(20.0))),
                                               backgroundColor: Color(0xff181818),
                                               title: new Text("Error",
-                                                  style: TextStyle(
+                                                  style: GoogleFonts.poppins(
                                                       color: Color(0xffE2E2E2),
-                                                      fontFamily: 'popSBold')),
+                                                      fontWeight: FontWeight.w600)),
                                               content: new Text(error,
-                                                  style: TextStyle(
+                                                  style: GoogleFonts.poppins(
                                                       color: Color.fromRGBO(226, 226, 226, 0.65),
-                                                      fontFamily: 'popMed')),
+                                                      fontWeight: FontWeight.w500)),
                                               actions: <Widget>[
                                                 new FlatButton(
                                                   child: new Text("Close",
-                                                      style: TextStyle(
+                                                      style: GoogleFonts.poppins(
                                                           color:
                                                               Color(0xffE2E2E2),
-                                                          fontFamily: 'popMed')),
+                                                          fontWeight: FontWeight.w500)),
                                                   onPressed: () {
                                                     Navigator.of(context).pop();
                                                   },

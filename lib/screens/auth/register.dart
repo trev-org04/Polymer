@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:project_polymer/shared/loading.dart';
 import 'package:project_polymer/screens/auth/password.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -62,9 +63,9 @@ class _RegisterState extends State<Register> {
                         Text(
                           "Welcome!",
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Color(0xffE2E2E2),
-                              fontFamily: 'popSBold',
+                              fontWeight: FontWeight.w600,
                               fontSize: 22.0),
                         ),
                         Padding(
@@ -72,9 +73,9 @@ class _RegisterState extends State<Register> {
                           child: Text(
                             "Let's get some basic information",
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                                 color: Color.fromRGBO(226, 226, 226, 0.65),
-                                fontFamily: 'popMed',
+                                fontWeight: FontWeight.w500,
                                 fontSize: 15.0),
                           ),
                         ),
@@ -90,9 +91,9 @@ class _RegisterState extends State<Register> {
                           child: Container(
                             alignment: Alignment.center,
                             child: TextFormField(
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                 color: Color.fromRGBO(226, 226, 226, 0.65),
-                                fontFamily: 'popMed',
+                                fontWeight: FontWeight.w500,
                                 fontSize: 15.0,
                               ),
                               decoration: textInputDecoration.copyWith(
@@ -110,9 +111,9 @@ class _RegisterState extends State<Register> {
                           child: Container(
                             alignment: Alignment.center,
                             child: TextFormField(
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                 color: Color.fromRGBO(226, 226, 226, 0.65),
-                                fontFamily: 'popMed',
+                                fontWeight: FontWeight.w500,
                                 fontSize: 15.0,
                               ),
                               decoration: textInputDecoration.copyWith(
@@ -130,9 +131,9 @@ class _RegisterState extends State<Register> {
                           child: Container(
                             alignment: Alignment.center,
                             child: TextFormField(
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                 color: Color.fromRGBO(226, 226, 226, 0.65),
-                                fontFamily: 'popMed',
+                                fontWeight: FontWeight.w500,
                                 fontSize: 15.0,
                               ),
                               decoration: textInputDecoration.copyWith(
@@ -150,9 +151,9 @@ class _RegisterState extends State<Register> {
                           child: Container(
                             alignment: Alignment.center,
                             child: TextFormField(
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                 color: Color.fromRGBO(226, 226, 226, 0.65),
-                                fontFamily: 'popMed',
+                                fontWeight: FontWeight.w500,
                                 fontSize: 15.0,
                               ),
                               decoration: textInputDecoration.copyWith(
@@ -180,9 +181,9 @@ class _RegisterState extends State<Register> {
                                 child: Text(
                                   'Sign Up',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       color: Color(0xffE2E2E2),
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       fontSize: 15.0),
                                 ),
                                 onPressed: () {

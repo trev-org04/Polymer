@@ -8,6 +8,7 @@ import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Events extends StatefulWidget {
   @override
@@ -58,9 +59,9 @@ class _EventsState extends State<Events> {
                                 child: Text(
                                   'Events',
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       color: Color(0xffE2E2E2),
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       fontSize: 25.0),
                                 ),
                               ),
@@ -71,9 +72,9 @@ class _EventsState extends State<Events> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Calendar',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       fontSize: 15.0,
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       color: white)),
                             ],
                           ),
@@ -89,33 +90,33 @@ class _EventsState extends State<Events> {
                             },
                             calendarController: _calendarController,
                             calendarStyle: CalendarStyle(
-                                selectedStyle: TextStyle(
-                                    color: white, fontFamily: 'popMed'),
-                                todayStyle: TextStyle(
+                                selectedStyle: GoogleFonts.poppins(
+                                    color: white, fontWeight: FontWeight.w500),
+                                todayStyle: GoogleFonts.poppins(
                                     color: white,
                                     fontSize: 15,
-                                    fontFamily: 'popMed'),
+                                    fontWeight: FontWeight.w500),
                                 selectedColor: buttonBlue,
-                                outsideWeekendStyle: TextStyle(
-                                    color: white, fontFamily: 'popMed'),
-                                outsideStyle: TextStyle(
-                                    color: white, fontFamily: 'popMed'),
-                                weekendStyle: TextStyle(
-                                    color: white, fontFamily: 'popMed'),
+                                outsideWeekendStyle: GoogleFonts.poppins(
+                                    color: white, fontWeight: FontWeight.w500),
+                                outsideStyle: GoogleFonts.poppins(
+                                    color: white, fontWeight: FontWeight.w500),
+                                weekendStyle: GoogleFonts.poppins(
+                                    color: white, fontWeight: FontWeight.w500),
                                 renderDaysOfWeek: false,
                                 todayColor: Color(0xff181818),
-                                weekdayStyle: TextStyle(
-                                    color: white, fontFamily: 'popMed')),
+                                weekdayStyle: GoogleFonts.poppins(
+                                    color: white, fontWeight: FontWeight.w500)),
                             headerStyle: HeaderStyle(
                               leftChevronIcon: Icon(Icons.arrow_back_ios,
                                   size: 13, color: white),
                               centerHeaderTitle: true,
                               rightChevronIcon: Icon(Icons.arrow_forward_ios,
                                   size: 13, color: white),
-                              titleTextStyle: TextStyle(
+                              titleTextStyle: GoogleFonts.poppins(
                                   color: white,
                                   fontSize: 15,
-                                  fontFamily: 'popSBold'),
+                                  fontWeight: FontWeight.w600),
                               formatButtonVisible: false,
                             ),
                           ),
@@ -127,9 +128,9 @@ class _EventsState extends State<Events> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Upcoming Events',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       fontSize: 15.0,
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       color: white)),
                             ],
                           ),
@@ -148,9 +149,9 @@ class _EventsState extends State<Events> {
                     child: Text(
                       'Add An Event',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           color: Color(0xffE2E2E2),
-                          fontFamily: 'popSBold',
+                          fontWeight: FontWeight.w600,
                           fontSize: 15.0),
                     ),
                     onPressed: () {}),

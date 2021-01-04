@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EventTile extends StatefulWidget {
   @override
@@ -30,8 +31,8 @@ class _EventTileState extends State<EventTile> {
           children: [
             logo,
             /*content from database eventually*/ Text(title,
-                style: TextStyle(
-                    fontFamily: 'popSBold', fontSize: 15.0, color: white))
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600, fontSize: 15.0, color: white))
           ],
         ),
       ),
@@ -39,8 +40,8 @@ class _EventTileState extends State<EventTile> {
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 8),
         child: Text(desc,
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'popReg', fontSize: 12.0, color: whiteOpacity)),
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
       ),
     ]),
   );

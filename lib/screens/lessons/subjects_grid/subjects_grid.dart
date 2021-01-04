@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/screens/lessons/subject_page.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SubjectsGrid extends StatefulWidget {
   @override
@@ -63,8 +64,8 @@ class _SubjectsGridState extends State<SubjectsGrid> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
                 child: Text(subject,
-                    style: TextStyle(
-                        color: white, fontFamily: 'popSBold', fontSize: 18)),
+                    style: GoogleFonts.poppins(
+                        color: white, fontWeight: FontWeight.w600, fontSize: 18)),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/auth/train.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Deadline extends StatefulWidget {
   @override
@@ -36,9 +37,9 @@ class _DeadlineState extends State<Deadline> {
               child: Text(
                 'Never Miss A Deadline',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     color: Color(0xffE2E2E2),
-                    fontFamily: 'popSBold',
+                    fontWeight: FontWeight.w600,
                     fontSize: 22.0),
               ),
             ),
@@ -47,9 +48,9 @@ class _DeadlineState extends State<Deadline> {
               child: Text(
                 'With an integrated calendar and smart notifications, you’ll never forget to study for the SAT.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     color: Color.fromRGBO(226, 226, 226, 0.65),
-                    fontFamily: 'popMed',
+                    fontWeight: FontWeight.w500,
                     fontSize: 15.0),
               ),
             ),
@@ -114,9 +115,9 @@ class _DeadlineState extends State<Deadline> {
                     child: Text(
                       'Continue',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           color: Color(0xffE2E2E2),
-                          fontFamily: 'popSBold',
+                          fontWeight: FontWeight.w600,
                           fontSize: 15.0),
                     ),
                     onPressed: () {

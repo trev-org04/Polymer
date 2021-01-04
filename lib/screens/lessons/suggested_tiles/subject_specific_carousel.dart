@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SubjectCarousel extends StatefulWidget {
   @override
@@ -56,8 +57,8 @@ Container buildTile(Widget logo, String lessonTitle, String lessonDesc, String t
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
             Text(lessonTitle,
-                style: TextStyle(
-                    fontFamily: 'popSBold', fontSize: 20.0, color: white)),
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600, fontSize: 20.0, color: white)),
             /*entire element from db eventually*/Padding(
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: Row(
@@ -74,8 +75,8 @@ Container buildTile(Widget logo, String lessonTitle, String lessonDesc, String t
                   /*content from database eventually*/ Padding(
                     padding: const EdgeInsets.all(0),
                     child: Text(time + ' mins',
-                        style: TextStyle(
-                            fontFamily: 'popMed', fontSize: 12.0, color: whiteOpacity)),
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500, fontSize: 12.0, color: whiteOpacity)),
                   )
                 ],
               ),
@@ -93,8 +94,8 @@ Container buildTile(Widget logo, String lessonTitle, String lessonDesc, String t
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 8),
         child: Text(lessonDesc,
             textAlign: TextAlign.left,
-            style: TextStyle(
-                fontFamily: 'popReg', fontSize: 12.0, color: whiteOpacity)),
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
       ),
     ]),
   );

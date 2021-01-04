@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Searchbar extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class Searchbar extends StatefulWidget {
 class _SearchbarState extends State<Searchbar> {
   Widget searchbar = Text('Search',
       style:
-          TextStyle(fontSize: 15, fontFamily: 'popMed', color: whiteOpacity));
+          GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w500, color: whiteOpacity));
 
   Widget icon = Icon(
     Icons.search,
@@ -44,7 +45,7 @@ class _SearchbarState extends State<Searchbar> {
                 margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
                 child: TextField(
                     decoration: searchbarDecoration.copyWith(hintText: 'Search'),
-                      style: TextStyle(fontSize: 15, fontFamily: 'popMed', color: whiteOpacity),
+                      style: GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w500, color: whiteOpacity),
                   ),
               ),
             );
@@ -59,7 +60,7 @@ class _SearchbarState extends State<Searchbar> {
           setState(() {
             searchbar = Text('Search',
       style:
-          TextStyle(fontSize: 15, fontFamily: 'popMed', color: whiteOpacity));
+          GoogleFonts.poppins(fontSize: 15, fontWeight: FontWeight.w500, color: whiteOpacity));
             icon = Icon(
               Icons.search,
               size: 18,

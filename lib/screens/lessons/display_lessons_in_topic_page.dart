@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:project_polymer/screens/base/base.dart';
+import 'package:project_polymer/screens/diagnostic/diagnostic.dart';
 import 'package:project_polymer/screens/home/modals.dart';
-import 'package:project_polymer/screens/lessons/suggested_tiles/subject_specific_carousel.dart';
-import 'package:project_polymer/screens/lessons/display_lessons_in_topic_page.dart';
+import 'package:project_polymer/screens/lessons/subject_page.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/database.dart';
@@ -12,29 +11,31 @@ import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
 
-class SubjectPage extends StatefulWidget {
+class TopicPage extends StatefulWidget {
   final String subject;
-  const SubjectPage(this.subject);
+  final String topic;
+  const TopicPage(this.topic, this.subject);
 
   @override
-  _SubjectPageState createState() => _SubjectPageState();
+  _TopicPageState createState() => _TopicPageState();
 }
 
-class _SubjectPageState extends State<SubjectPage> {
+class _TopicPageState extends State<TopicPage> {
   Future navigate(context) async {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Base()));
+    String subjectName = widget.subject;
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => SubjectPage(subjectName)));
   }
 
-  Stream topicStream;
+  Stream lessonStream;
   DatabaseService databaseService = new DatabaseService();
 
-    @override
+  @override
   void initState() {
-    String subjectName = widget.subject;
-    databaseService.getTopicsInSubject().then((tData) {
+    String topicName = widget.topic;
+    databaseService.getLessonsInTopic().then((lData) {
       setState(() {
-        topicStream = tData.where('subject', isEqualTo: subjectName).snapshots();
+        lessonStream = lData.where('lessonTopic', isEqualTo: topicName).snapshots();
       });
     });
     super.initState();
@@ -42,7 +43,7 @@ class _SubjectPageState extends State<SubjectPage> {
 
   @override
   Widget build(BuildContext context) {
-    String subjectName = widget.subject;
+    String topicName = widget.topic;
     final user = Provider.of<User>(context);
 
     return StreamBuilder<UserData>(
@@ -87,78 +88,61 @@ class _SubjectPageState extends State<SubjectPage> {
                       ),
                     ),
                     backgroundColor: Color(0xff181818),
-                    body: Center(
-                        child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25.0, vertical: 12.5),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: <Widget>[
-                                          Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                0, 0, 0, 20),
-                                            child: Text(
-                                              subjectName,
-                                              textAlign: TextAlign.left,
-                                              style: GoogleFonts.poppins(
-                                                  color: Color(0xffE2E2E2),
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 25.0),
-                                            ),
-                                          ),
-                                        ]),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          0, 20, 0, 15),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text('Suggested Lessons',
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: white)),
-                                        ],
+                    body: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25.0, vertical: 12.5),
+                        child: SingleChildScrollView(
+                          child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: EdgeInsets.fromLTRB(
+                                            0, 0, 0, 20),
+                                        child: Text(
+                                          topicName,
+                                          textAlign: TextAlign.left,
+                                          style: GoogleFonts.poppins(
+                                              color: Color(0xffE2E2E2),
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 25.0),
+                                        ),
                                       ),
-                                    ),
-                                    SubjectCarousel(),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          0, 20, 0, 15),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text('Topics',
-                                              style: GoogleFonts.poppins(
-                                                  fontSize: 15.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: white)),
-                                        ],
-                                      ),
-                                    ),
-                                    buildTopicList(),
-                                  ]),
-                            )))));
+                                    ]),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                      0, 20, 0, 15),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('Lessons',
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 15.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: white)),
+                                    ],
+                                  ),
+                                ),
+                                buildLessonList(),
+                              ]),
+                        ))));
           } else {
             return Loading();
           }
         });
   }
 
-  Widget buildTopicList() {
+  Widget buildLessonList() {
     String subjectName = widget.subject;
     return StreamBuilder(
-      stream: topicStream,
+      stream: lessonStream,
       builder: (context, snapshot) {
         return snapshot.data == null
             ? Container(child: Text('There are no lessons to display.', style: GoogleFonts.poppins(color: white, fontSize: 15),))
@@ -166,11 +150,12 @@ class _SubjectPageState extends State<SubjectPage> {
                 shrinkWrap: true,
                 itemCount: snapshot.data.documents.length,
                 itemBuilder: (context, index) {
-                  return TopicTile(
+                  return LessonTile(
                     title:
-                    snapshot.data.documents[index].data["topicName"],
-                    percentage: snapshot.data.documents[index].data["percentage"],
+                    snapshot.data.documents[index].data["lessonTitle"],
+                    desc: snapshot.data.documents[index].data["lessonDesc"],
                     subject: subjectName,
+                    lessonID: snapshot.data.documents[index].data["lessonID"],
                   );
                 });
       },
@@ -178,11 +163,17 @@ class _SubjectPageState extends State<SubjectPage> {
   }
 }
 
-class TopicTile extends StatelessWidget {
+        Future goToLesson(context, String lessonID) async {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Diagnostic(lessonID: lessonID)));
+  }
+
+class LessonTile extends StatelessWidget {
   final String title;
-  final String percentage;
+  final String desc;
   final String subject;
-  TopicTile({@required this.title, @required this.percentage, @required this.subject});
+  final String lessonID;
+  LessonTile({@required this.title, @required this.desc, @required this.subject, @required this.lessonID});
 
 icon (String subject) {
   Widget icon;
@@ -201,17 +192,12 @@ icon (String subject) {
   return icon;
 }
 
-      Future goToTopicPage(context, String topic, String subject) async {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => TopicPage(topic, subject)));
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        goToTopicPage(context, title, subject);
-        },
+        goToLesson(context, lessonID);
+      },
           child: Container(
         padding: EdgeInsets.all(7),
         decoration: BoxDecoration(
@@ -238,7 +224,7 @@ icon (String subject) {
                             color: Color(0xffE2E2E2),
                             fontWeight: FontWeight.w600,
                             fontSize: 15)),
-                    Text(percentage + '% Completed',
+                    Text(desc,
                         style: GoogleFonts.poppins(
                             color: Color.fromRGBO(226, 226, 226, 0.65),
                             fontWeight: FontWeight.w400,
@@ -251,4 +237,3 @@ icon (String subject) {
     );
   }
 }
-

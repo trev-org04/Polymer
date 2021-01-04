@@ -8,6 +8,7 @@ import 'package:project_polymer/service/database.dart';
 import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PointHistory extends StatefulWidget {
   @override
@@ -87,9 +88,9 @@ class _PointHistoryState extends State<PointHistory> {
                                             child: Text(
                                               'Point History',
                                               textAlign: TextAlign.left,
-                                              style: TextStyle(
+                                              style: GoogleFonts.poppins(
                                                   color: Color(0xffE2E2E2),
-                                                  fontFamily: 'popSBold',
+                                                  fontWeight: FontWeight.w600,
                                                   fontSize: 25.0),
                                             ),
                                           ),
@@ -102,9 +103,9 @@ class _PointHistoryState extends State<PointHistory> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text('Lessons',
-                                              style: TextStyle(
+                                              style: GoogleFonts.poppins(
                                                   fontSize: 15.0,
-                                                  fontFamily: 'popSBold',
+                                                  fontWeight: FontWeight.w600,
                                                   color: white)),
                                         ],
                                       ),
@@ -121,9 +122,9 @@ class _PointHistoryState extends State<PointHistory> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text('Tests',
-                                              style: TextStyle(
+                                              style: GoogleFonts.poppins(
                                                   fontSize: 15.0,
-                                                  fontFamily: 'popSBold',
+                                                  fontWeight: FontWeight.w600,
                                                   color: white)),
                                         ],
                                       ),
@@ -164,14 +165,14 @@ class _PointHistoryState extends State<PointHistory> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(title,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Color(0xffE2E2E2),
-                              fontFamily: 'popSBold',
+                              fontWeight: FontWeight.w600,
                               fontSize: 15)),
                       Text(progress + ' Points',
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Color.fromRGBO(226, 226, 226, 0.65),
-                              fontFamily: 'popReg',
+                              fontWeight: FontWeight.w400,
                               fontSize: 12)),
                     ],
                   ),

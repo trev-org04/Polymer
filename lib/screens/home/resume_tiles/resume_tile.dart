@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:project_polymer/shared/constants.dart';
 
 class ResumeTile extends StatefulWidget {
@@ -59,8 +60,8 @@ class _ResumeTileState extends State<ResumeTile> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(title, textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontFamily: 'popSBold', fontSize: 15.0, color: white)),
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600, fontSize: 15.0, color: white)),
                   ],
                 )),
             /*content from database eventually*/ Padding(
@@ -69,8 +70,8 @@ class _ResumeTileState extends State<ResumeTile> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(percentage + '% Completed', textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontFamily: 'popReg',
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w400,
                             fontSize: 12.0,
                             color: whiteOpacity)),
                   ],

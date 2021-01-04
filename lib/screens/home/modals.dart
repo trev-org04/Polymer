@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/screens/auth/start.dart';
@@ -41,9 +41,9 @@ void notificationsModal(context) {
                       child: Text(
                         'Notifications',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             color: white,
-                            fontFamily: 'popSBold',
+                            fontWeight: FontWeight.w600,
                             fontSize: 25.0),
                       ),
                     ),
@@ -75,8 +75,8 @@ Container buildNotificationTile(Widget logo, String title, String desc) {
           children: [
             logo,
             /*content from database eventually*/ Text(title,
-                style: TextStyle(
-                    fontFamily: 'popSBold', fontSize: 15.0, color: white))
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600, fontSize: 15.0, color: white))
           ],
         ),
       ),
@@ -84,8 +84,8 @@ Container buildNotificationTile(Widget logo, String title, String desc) {
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 8),
         child: Text(desc,
             textAlign: TextAlign.left,
-            style: TextStyle(
-                fontFamily: 'popReg', fontSize: 12.0, color: whiteOpacity)),
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
       ),
     ]),
   );
@@ -121,9 +121,9 @@ void suggestedLessonsModal(context) {
                         child: Text(
                           'Suggested Lessons',
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: white,
-                              fontFamily: 'popSBold',
+                              fontWeight: FontWeight.w600,
                               fontSize: 25.0),
                         ),
                       ),
@@ -167,8 +167,8 @@ Container buildSuggestedLessonsTile(
           children: [
             logo,
             /*content from database eventually*/ Text(lessonTitle,
-                style: TextStyle(
-                    fontFamily: 'popSBold', fontSize: 15.0, color: white))
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600, fontSize: 15.0, color: white))
           ],
         ),
       ),
@@ -176,8 +176,8 @@ Container buildSuggestedLessonsTile(
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
         child: Text(lessonDesc,
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'popReg', fontSize: 12.0, color: whiteOpacity)),
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
       ),
       /*entire element from db eventually*/ Padding(
         padding: const EdgeInsets.all(7),
@@ -193,8 +193,8 @@ Container buildSuggestedLessonsTile(
                     child: Icon(Icons.schedule, color: white, size: 15),
                   ),
                   /*content from database eventually*/ Text(time + ' mins',
-                      style: TextStyle(
-                          fontFamily: 'popMed', fontSize: 12.0, color: white))
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500, fontSize: 12.0, color: white))
                 ],
               ),
             ),
@@ -207,8 +207,8 @@ Container buildSuggestedLessonsTile(
                   ),
                   /*content from database eventually*/ Text(
                       questions + ' questions',
-                      style: TextStyle(
-                          fontFamily: 'popMed', fontSize: 12.0, color: white))
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500, fontSize: 12.0, color: white))
                 ],
               ),
             )
@@ -219,8 +219,8 @@ Container buildSuggestedLessonsTile(
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
         child: Text(recommendText,
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'popReg', fontSize: 12.0, color: whiteOpacity)),
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
       ),
       Padding(
         padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
@@ -236,9 +236,9 @@ Container buildSuggestedLessonsTile(
               child: Text(
                 'Start Lesson',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     color: Color(0xffE2E2E2),
-                    fontFamily: 'popSBold',
+                    fontWeight: FontWeight.w600,
                     fontSize: 15.0),
               ),
               onPressed: () {}),
@@ -267,8 +267,8 @@ class _AccountNameState extends State<AccountName> {
                 value: DatabaseService().data,
                 child: Text(
                   userData.firstName + ' ' + userData.lastName,
-                  style: TextStyle(
-                      color: white, fontFamily: 'popSBold', fontSize: 15.0),
+                  style: GoogleFonts.poppins(
+                      color: white, fontWeight: FontWeight.w600, fontSize: 15.0),
                 ));
           } else {
             return null;
@@ -312,9 +312,9 @@ void accountModal(context) {
                       child: Text(
                         'Account',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             color: white,
-                            fontFamily: 'popSBold',
+                            fontWeight: FontWeight.w600,
                             fontSize: 25.0),
                       ),
                     ),
@@ -338,9 +338,9 @@ void accountModal(context) {
                       child: Text(
                         'Sign Out',
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             color: Color(0xffE2E2E2),
-                            fontFamily: 'popSBold',
+                            fontWeight: FontWeight.w600,
                             fontSize: 15.0),
                       ),
                       onPressed: () async {
@@ -388,9 +388,9 @@ Widget buildAccountTile(IconData icon, String desc) {
                   children: <Widget>[
                     AccountName(),
                     Text(desc,
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             color: whiteOpacity,
-                            fontFamily: 'popMed',
+                            fontWeight: FontWeight.w500,
                             fontSize: 12)),
                   ],
                 ),
@@ -408,9 +408,9 @@ Widget buildAccountTile(IconData icon, String desc) {
             child: Text(
               'Account Settings',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   color: Color(0xffE2E2E2),
-                  fontFamily: 'popSBold',
+                  fontWeight: FontWeight.w600,
                   fontSize: 15.0),
             ),
             onPressed: () {},
@@ -456,15 +456,15 @@ Widget buildPointTile(IconData icon, String points, dynamic _context) {
                     children: <Widget>[
                       Text(
                         'Points',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             color: white,
-                            fontFamily: 'popSBold',
+                            fontWeight: FontWeight.w600,
                             fontSize: 15.0),
                       ),
                       Text(points + ' Points',
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: whiteOpacity,
-                              fontFamily: 'popMed',
+                              fontWeight: FontWeight.w500,
                               fontSize: 12)),
                     ],
                   )),
@@ -481,9 +481,9 @@ Widget buildPointTile(IconData icon, String points, dynamic _context) {
             child: Text(
               'View Point History',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   color: Color(0xffE2E2E2),
-                  fontFamily: 'popSBold',
+                  fontWeight: FontWeight.w600,
                   fontSize: 15.0),
             ),
             onPressed: () {
@@ -526,9 +526,9 @@ void planProgressModal(context) {
                         child: Text(
                           'Plan Progress',
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: white,
-                              fontFamily: 'popSBold',
+                              fontWeight: FontWeight.w600,
                               fontSize: 25.0),
                         ),
                       ),
@@ -551,14 +551,14 @@ void planProgressModal(context) {
                         Column(
                           children: [
                             Text('88%',
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     color: white,
-                                    fontFamily: 'popMed',
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 20)),
                             Text('completed',
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     color: white,
-                                    fontFamily: 'popMed',
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 12)),
                           ],
                         ),

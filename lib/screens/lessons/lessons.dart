@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:project_polymer/screens/home/resume_tiles/resume_tile.dart';
 import 'package:project_polymer/screens/lessons/subjects_grid/subjects_grid.dart';
 import 'package:project_polymer/screens/lessons/suggested_tiles/suggested_lesson_tile.dart';
@@ -45,9 +46,9 @@ class _LessonsState extends State<Lessons> {
                                 child: Text(
                                   'Lessons',
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       color: Color(0xffE2E2E2),
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       fontSize: 25.0),
                                 ),
                               ),
@@ -58,9 +59,9 @@ class _LessonsState extends State<Lessons> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Subjects',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       fontSize: 15.0,
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       color: white)),
                             ],
                           ),
@@ -72,9 +73,9 @@ class _LessonsState extends State<Lessons> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Suggested Lessons',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       fontSize: 15.0,
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       color: white)),
                             ],
                           ),
@@ -86,9 +87,9 @@ class _LessonsState extends State<Lessons> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Resume Lessons',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       fontSize: 15.0,
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       color: white)),
                             ],
                           ),

@@ -7,6 +7,7 @@ import 'package:project_polymer/service/database.dart';
 import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
 import 'package:project_polymer/shared/loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Forum extends StatefulWidget {
   @override
@@ -44,9 +45,9 @@ class _ForumState extends State<Forum> {
                                 child: Text(
                                   'Forum',
                                   textAlign: TextAlign.left,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       color: Color(0xffE2E2E2),
-                                      fontFamily: 'popSBold',
+                                      fontWeight: FontWeight.w600,
                                       fontSize: 25.0),
                                 ),
                               ),

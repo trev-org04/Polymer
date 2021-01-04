@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/auth/register.dart';
 import 'package:project_polymer/screens/auth/signin.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Start extends StatefulWidget {
   @override
@@ -39,9 +40,9 @@ class _StartState extends State<Start> {
             Text(
               "Let's Get Started",
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   color: Color(0xffE2E2E2),
-                  fontFamily: 'popSBold',
+                  fontWeight: FontWeight.w600,
                   fontSize: 22.0),
             ),
             Padding(
@@ -49,9 +50,9 @@ class _StartState extends State<Start> {
               child: Text(
                 'Select an option below to continue',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     color: Color.fromRGBO(226, 226, 226, 0.65),
-                    fontFamily: 'popMed',
+                    fontWeight: FontWeight.w500,
                     fontSize: 15.0),
               ),
             ),
@@ -80,9 +81,9 @@ class _StartState extends State<Start> {
                     child: Text(
                       'Sign Up',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           color: Color(0xffE2E2E2),
-                          fontFamily: 'popSBold',
+                          fontWeight: FontWeight.w600,
                           fontSize: 15.0),
                     ),
                     onPressed: () {
@@ -99,9 +100,9 @@ class _StartState extends State<Start> {
                   child: Text(
                     'Sign In',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         color: Color.fromRGBO(226, 226, 226, 0.65),
-                        fontFamily: 'popSBold',
+                        fontWeight: FontWeight.w600,
                         fontSize: 15.0),
                   ),
                 )),

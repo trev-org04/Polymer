@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PlanProgress extends StatefulWidget {
   @override
@@ -37,8 +38,8 @@ class _PlanProgressState extends State<PlanProgress> {
                 children: [
                   Text(title,
                       textAlign: TextAlign.left,
-                      style: TextStyle(
-                          fontFamily: 'popSBold',
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
                           fontSize: 15.0,
                           color: white)),
                 ],
@@ -50,8 +51,8 @@ class _PlanProgressState extends State<PlanProgress> {
               children: [
                 Text(percentage + '% Completed',
                     textAlign: TextAlign.left,
-                    style: TextStyle(
-                        fontFamily: 'popReg',
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w400,
                         fontSize: 12.0,
                         color: whiteOpacity)),
               ],

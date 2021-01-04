@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/screens/auth/start.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Train extends StatefulWidget {
   @override
@@ -35,9 +36,9 @@ class _TrainState extends State<Train> {
             Text(
               'Train Your Brain',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   color: Color(0xffE2E2E2),
-                  fontFamily: 'popSBold',
+                  fontWeight: FontWeight.w600,
                   fontSize: 22.0),
             ),
             Padding(
@@ -45,9 +46,9 @@ class _TrainState extends State<Train> {
               child: Text(
                 'Our strategy courses help you quickly identify the right answers and avoid the traps of the SAT.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     color: Color.fromRGBO(226, 226, 226, 0.65),
-                    fontFamily: 'popMed',
+                    fontWeight: FontWeight.w500,
                     fontSize: 15.0),
               ),
             ),
@@ -112,9 +113,9 @@ class _TrainState extends State<Train> {
                     child: Text(
                       'Continue',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           color: Color(0xffE2E2E2),
-                          fontFamily: 'popSBold',
+                          fontWeight: FontWeight.w600,
                           fontSize: 15.0),
                     ),
                     onPressed: () {

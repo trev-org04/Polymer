@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/auth/impact.dart';
 import 'package:project_polymer/screens/auth/start.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Intro extends StatefulWidget {
   @override
@@ -40,9 +41,9 @@ class _IntroState extends State<Intro> {
             Text(
               'Take Control',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   color: Color(0xffE2E2E2),
-                  fontFamily: 'popSBold',
+                  fontWeight: FontWeight.w600,
                   fontSize: 22.0),
             ),
             Padding(
@@ -50,9 +51,9 @@ class _IntroState extends State<Intro> {
               child: Text(
                 'With Polymer, you can take control of your SAT score and increase it in a smarter way.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     color: Color.fromRGBO(226, 226, 226, 0.65),
-                    fontFamily: 'popMed',
+                    fontWeight: FontWeight.w500,
                     fontSize: 15.0),
               ),
             ),
@@ -81,9 +82,9 @@ class _IntroState extends State<Intro> {
                     child: Text(
                       'See How',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           color: Color(0xffE2E2E2),
-                          fontFamily: 'popSBold',
+                          fontWeight: FontWeight.w600,
                           fontSize: 15.0),
                     ),
                     onPressed: () {
@@ -100,9 +101,9 @@ class _IntroState extends State<Intro> {
                   child: Text(
                     'Skip',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         color: Color.fromRGBO(226, 226, 226, 0.65),
-                        fontFamily: 'popSBold',
+                        fontWeight: FontWeight.w600,
                         fontSize: 15.0),
                   ),
                 )),

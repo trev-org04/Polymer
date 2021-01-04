@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SuggestedLessonCarousel extends StatefulWidget {
   @override
@@ -81,8 +82,8 @@ Container buildSLTile(
           children: [
             logo,
             /*content from database eventually*/ Text(lessonTitle,
-                style: TextStyle(
-                    fontFamily: 'popSBold', fontSize: 15.0, color: white))
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600, fontSize: 15.0, color: white))
           ],
         ),
       ),
@@ -90,8 +91,8 @@ Container buildSLTile(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 8),
         child: Text(lessonDesc,
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'popReg', fontSize: 12.0, color: whiteOpacity)),
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
       ),
       /*entire element from db eventually*/ Padding(
         padding: const EdgeInsets.all(7),
@@ -109,8 +110,8 @@ Container buildSLTile(
                   /*content from database eventually*/ Padding(
                     padding: const EdgeInsets.all(0),
                     child: Text(time + ' mins',
-                        style: TextStyle(
-                            fontFamily: 'popMed', fontSize: 12.0, color: white)),
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500, fontSize: 12.0, color: white)),
                   )
                 ],
               ),
@@ -124,8 +125,8 @@ Container buildSLTile(
                   ),
                   /*content from database eventually*/ Text(
                       questions + ' questions',
-                      style: TextStyle(
-                          fontFamily: 'popMed', fontSize: 12.0, color: white))
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500, fontSize: 12.0, color: white))
                 ],
               ),
             )
@@ -136,8 +137,8 @@ Container buildSLTile(
         padding: const EdgeInsets.fromLTRB(5, 0, 5, 8),
         child: Text(recommendText,
             textAlign: TextAlign.center,
-            style: TextStyle(
-                fontFamily: 'popReg', fontSize: 12.0, color: whiteOpacity)),
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
       ),
       Padding(
         padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
@@ -153,9 +154,9 @@ Container buildSLTile(
               child: Text(
                 'Start Lesson',
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     color: Color(0xffE2E2E2),
-                    fontFamily: 'popSBold',
+                    fontWeight: FontWeight.w600,
                     fontSize: 15.0),
               ),
               onPressed: () {}),

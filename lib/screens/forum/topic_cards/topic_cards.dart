@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TopicCards extends StatefulWidget {
   @override
@@ -60,7 +61,7 @@ class _TopicCardsState extends State<TopicCards> {
             title,
             textAlign: TextAlign.center,
             style:
-                TextStyle(color: white, fontSize: 12, fontFamily: 'popSBold'),
+                GoogleFonts.poppins(color: white, fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ),
       ),

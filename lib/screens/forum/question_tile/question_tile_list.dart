@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/shared/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionTileList extends StatefulWidget {
   @override
@@ -80,9 +81,9 @@ class _QuestionTileListState extends State<QuestionTileList> {
                 child: Text(
                   'Ask A Question',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                       color: Color(0xffE2E2E2),
-                      fontFamily: 'popSBold',
+                      fontWeight: FontWeight.w600,
                       fontSize: 15.0),
                 ),
                 onPressed: () {}),
@@ -118,14 +119,14 @@ class _QuestionTileListState extends State<QuestionTileList> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(title,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Color(0xffE2E2E2),
-                              fontFamily: 'popSBold',
+                              fontWeight: FontWeight.w600,
                               fontSize: 15)),
                       Text(desc,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Color.fromRGBO(226, 226, 226, 0.65),
-                              fontFamily: 'popReg',
+                              fontWeight: FontWeight.w400,
                               fontSize: 12)),
                     ],
                   ),
@@ -158,11 +159,11 @@ class _QuestionTileListState extends State<QuestionTileList> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
                             child: Text(votes,
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     color:
                                         isVoted ? white : whiteOpacity,
-                                    fontFamily:
-                                        isVoted ? 'popMed' : 'popReg',
+                                    fontWeight:
+                                        isVoted ? FontWeight.w500 : FontWeight.w400,
                                     fontSize: 12)),
                           )
                         ],
@@ -171,9 +172,9 @@ class _QuestionTileListState extends State<QuestionTileList> {
                   ),
                 ),
                 Text('posted ' + time + ' ago',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                         color: Color.fromRGBO(226, 226, 226, 0.65),
-                        fontFamily: 'popReg',
+                        fontWeight: FontWeight.w400,
                         fontSize: 12)),
               ],
             ),

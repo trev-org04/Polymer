@@ -44,4 +44,17 @@ class DatabaseService {
   Stream<UserData> get userData {
     return dataCollection.document(uid).snapshots().map(_userDataFromSnapshot);
   }
+
+  getLessonsInTopic() async {
+    return Firestore.instance.collection("Lessons");
+  }
+
+  getTopicsInSubject() async {
+    return Firestore.instance.collection("Topics");
+  }
+
+    getLessonData(String lessonID) async {
+    return Firestore.instance.collection("Topics").document(lessonID).collection('Questions').getDocuments();
+  }
+
 }

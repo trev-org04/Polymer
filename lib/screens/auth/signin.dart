@@ -3,6 +3,7 @@ import 'package:project_polymer/screens/base/base.dart';
 import 'package:project_polymer/service/auth.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:project_polymer/shared/loading.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -61,9 +62,9 @@ class _SignInState extends State<SignIn> {
                               Text(
                                 "Welcome Back!",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     color: Color(0xffE2E2E2),
-                                    fontFamily: 'popSBold',
+                                    fontWeight: FontWeight.w600,
                                     fontSize: 22.0),
                               ),
                               Padding(
@@ -71,10 +72,10 @@ class _SignInState extends State<SignIn> {
                                 child: Text(
                                   'Log into an existing account',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                       color:
                                           Color.fromRGBO(226, 226, 226, 0.65),
-                                      fontFamily: 'popMed',
+                                      fontWeight: FontWeight.w500,
                                       fontSize: 15.0),
                                 ),
                               ),
@@ -87,9 +88,9 @@ class _SignInState extends State<SignIn> {
                         child: Container(
                           alignment: Alignment.center,
                           child: TextFormField(
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               color: Color.fromRGBO(226, 226, 226, 0.65),
-                              fontFamily: 'popMed',
+                              fontWeight: FontWeight.w500,
                               fontSize: 15.0,
                             ),
                             decoration: textInputDecoration.copyWith(
@@ -108,9 +109,9 @@ class _SignInState extends State<SignIn> {
                         child: Container(
                           alignment: Alignment.center,
                           child: TextFormField(
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                   color: Color.fromRGBO(226, 226, 226, 0.65),
-                                  fontFamily: 'popMed',
+                                  fontWeight: FontWeight.w500,
                                   fontSize: 15.0),
                               decoration: textInputDecoration.copyWith(
                                   hintText: 'Password'),
@@ -136,9 +137,9 @@ class _SignInState extends State<SignIn> {
                                   child: Text(
                                     'Sign In',
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
                                         color: Color(0xffE2E2E2),
-                                        fontFamily: 'popSBold',
+                                        fontWeight: FontWeight.w600,
                                         fontSize: 15.0),
                                   ),
                                   onPressed: () async {
@@ -162,31 +163,31 @@ class _SignInState extends State<SignIn> {
                                                     backgroundColor:
                                                         Color(0xff181818),
                                                     title: new Text("Error",
-                                                        style: TextStyle(
+                                                        style: GoogleFonts.poppins(
                                                             color: Color(
                                                                 0xffEDF7F6),
-                                                            fontFamily:
-                                                                'popSBold')),
+                                                            fontWeight:
+                                                                FontWeight.w600)),
                                                     content: new Text(error,
-                                                        style: TextStyle(
+                                                        style: GoogleFonts.poppins(
                                                             color:
                                                                 Color.fromRGBO(
                                                                     226,
                                                                     226,
                                                                     226,
                                                                     0.65),
-                                                            fontFamily:
-                                                                'popMed',
+                                                            fontWeight:
+                                                                FontWeight.w500,
                                                             fontSize: 15.0)),
                                                     actions: <Widget>[
                                                       new FlatButton(
                                                           child: new Text(
                                                               "Close",
-                                                              style: TextStyle(
+                                                              style: GoogleFonts.poppins(
                                                                   color: Color(
                                                                       0xffEDF7F6),
-                                                                  fontFamily:
-                                                                      'popMed')),
+                                                                  fontWeight:
+                                                                      FontWeight.w500)),
                                                           onPressed: () {
                                                             Navigator.of(
                                                                     context)
