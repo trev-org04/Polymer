@@ -145,7 +145,7 @@ class _TopicPageState extends State<TopicPage> {
       stream: lessonStream,
       builder: (context, snapshot) {
         return snapshot.data == null
-            ? Container(child: Text('There are no lessons to display.', style: GoogleFonts.poppins(color: white, fontSize: 15),))
+            ? Loading()
             : ListView.builder(
                 shrinkWrap: true,
                 itemCount: snapshot.data.documents.length,
@@ -163,9 +163,9 @@ class _TopicPageState extends State<TopicPage> {
   }
 }
 
-        Future goToLesson(context, String lessonID) async {
+        Future goToLesson(context, String lessonID, String subject, String lessonName) async {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Diagnostic(lessonID: lessonID)));
+        context, MaterialPageRoute(builder: (context) => Diagnostic(lessonID: lessonID, subject: subject, lessonName: lessonName)));
   }
 
 class LessonTile extends StatelessWidget {
@@ -196,7 +196,7 @@ icon (String subject) {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        goToLesson(context, lessonID);
+        goToLesson(context, lessonID, subject, title);
       },
           child: Container(
         padding: EdgeInsets.all(7),

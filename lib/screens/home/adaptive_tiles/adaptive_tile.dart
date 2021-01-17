@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/diagnostic/diagnostic.dart';
-import 'package:project_polymer/screens/forum/forum.dart';
+import 'package:project_polymer/service/database.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_polymer/shared/loading.dart';
 
-class AdaptiveTile extends StatelessWidget {
+class AdaptiveTile extends StatefulWidget {
   final IconData icon;
   final String title;
   final String desc;
@@ -16,18 +17,37 @@ class AdaptiveTile extends StatelessWidget {
       @required this.color});
 
   @override
-  Widget build(BuildContext context) {
-    return buildAdaptiveTile(icon, title, desc, color, context);
+  _AdaptiveTileState createState() => _AdaptiveTileState();
+}
+
+class _AdaptiveTileState extends State<AdaptiveTile> {
+  Stream lessonStream;
+
+  DatabaseService databaseService = new DatabaseService();
+
+  void initState() {
+    databaseService.getLessonsInTopic().then((lData) {
+      setState(() {
+        lessonStream = lData.where('lessonTopic', isEqualTo: 'Placement').snapshots();
+      });
+    });
+    super.initState();
   }
 
-  Future diagnostic(context) async {
-  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Forum()));
-}
+  @override
+  Widget build(BuildContext context) {
+        return buildAdaptiveTile(widget.icon, widget.title, widget.desc, widget.color, context);
+  }
+
+        Future goToLesson(context, String lessonID, String subject, String lessonName) async {
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Diagnostic(lessonID: lessonID, subject: subject, lessonName: lessonName)));
+  }
 
   Widget buildAdaptiveTile(
       IconData icon, String title, String desc, Color color, dynamic _context) {
     return GestureDetector(
-      onTap: () {diagnostic(_context);},
+      onTap: () {goToLesson(_context, '', 'Placement', 'Placement Test');},
           child: Container(
         height: 110.0,
         padding: EdgeInsets.all(7),

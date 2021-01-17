@@ -161,7 +161,7 @@ class _SubjectPageState extends State<SubjectPage> {
       stream: topicStream,
       builder: (context, snapshot) {
         return snapshot.data == null
-            ? Container(child: Text('There are no lessons to display.', style: GoogleFonts.poppins(color: white, fontSize: 15),))
+            ? Loading()
             : ListView.builder(
                 shrinkWrap: true,
                 itemCount: snapshot.data.documents.length,

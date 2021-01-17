@@ -8,11 +8,19 @@ class QuestionTileList extends StatefulWidget {
 }
 
 class _QuestionTileListState extends State<QuestionTileList> {
- updateVoted(bool vote) {
-    setState(() {
-      vote = !vote;
-    });
-  }
+
+// bool vote = false; 
+// bool vote1 = false; 
+// bool vote2 = false; 
+// bool vote3 = false; 
+// bool vote4 = false; 
+// bool vote5 = false; 
+
+//  updateVoted(bool v) {
+//    v = !v;
+//    setState(() {});
+//    return v;
+// }
 
   @override
   Widget build(BuildContext context) {
@@ -25,51 +33,46 @@ class _QuestionTileListState extends State<QuestionTileList> {
             'I am not sure why this is incorrect...',
             elementColor,
             '283',
-            '5 hours',
-            false),
+            '5 hours'),
         buildQuestionTile(
             readingLogoBig,
             'Science Passage',
             'A question on a science passage...',
             elementColor,
             '9.3k',
-            '8 mins',
-            false),
+            '8 mins'),
         buildQuestionTile(
             scienceLogoBig,
             'HELP!!!!!',
             'This graph says the year the resear...',
             elementColor,
             '659',
-            '3 days',
-            false),
+            '3 days'),
         buildQuestionTile(
             englishLogoBig,
             'Comma Concerns',
             'Do I need a comma here? I though...',
             elementColor,
             '579',
-            '1 week',
-            false),
+            '1 week'),
         buildQuestionTile(
             readingLogoBig,
             'Tone',
             'For tone questions on literature pa...',
             elementColor,
             '1.9k',
-            '1 min',
-            false),
+            '1 min'),
         buildQuestionTile(
             scienceLogoBig,
             'ACT Science Section',
             'What does the science section con...',
             elementColor,
             '487',
-            '9 hours',
-            false),
+            '9 hours'),
         Padding(
           padding: EdgeInsets.fromLTRB(44, 15, 44, 10),
           child: ButtonTheme(
+            splashColor: whiteOpacity,
             minWidth: 225.0,
             height: 40.0,
             child: RaisedButton(
@@ -93,8 +96,16 @@ class _QuestionTileListState extends State<QuestionTileList> {
     );
   }
 
+          bool isVoted = false;
+
+        updatedVoted() {
+          setState(() {
+            isVoted = !isVoted;
+          });
+        }
+
   Widget buildQuestionTile(Widget icon, String title, String desc, Color color,
-      String votes, String time, bool isVoted) {
+      String votes, String time) {
     return Container(
       padding: EdgeInsets.all(7),
       decoration: BoxDecoration(
@@ -143,7 +154,9 @@ class _QuestionTileListState extends State<QuestionTileList> {
                       color: isVoted ? buttonBlue : Colors.transparent,
                       borderRadius: BorderRadius.circular(6)),
                   child: GestureDetector(
-                    onTap: updateVoted(isVoted),
+                    onTap: () {
+                      updatedVoted();
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Row(

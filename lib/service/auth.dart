@@ -15,12 +15,15 @@ class AuthService {
 
   Future registerEP(String firstName, String lastName, String username,
       String email, String password) async {
+    int points = 0;
+    int lessonsToResume = 0;
+    String subscriptionLevel = 'Basic';
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
       await DatabaseService(uid: user.uid)
-          .updateUserData(firstName, lastName, username);
+          .updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel);
       return _userFromFirebaseUser(user);
     } catch (e) {
       return null;

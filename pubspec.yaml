@@ -1,5 +1,5 @@
 name: project_polymer
-description: A new Flutter project.
+description: Polymer is a state of the art app that allows students to reach their dream standardized scores. With high quality content written by high scoring individuals and advanced algorithms, Polymer is the fastest way to improve your test scores.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -28,7 +28,7 @@ dependencies:
   firebase_auth: ^0.14.0+5
   cloud_firestore: ^0.12.9+5
   provider: ^4.3.1
-  material_design_icons_flutter: 4.0.5755
+  material_design_icons_flutter: ^4.0.5855
   table_calendar: ^2.3.3
   google_fonts: ^1.1.1
 
@@ -62,16 +62,16 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-  - family: popReg
-    fonts:
-    - asset: fonts/Poppins-Regular.ttf
-  - family: popMed
-    fonts:
-    - asset: fonts/Poppins-Medium.ttf
-  - family: popSBold
-    fonts:
-    - asset: fonts/Poppins-SemiBold.ttf
+  #fonts:
+  #- family: popReg
+  #  fonts:
+  #  - asset: fonts/Poppins-Regular.ttf
+  #- family: popMed
+  #  fonts:
+  #  - asset: fonts/Poppins-Medium.ttf
+  #- family: popSBold
+  #  fonts:
+  #  - asset: fonts/Poppins-SemiBold.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

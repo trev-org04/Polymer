@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/auth/train.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_polymer/shared/constants.dart';
 
 class Deadline extends StatefulWidget {
   @override
@@ -104,6 +105,7 @@ class _DeadlineState extends State<Deadline> {
             Padding(
               padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
               child: ButtonTheme(
+                splashColor: whiteOpacity,
                 minWidth: 225.0,
                 height: 40.0,
                 child: RaisedButton(

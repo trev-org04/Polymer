@@ -295,3 +295,89 @@ var readingLogoBig = Container(
         Icon(MdiIcons.book, size: 20, color: white),
       ],
     ));
+
+var readingLogoDiagnostic = Container(
+    height: 55.0,
+    width: 55.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: readingColor,
+      borderRadius: BorderRadius.all(Radius.circular(13)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.book, size: 30, color: white),
+      ],
+    ));
+
+var mathLogoDiagnostic = Container(
+    height: 55.0,
+    width: 55.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: mathColor,
+      borderRadius: BorderRadius.all(Radius.circular(13)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.division, size: 30, color: white),
+      ],
+    ));
+
+var scienceLogoDiagnostic = Container(
+    height: 55.0,
+    width: 55.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: scienceColor,
+      borderRadius: BorderRadius.all(Radius.circular(13)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.beaker, size: 30, color: white),
+      ],
+    ));
+
+var englishLogoDiagnostic = Container(
+    height: 55.0,
+    width: 55.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: englishColor,
+      borderRadius: BorderRadius.all(Radius.circular(13)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.pencil, size: 30, color: white),
+      ],
+    ));
+
+
+var placementLogoDiagnostic = Container(
+    height: 55.0,
+    width: 55.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: buttonBlue,
+      borderRadius: BorderRadius.all(Radius.circular(13)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(MdiIcons.school, size: 30, color: white),
+      ],
+    ));

@@ -74,7 +74,7 @@ class _BaseState extends State<Base> {
                     children: [
                       buildNavBarItem(Icons.dashboard, 0, true),
                       buildNavBarItem(Icons.calendar_today, 1, false),
-                      buildNavBarItem(MdiIcons.tableLarge, 2, false),
+                      buildNavBarItem(MdiIcons.teach, 2, false),
                       buildNavBarItem(Icons.question_answer, 3, false),
                     ]),
               ),

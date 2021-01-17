@@ -143,6 +143,7 @@ Container buildSLTile(
       Padding(
         padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
         child: ButtonTheme(
+          splashColor: whiteOpacity,
           minWidth: 200.0,
           height: 40.0,
           child: RaisedButton(

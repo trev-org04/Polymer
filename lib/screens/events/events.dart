@@ -139,6 +139,7 @@ class _EventsState extends State<Events> {
             Padding(
               padding: EdgeInsets.fromLTRB(44, 20, 44, 60),
               child: ButtonTheme(
+                splashColor: whiteOpacity,
                 minWidth: 225.0,
                 height: 40.0,
                 child: RaisedButton(

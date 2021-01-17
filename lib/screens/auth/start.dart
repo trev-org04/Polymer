@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/auth/register.dart';
 import 'package:project_polymer/screens/auth/signin.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_polymer/shared/constants.dart';
 
 class Start extends StatefulWidget {
   @override
@@ -70,6 +71,7 @@ class _StartState extends State<Start> {
             Padding(
               padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
               child: ButtonTheme(
+                splashColor: whiteOpacity,
                 minWidth: 225.0,
                 height: 40.0,
                 child: RaisedButton(

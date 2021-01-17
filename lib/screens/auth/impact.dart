@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:project_polymer/screens/auth/deadline.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_polymer/shared/constants.dart';
 
 class Impact extends StatefulWidget {
   @override
@@ -102,6 +103,7 @@ class _ImpactState extends State<Impact> {
             Padding(
               padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
               child: ButtonTheme(
+                splashColor: whiteOpacity,
                 minWidth: 225.0,
                 height: 40.0,
                 child: RaisedButton(

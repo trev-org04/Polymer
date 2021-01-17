@@ -170,6 +170,7 @@ class _RegisterState extends State<Register> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
                           child: ButtonTheme(
+                            splashColor: whiteOpacity,
                             minWidth: 225.0,
                             height: 40.0,
                             child: RaisedButton(
@@ -179,7 +180,7 @@ class _RegisterState extends State<Register> {
                                 textColor: Color(0xffE2E2E2),
                                 color: Color(0xff0099FF),
                                 child: Text(
-                                  'Sign Up',
+                                  'Continue',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                       color: Color(0xffE2E2E2),

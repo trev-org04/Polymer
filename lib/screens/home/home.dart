@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
                                   style: GoogleFonts.poppins(
                                       color: Color(0xffE2E2E2),
                                       fontWeight: FontWeight.w400,
-                                      fontSize: 25.0),
+                                      fontSize: 20.0),
                                 ),
                               ),
                               Padding(

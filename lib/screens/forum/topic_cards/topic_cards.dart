@@ -30,7 +30,7 @@ class _TopicCardsState extends State<TopicCards> {
       height: 30,
       margin: EdgeInsets.only(bottom: 15),
       child: buildTopicCardList(
-        buildCard('Popular', buttonBlue, 0, true),
+        buildCard('Recent', buttonBlue, 0, true),
         buildCard('Math', mathColor, 1, false),
         buildCard('Science', scienceColor, 2, false),
         buildCard('English', englishColor, 3, false),

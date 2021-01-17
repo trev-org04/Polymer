@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:project_polymer/screens/account/account_settings.dart';
 import 'package:project_polymer/screens/auth/start.dart';
 import 'package:project_polymer/screens/home/point_history.dart';
 import 'package:project_polymer/shared/constants.dart';
@@ -85,7 +86,9 @@ Container buildNotificationTile(Widget logo, String title, String desc) {
         child: Text(desc,
             textAlign: TextAlign.left,
             style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
+                fontWeight: FontWeight.w400,
+                fontSize: 12.0,
+                color: whiteOpacity)),
       ),
     ]),
   );
@@ -177,7 +180,9 @@ Container buildSuggestedLessonsTile(
         child: Text(lessonDesc,
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
+                fontWeight: FontWeight.w400,
+                fontSize: 12.0,
+                color: whiteOpacity)),
       ),
       /*entire element from db eventually*/ Padding(
         padding: const EdgeInsets.all(7),
@@ -194,7 +199,9 @@ Container buildSuggestedLessonsTile(
                   ),
                   /*content from database eventually*/ Text(time + ' mins',
                       style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500, fontSize: 12.0, color: white))
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12.0,
+                          color: white))
                 ],
               ),
             ),
@@ -208,7 +215,9 @@ Container buildSuggestedLessonsTile(
                   /*content from database eventually*/ Text(
                       questions + ' questions',
                       style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500, fontSize: 12.0, color: white))
+                          fontWeight: FontWeight.w500,
+                          fontSize: 12.0,
+                          color: white))
                 ],
               ),
             )
@@ -220,11 +229,14 @@ Container buildSuggestedLessonsTile(
         child: Text(recommendText,
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
+                fontWeight: FontWeight.w400,
+                fontSize: 12.0,
+                color: whiteOpacity)),
       ),
       Padding(
         padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
         child: ButtonTheme(
+          splashColor: whiteOpacity,
           minWidth: 200.0,
           height: 40.0,
           child: RaisedButton(
@@ -268,7 +280,40 @@ class _AccountNameState extends State<AccountName> {
                 child: Text(
                   userData.firstName + ' ' + userData.lastName,
                   style: GoogleFonts.poppins(
-                      color: white, fontWeight: FontWeight.w600, fontSize: 15.0),
+                      color: white,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 15.0),
+                ));
+          } else {
+            return null;
+          }
+        });
+  }
+}
+
+class Points extends StatefulWidget {
+  @override
+  _PointsState createState() => _PointsState();
+}
+
+class _PointsState extends State<Points> {
+  @override
+  Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+
+    return StreamBuilder<UserData>(
+        stream: DatabaseService(uid: user.uid).userData,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            UserData userData = snapshot.data;
+            return StreamProvider<List<Data>>.value(
+                value: DatabaseService().data,
+                child: Text(
+                  userData.points.toString() + ' Points',
+                  style: GoogleFonts.poppins(
+                      color: whiteOpacity,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12),
                 ));
           } else {
             return null;
@@ -287,9 +332,12 @@ void accountModal(context) {
       builder: (BuildContext context) {
         final AuthService _auth = AuthService();
         Future navigate(context) async {
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => Start()));
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => Start()),
+              (route) => false);
         }
+
         return FractionallySizedBox(
           heightFactor: 0.8,
           child: Padding(
@@ -321,12 +369,13 @@ void accountModal(context) {
                   ],
                 ),
                 /*icon and desc from db soon*/ buildAccountTile(
-                    Icons.account_circle, 'Premium Plan'),
+                    Icons.account_circle, context, 'Premium Plan'),
                 /*icon and desc from db soon*/ buildPointTile(
-                    MdiIcons.currencyUsdCircle, '10,315', context),
+                    MdiIcons.currencyUsdCircle, context),
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                   child: ButtonTheme(
+                    splashColor: whiteOpacity,
                     minWidth: 250.0,
                     height: 40.0,
                     child: RaisedButton(
@@ -357,7 +406,7 @@ void accountModal(context) {
       });
 }
 
-Widget buildAccountTile(IconData icon, String desc) {
+Widget buildAccountTile(IconData icon, dynamic _context, String desc) {
   return Container(
     height: 140.0,
     padding: EdgeInsets.all(7),
@@ -387,16 +436,13 @@ Widget buildAccountTile(IconData icon, String desc) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     AccountName(),
-                    Text(desc,
-                        style: GoogleFonts.poppins(
-                            color: whiteOpacity,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 12)),
+                    SubscriptionLevel(),
                   ],
                 ),
               )
             ]),
         ButtonTheme(
+          splashColor: whiteOpacity,
           minWidth: 250.0,
           height: 40.0,
           child: RaisedButton(
@@ -413,7 +459,9 @@ Widget buildAccountTile(IconData icon, String desc) {
                   fontWeight: FontWeight.w600,
                   fontSize: 15.0),
             ),
-            onPressed: () {},
+            onPressed: () {
+              goToSettings(_context);
+            },
           ),
         ),
       ],
@@ -421,11 +469,53 @@ Widget buildAccountTile(IconData icon, String desc) {
   );
 }
 
-  Future viewPointHistory(context) async {
-Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PointHistory()), (route)=>false);
+class SubscriptionLevel extends StatefulWidget {
+  @override
+  _SubscriptionLevelState createState() => _SubscriptionLevelState();
+}
+
+class _SubscriptionLevelState extends State<SubscriptionLevel> {
+  @override
+  Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+
+    return StreamBuilder<UserData>(
+        stream: DatabaseService(uid: user.uid).userData,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            UserData userData = snapshot.data;
+            return StreamProvider<List<Data>>.value(
+                value: DatabaseService().data,
+                child: Text(
+                  userData.subscriptionLevel + ' Plan',
+                        style: GoogleFonts.poppins(
+                            color: whiteOpacity,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12),
+                ));
+          } else {
+            return null;
+          }
+        });
+  }
+}
+
+
+  Future goToSettings(context) async {
+          Navigator.pushAndRemoveUntil(
+              context,
+      MaterialPageRoute(builder: (context) => AccountSettings()),
+      (route) => false);
   }
 
-Widget buildPointTile(IconData icon, String points, dynamic _context) {
+Future viewPointHistory(context) async {
+  Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => PointHistory()),
+      (route) => false);
+}
+
+Widget buildPointTile(IconData icon, dynamic _context) {
   return Container(
     height: 140.0,
     padding: EdgeInsets.all(7),
@@ -461,15 +551,12 @@ Widget buildPointTile(IconData icon, String points, dynamic _context) {
                             fontWeight: FontWeight.w600,
                             fontSize: 15.0),
                       ),
-                      Text(points + ' Points',
-                          style: GoogleFonts.poppins(
-                              color: whiteOpacity,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12)),
+                      Points(),
                     ],
                   )),
             ]),
         ButtonTheme(
+          splashColor: whiteOpacity,
           minWidth: 250.0,
           height: 40.0,
           child: RaisedButton(
@@ -488,7 +575,7 @@ Widget buildPointTile(IconData icon, String points, dynamic _context) {
             ),
             onPressed: () {
               viewPointHistory(_context);
-              },
+            },
           ),
         ),
       ],

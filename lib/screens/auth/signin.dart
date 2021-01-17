@@ -126,6 +126,7 @@ class _SignInState extends State<SignIn> {
                       Padding(
                           padding: EdgeInsets.fromLTRB(44, 30, 44, 10),
                           child: ButtonTheme(
+                            splashColor: whiteOpacity,
                               minWidth: 225.0,
                               height: 40.0,
                               child: RaisedButton(
