@@ -27,7 +27,7 @@ class _LessonsState extends State<Lessons> {
             return StreamProvider<List<Data>>.value(
               value: DatabaseService().data,
               child: Scaffold(
-                backgroundColor: Color(0xff181818),
+                backgroundColor: canvasColor,
                 body: Center(
                     child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -47,7 +47,7 @@ class _LessonsState extends State<Lessons> {
                                   'Lessons',
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xffE2E2E2),
+                                      color: white,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 25.0),
                                 ),

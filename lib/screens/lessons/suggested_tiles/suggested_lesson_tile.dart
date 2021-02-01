@@ -156,7 +156,7 @@ Container buildSLTile(
                 'Start Lesson',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
-                    color: Color(0xffE2E2E2),
+                    color: isLightTheme ? canvasColor : white,
                     fontWeight: FontWeight.w600,
                     fontSize: 15.0),
               ),

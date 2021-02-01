@@ -205,8 +205,8 @@ class _DiagnosticState extends State<Diagnostic> {
           if (snapshot.hasData) {
             UserData userData = snapshot.data;
 
-            updateUserData(String firstName, String lastName, String username, int points, int lessonsToResume, String subscriptionLevel) async{ 
-              await DatabaseService(uid: user.uid).updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel);
+            updateUserData(String firstName, String lastName, String username, int points, int lessonsToResume, String subscriptionLevel, bool isLightTheme, bool sendNotifications) async{ 
+              await DatabaseService(uid: user.uid).updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel, isLightTheme, sendNotifications);
             }
 
             updateLessonsToResume() async {
@@ -221,7 +221,10 @@ class _DiagnosticState extends State<Diagnostic> {
                 int currentLessons = userData.lessonsToResume;
                 int lessonsToResume = currentLessons + 1;
                 String subscriptionLevel = userData.subscriptionLevel;
-                updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel);
+                bool isLight = userData.isLight;
+                bool sendNotifications = userData.sendNotifications;
+
+                updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
                 databaseService.setProgress(widget.lessonID).then((val){
                   setState(() {
                     val.updateData({'inProgress': true});
@@ -236,7 +239,9 @@ class _DiagnosticState extends State<Diagnostic> {
                 int points = userData.points;
                 int lessonsToResume = userData.lessonsToResume;
                 String subscriptionLevel = userData.subscriptionLevel;
-                updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel);
+                bool isLight = userData.isLight;
+                bool sendNotifications = userData.sendNotifications;
+                updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
                 //save answers 
               }
                 });
@@ -249,33 +254,39 @@ class _DiagnosticState extends State<Diagnostic> {
           return StreamProvider<List<Data>>.value(
             value: DatabaseService().data,
             child: Scaffold(
-            backgroundColor: Color(0xff181818),
+            backgroundColor: canvasColor,
             appBar: AppBar(
               centerTitle: true,
               elevation: 0,
-              backgroundColor: Color(0xff181818),
+              backgroundColor: canvasColor,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.close, color: Color(0xffE2E2E2), size: 30),
-                    splashColor: Color(0xff181818),
+                    icon: Icon(Icons.close, color: white, size: 30),
+                    splashColor: canvasColor,
                     splashRadius: 0.1,
                     onPressed: () {
                       updateLessonsToResume();
                       returnHome(context);
                     },
                   ),
-                  Image.asset(
-                    'assets/logo.png',
-                    fit: BoxFit.contain,
-                    height: 30,
-                  ),
+              isLightTheme ?
+              Image.asset(
+                'assets/logo_light.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ) :
+              Image.asset(
+                'assets/logo.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ),
                   IconButton(
                     icon: Icon(Icons.notifications,
-                        color: Color(0xffE2E2E2), size: 30),
-                    splashColor: Color(0xff181818),
+                        color: white, size: 30),
+                    splashColor: canvasColor,
                     splashRadius: 0.1,
                     onPressed: () {},
                   ),
@@ -311,13 +322,13 @@ class _DiagnosticState extends State<Diagnostic> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(11.0),
                                 ),
-                                textColor: Color(0xffE2E2E2),
-                                color: Color(0xff0099FF),
+                                textColor: white,
+                                color: buttonBlue,
                                 child: Text(
                                   'Submit',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xffE2E2E2),
+                                      color: white,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 15.0),
                                 ),
@@ -338,7 +349,7 @@ class _DiagnosticState extends State<Diagnostic> {
                                             shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(13.0))),
-                                            backgroundColor: Color(0xff181818),
+                                            backgroundColor: canvasColor,
                                             child: Container(
                                               padding: EdgeInsets.all(5),
                                               width: 100,
@@ -411,7 +422,7 @@ Widget buildButtons(var context) {
         padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 1),
         child: Text('Close',
             style: GoogleFonts.poppins(
-                color: Color(0xffEDF7F6), fontWeight: FontWeight.w500)),
+                color: white, fontWeight: FontWeight.w500)),
       ),
       onPressed: () {
         Navigator.of(context).pop();

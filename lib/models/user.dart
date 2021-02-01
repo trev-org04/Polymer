@@ -12,6 +12,8 @@ class UserData {
   final int points;
   final int lessonsToResume;
   final String subscriptionLevel;
+  final bool isLight;
+  final bool sendNotifications;
 
-  UserData({this.uid, this.firstName, this.lastName, this.username, this.points, this.lessonsToResume, this.subscriptionLevel});
+  UserData({this.uid, this.firstName, this.lastName, this.username, this.points, this.lessonsToResume, this.subscriptionLevel, this.isLight, this.sendNotifications});
 }

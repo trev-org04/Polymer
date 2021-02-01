@@ -63,12 +63,12 @@ class _UpcomingCarouselState extends State<UpcomingCarousel> {
                     children: <Widget>[
                       Text(event,
                           style: GoogleFonts.poppins(
-                              color: Color(0xffE2E2E2),
+                              color: white,
                               fontWeight: FontWeight.w600,
                               fontSize: 15)),
                       Text(date,
                           style: GoogleFonts.poppins(
-                              color: Color.fromRGBO(226, 226, 226, 0.65),
+                              color: whiteOpacity,
                               fontWeight: FontWeight.w400,
                               fontSize: 12)),
                     ],

@@ -35,29 +35,35 @@ class _PointHistoryState extends State<PointHistory> {
                     appBar: AppBar(
                       centerTitle: true,
                       elevation: 0,
-                      backgroundColor: Color(0xff181818),
+                      backgroundColor: canvasColor,
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           IconButton(
                             icon: Icon(MdiIcons.arrowLeft,
-                                color: Color(0xffE2E2E2), size: 25),
-                            splashColor: Color(0xff181818),
+                                color: white, size: 25),
+                            splashColor: canvasColor,
                             splashRadius: 0.1,
                             onPressed: () {
                               navigate(context);
                             },
                           ),
-                          Image.asset(
-                            'assets/logo.png',
-                            fit: BoxFit.contain,
-                            height: 30,
-                          ),
+              isLightTheme ?
+              Image.asset(
+                'assets/logo_light.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ) :
+              Image.asset(
+                'assets/logo.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ),
                           IconButton(
                             icon: Icon(Icons.notifications,
-                                color: Color(0xffE2E2E2), size: 30),
-                            splashColor: Color(0xff181818),
+                                color: white, size: 30),
+                            splashColor: canvasColor,
                             splashRadius: 0.1,
                             onPressed: () {
                               notificationsModal(context);
@@ -66,7 +72,7 @@ class _PointHistoryState extends State<PointHistory> {
                         ],
                       ),
                     ),
-                    backgroundColor: Color(0xff181818),
+                    backgroundColor: canvasColor,
                     body: Center(
                         child: Padding(
                             padding: const EdgeInsets.symmetric(
@@ -89,7 +95,7 @@ class _PointHistoryState extends State<PointHistory> {
                                               'Point History',
                                               textAlign: TextAlign.left,
                                               style: GoogleFonts.poppins(
-                                                  color: Color(0xffE2E2E2),
+                                                  color: white,
                                                   fontWeight: FontWeight.w600,
                                                   fontSize: 25.0),
                                             ),
@@ -166,12 +172,12 @@ class _PointHistoryState extends State<PointHistory> {
                     children: <Widget>[
                       Text(title,
                           style: GoogleFonts.poppins(
-                              color: Color(0xffE2E2E2),
+                              color: white,
                               fontWeight: FontWeight.w600,
                               fontSize: 15)),
                       Text(progress + ' Points',
                           style: GoogleFonts.poppins(
-                              color: Color.fromRGBO(226, 226, 226, 0.65),
+                              color: whiteOpacity,
                               fontWeight: FontWeight.w400,
                               fontSize: 12)),
                     ],

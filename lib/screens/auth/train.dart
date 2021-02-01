@@ -20,14 +20,20 @@ class _TrainState extends State<Train> {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Color(0xff181818),
+        backgroundColor: canvasColor,
         title: Container(
           padding: const EdgeInsets.all(10.0),
-          child: Image.asset(
-            'assets/logo.png',
-            fit: BoxFit.contain,
-            height: 45,
-          ),
+          child:               isLightTheme ?
+              Image.asset(
+                'assets/logo_light.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ) :
+              Image.asset(
+                'assets/logo.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ),
         ),
       ),
       body: Center(
@@ -38,7 +44,7 @@ class _TrainState extends State<Train> {
               'Train Your Brain',
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
-                  color: Color(0xffE2E2E2),
+                  color: white,
                   fontWeight: FontWeight.w600,
                   fontSize: 22.0),
             ),
@@ -48,7 +54,7 @@ class _TrainState extends State<Train> {
                 'Our strategy courses help you quickly identify the right answers and avoid the traps of the SAT.',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
-                    color: Color.fromRGBO(226, 226, 226, 0.65),
+                    color: whiteOpacity,
                     fontWeight: FontWeight.w500,
                     fontSize: 15.0),
               ),
@@ -57,10 +63,10 @@ class _TrainState extends State<Train> {
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(110.0),
-                  color: Color(0xff232323)),
+                  color: elementColor),
               child: Icon(
                 MdiIcons.brain,
-                color: Color(0xffE2E2E2),
+                color: white,
                 size: 100.0,
               ),
             ),
@@ -76,7 +82,7 @@ class _TrainState extends State<Train> {
                       padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(110.0),
-                          color: Color(0xff272727)),
+                          color: adaptiveTile),
                     ),
                   ),
                   Padding(
@@ -85,7 +91,7 @@ class _TrainState extends State<Train> {
                       padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(110.0),
-                          color: Color(0xff272727)),
+                          color: adaptiveTile),
                     ),
                   ),
                   Padding(
@@ -94,7 +100,7 @@ class _TrainState extends State<Train> {
                       padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(110.0),
-                          color: Color(0xff0099FF)),
+                          color: buttonBlue),
                     ),
                   ),
                 ],
@@ -110,13 +116,13 @@ class _TrainState extends State<Train> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(11.0),
                     ),
-                    textColor: Color(0xffE2E2E2),
-                    color: Color(0xff0099FF),
+                    textColor: white,
+                    color: buttonBlue,
                     child: Text(
                       'Continue',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
-                          color: Color(0xffE2E2E2),
+                          color: white,
                           fontWeight: FontWeight.w600,
                           fontSize: 15.0),
                     ),

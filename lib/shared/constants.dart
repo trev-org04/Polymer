@@ -4,42 +4,50 @@ import 'package:google_fonts/google_fonts.dart';
 
 final textInputDecoration = InputDecoration(
   contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-  fillColor: Color(0xff272727),
+  fillColor: adaptiveTile,
   border: OutlineInputBorder(
       borderRadius: const BorderRadius.all(Radius.circular(15.0))),
-  helperStyle: GoogleFonts.poppins(
-      fontWeight: FontWeight.w500, color: Color.fromRGBO(226, 226, 226, 0.65)),
+  helperStyle:
+      GoogleFonts.poppins(fontWeight: FontWeight.w500, color: whiteOpacity),
   filled: true,
   errorStyle: GoogleFonts.poppins(fontWeight: FontWeight.w500),
-  hintStyle: GoogleFonts.poppins(
-      color: Color.fromRGBO(226, 226, 226, 0.65), fontWeight: FontWeight.w500),
+  hintStyle:
+      GoogleFonts.poppins(color: whiteOpacity, fontWeight: FontWeight.w500),
 );
 
 final searchbarDecoration = InputDecoration(
   fillColor: Colors.transparent,
   border: InputBorder.none,
-  helperStyle: GoogleFonts.poppins(
-      fontWeight: FontWeight.w500, color: Color.fromRGBO(226, 226, 226, 0.65)),
+  helperStyle:
+      GoogleFonts.poppins(fontWeight: FontWeight.w500, color: whiteOpacity),
   errorStyle: GoogleFonts.poppins(fontWeight: FontWeight.w500),
-  hintStyle: GoogleFonts.poppins(
-      color: Color.fromRGBO(226, 226, 226, 0.65), fontWeight: FontWeight.w500),
+  hintStyle:
+      GoogleFonts.poppins(color: whiteOpacity, fontWeight: FontWeight.w500),
 );
 
-const buttonBlue = Color(0xff0099FF);
+var isLightTheme = false;
 
-const elementColor = Color(0xff232323);
+var navigationColor = Color.fromRGBO(24, 24, 24, 0.85);
 
-const mathColor = Color(0xff8855FF);
+var canvasColor = Color(0xff181818);
 
-const scienceColor = Color(0xffCCA000);
+var buttonBlue = Color(0xff0099FF);
 
-const englishColor = Color(0xffEA3160);
+var adaptiveTile = Color(0xff272727);
 
-const readingColor = Color(0xff00CC88);
+var elementColor = Color(0xff232323);
 
-const white = Color(0xffE2E2E2);
+var mathColor = Color(0xff8855FF);
 
-const whiteOpacity = Color.fromRGBO(226, 226, 226, 0.65);
+var scienceColor = Color(0xffCCA000);
+
+var englishColor = Color(0xffEA3160);
+
+var readingColor = Color(0xff00CC88);
+
+var white = Color(0xffE2E2E2);
+
+var whiteOpacity = Color.fromRGBO(226, 226, 226, 0.65);
 
 var index1 = Row(
   mainAxisAlignment: MainAxisAlignment.center,
@@ -50,8 +58,7 @@ var index1 = Row(
       child: Container(
         padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff0099FF)),
+            borderRadius: BorderRadius.circular(110.0), color: buttonBlue),
       ),
     ),
     Padding(
@@ -60,7 +67,7 @@ var index1 = Row(
         padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff272727)),
+            color: isLightTheme ? elementColor : adaptiveTile),
       ),
     ),
     Padding(
@@ -69,7 +76,7 @@ var index1 = Row(
         padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff272727)),
+            color: isLightTheme ? elementColor : adaptiveTile),
       ),
     ),
   ],
@@ -85,7 +92,7 @@ var index2 = Row(
         padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff272727)),
+            color: isLightTheme ? elementColor : adaptiveTile),
       ),
     ),
     Padding(
@@ -93,8 +100,7 @@ var index2 = Row(
       child: Container(
         padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff0099FF)),
+            borderRadius: BorderRadius.circular(110.0), color: buttonBlue),
       ),
     ),
     Padding(
@@ -103,7 +109,7 @@ var index2 = Row(
         padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff272727)),
+            color: isLightTheme ? elementColor : adaptiveTile),
       ),
     ),
   ],
@@ -119,7 +125,7 @@ var index3 = Row(
         padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff272727)),
+            color: isLightTheme ? elementColor : adaptiveTile),
       ),
     ),
     Padding(
@@ -128,7 +134,7 @@ var index3 = Row(
         padding: EdgeInsets.fromLTRB(4, 4, 4, 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff272727)),
+            color: isLightTheme ? elementColor : adaptiveTile),
       ),
     ),
     Padding(
@@ -136,8 +142,7 @@ var index3 = Row(
       child: Container(
         padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(110.0),
-            color: Color(0xff0099FF)),
+            borderRadius: BorderRadius.circular(110.0), color: buttonBlue),
       ),
     ),
   ],
@@ -363,7 +368,6 @@ var englishLogoDiagnostic = Container(
         Icon(MdiIcons.pencil, size: 30, color: white),
       ],
     ));
-
 
 var placementLogoDiagnostic = Container(
     height: 55.0,

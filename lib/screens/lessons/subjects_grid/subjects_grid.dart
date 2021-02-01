@@ -165,13 +165,13 @@ class _SubjectsGridState extends State<SubjectsGrid> {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(5, 5, 0, 5),
-                child: Icon(icon, color: white),
+                child: Icon(icon, color: isLightTheme ? canvasColor : white),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(5, 0, 0, 10),
                 child: Text(subject,
                     style: GoogleFonts.poppins(
-                        color: white,
+                        color: isLightTheme ? canvasColor : white,
                         fontWeight: FontWeight.w600,
                         fontSize: 18)),
               ),
@@ -180,7 +180,7 @@ class _SubjectsGridState extends State<SubjectsGrid> {
                 child: Stack(children: [
                   Container(
                       decoration: BoxDecoration(
-                        color: Color(0xff181818),
+                        color: isLightTheme ? elementColor : canvasColor,
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                       width: (MediaQuery.of(context).size.width / 2) - 65,

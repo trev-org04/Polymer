@@ -40,7 +40,7 @@ class _EventsState extends State<Events> {
             return StreamProvider<List<Data>>.value(
               value: DatabaseService().data,
               child: Scaffold(
-                backgroundColor: Color(0xff181818),
+                backgroundColor: canvasColor,
                 body: Center(
                     child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -60,7 +60,7 @@ class _EventsState extends State<Events> {
                                   'Events',
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xffE2E2E2),
+                                      color: white,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 25.0),
                                 ),
@@ -104,7 +104,7 @@ class _EventsState extends State<Events> {
                                 weekendStyle: GoogleFonts.poppins(
                                     color: white, fontWeight: FontWeight.w500),
                                 renderDaysOfWeek: false,
-                                todayColor: Color(0xff181818),
+                                todayColor: canvasColor,
                                 weekdayStyle: GoogleFonts.poppins(
                                     color: white, fontWeight: FontWeight.w500)),
                             headerStyle: HeaderStyle(
@@ -145,13 +145,13 @@ class _EventsState extends State<Events> {
                 child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(11.0)),
-                    textColor: Color(0xffE2E2E2),
-                    color: Color(0xff0099FF),
+                    textColor: white,
+                    color: buttonBlue,
                     child: Text(
                       'Add An Event',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
-                          color: Color(0xffE2E2E2),
+                          color: isLightTheme ? canvasColor : white,
                           fontWeight: FontWeight.w600,
                           fontSize: 15.0),
                     ),

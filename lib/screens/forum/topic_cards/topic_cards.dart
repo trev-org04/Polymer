@@ -61,7 +61,7 @@ class _TopicCardsState extends State<TopicCards> {
             title,
             textAlign: TextAlign.center,
             style:
-                GoogleFonts.poppins(color: white, fontSize: 12, fontWeight: FontWeight.w600),
+                GoogleFonts.poppins(color: isLightTheme ? canvasColor : white, fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ),
       ),

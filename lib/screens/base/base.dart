@@ -25,33 +25,37 @@ class _BaseState extends State<Base> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xff181818),
+        backgroundColor: canvasColor,
         appBar: AppBar(
           centerTitle: true,
           elevation: 0,
-          backgroundColor: Color(0xff181818),
+          backgroundColor: canvasColor,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               IconButton(
-                icon: Icon(Icons.account_circle,
-                    color: Color(0xffE2E2E2), size: 30),
-                splashColor: Color(0xff181818),
+                icon: Icon(Icons.account_circle, color: white, size: 30),
+                splashColor: canvasColor,
                 splashRadius: 0.1,
                 onPressed: () {
                   accountModal(context);
                 },
               ),
+              isLightTheme ?
+              Image.asset(
+                'assets/logo_light.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ) :
               Image.asset(
                 'assets/logo.png',
                 fit: BoxFit.contain,
                 height: 30,
               ),
               IconButton(
-                icon: Icon(Icons.notifications,
-                    color: Color(0xffE2E2E2), size: 30),
-                splashColor: Color(0xff181818),
+                icon: Icon(Icons.notifications, color: white, size: 30),
+                splashColor: canvasColor,
                 splashRadius: 0.1,
                 onPressed: () {
                   notificationsModal(context);
@@ -67,8 +71,7 @@ class _BaseState extends State<Base> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 height: 55.0,
-                decoration:
-                    BoxDecoration(color: Color.fromRGBO(24, 24, 24, 0.85)),
+                decoration: BoxDecoration(color: navigationColor),
                 child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [

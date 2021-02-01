@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:project_polymer/screens/account/account_settings.dart';
+import 'package:project_polymer/screens/settings/settings.dart';
 import 'package:project_polymer/screens/auth/start.dart';
 import 'package:project_polymer/screens/home/point_history.dart';
 import 'package:project_polymer/shared/constants.dart';
@@ -14,6 +14,7 @@ import 'package:project_polymer/models/user.dart';
 
 void notificationsModal(context) {
   showModalBottomSheet(
+      backgroundColor: canvasColor,
       context: context,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -32,7 +33,7 @@ void notificationsModal(context) {
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(110.0),
-                      color: Color.fromRGBO(226, 226, 226, 0.65)),
+                      color: whiteOpacity),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -96,6 +97,7 @@ Container buildNotificationTile(Widget logo, String title, String desc) {
 
 void suggestedLessonsModal(context) {
   showModalBottomSheet(
+      backgroundColor: canvasColor,
       context: context,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -114,7 +116,7 @@ void suggestedLessonsModal(context) {
                     width: 60.0,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(110.0),
-                        color: Color.fromRGBO(226, 226, 226, 0.65)),
+                        color: whiteOpacity),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -249,7 +251,7 @@ Container buildSuggestedLessonsTile(
                 'Start Lesson',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
-                    color: Color(0xffE2E2E2),
+                    color: isLightTheme ? canvasColor : white,
                     fontWeight: FontWeight.w600,
                     fontSize: 15.0),
               ),
@@ -324,6 +326,7 @@ class _PointsState extends State<Points> {
 
 void accountModal(context) {
   showModalBottomSheet(
+      backgroundColor: canvasColor,
       context: context,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -350,7 +353,7 @@ void accountModal(context) {
                   margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(110.0),
-                      color: Color.fromRGBO(226, 226, 226, 0.65)),
+                      color: whiteOpacity),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -382,13 +385,13 @@ void accountModal(context) {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(11.0),
                       ),
-                      textColor: Color(0xffE2E2E2),
-                      color: Color(0xff0099FF),
+                      textColor: white,
+                      color: buttonBlue,
                       child: Text(
                         'Sign Out',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
-                            color: Color(0xffE2E2E2),
+                            color: isLightTheme ? canvasColor : white,
                             fontWeight: FontWeight.w600,
                             fontSize: 15.0),
                       ),
@@ -408,8 +411,7 @@ void accountModal(context) {
 
 Widget buildAccountTile(IconData icon, dynamic _context, String desc) {
   return Container(
-    height: 140.0,
-    padding: EdgeInsets.all(7),
+    padding: EdgeInsets.symmetric(horizontal: 7, vertical: 15),
     decoration: BoxDecoration(
       color: elementColor,
       borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -426,7 +428,7 @@ Widget buildAccountTile(IconData icon, dynamic _context, String desc) {
                 child: Icon(
                   icon,
                   size: 40,
-                  color: Color(0xffE2E2E2),
+                  color: white,
                 ),
               ),
               Padding(
@@ -449,13 +451,13 @@ Widget buildAccountTile(IconData icon, dynamic _context, String desc) {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(11.0),
             ),
-            textColor: Color(0xffE2E2E2),
-            color: Color(0xff0099FF),
+            textColor: white,
+            color: buttonBlue,
             child: Text(
               'Account Settings',
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
-                  color: Color(0xffE2E2E2),
+                  color: isLightTheme ? canvasColor : white,
                   fontWeight: FontWeight.w600,
                   fontSize: 15.0),
             ),
@@ -517,8 +519,7 @@ Future viewPointHistory(context) async {
 
 Widget buildPointTile(IconData icon, dynamic _context) {
   return Container(
-    height: 140.0,
-    padding: EdgeInsets.all(7),
+    padding: EdgeInsets.symmetric(horizontal: 7, vertical: 15),
     decoration: BoxDecoration(
       color: elementColor,
       borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -535,7 +536,7 @@ Widget buildPointTile(IconData icon, dynamic _context) {
                 child: Icon(
                   icon,
                   size: 40,
-                  color: Color(0xffE2E2E2),
+                  color: white,
                 ),
               ),
               Padding(
@@ -563,13 +564,13 @@ Widget buildPointTile(IconData icon, dynamic _context) {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(11.0),
             ),
-            textColor: Color(0xffE2E2E2),
-            color: Color(0xff0099FF),
+            textColor: white,
+            color: buttonBlue,
             child: Text(
               'View Point History',
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
-                  color: Color(0xffE2E2E2),
+                  color: isLightTheme ? canvasColor : white,
                   fontWeight: FontWeight.w600,
                   fontSize: 15.0),
             ),
@@ -590,6 +591,7 @@ void planProgressModal(context) {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0))),
+      backgroundColor: canvasColor,
       builder: (BuildContext context) {
         return FractionallySizedBox(
           heightFactor: 0.8,
@@ -603,7 +605,7 @@ void planProgressModal(context) {
                     width: 60.0,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(110.0),
-                        color: Color.fromRGBO(226, 226, 226, 0.65)),
+                        color: whiteOpacity),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,

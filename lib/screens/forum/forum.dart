@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_polymer/screens/forum/question_tile/question_tile_list.dart';
 import 'package:project_polymer/screens/forum/searchbar/searchbar.dart';
 import 'package:project_polymer/screens/forum/topic_cards/topic_cards.dart';
+import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/database.dart';
 import 'package:project_polymer/models/data.dart';
@@ -26,7 +27,7 @@ class _ForumState extends State<Forum> {
             return StreamProvider<List<Data>>.value(
               value: DatabaseService().data,
               child: Scaffold(
-                backgroundColor: Color(0xff181818),
+                backgroundColor: canvasColor,
                 body: Center(
                     child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -46,7 +47,7 @@ class _ForumState extends State<Forum> {
                                   'Forum',
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xffE2E2E2),
+                                      color: white,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 25.0),
                                 ),

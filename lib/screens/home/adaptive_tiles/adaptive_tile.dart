@@ -3,7 +3,6 @@ import 'package:project_polymer/screens/diagnostic/diagnostic.dart';
 import 'package:project_polymer/service/database.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:project_polymer/shared/loading.dart';
 
 class AdaptiveTile extends StatefulWidget {
   final IconData icon;
@@ -65,7 +64,7 @@ class _AdaptiveTileState extends State<AdaptiveTile> {
                 child: Icon(
                   icon,
                   size: 36,
-                  color: Color(0xffE2E2E2),
+                  color: isLightTheme ? canvasColor : white,
                 ),
               ),
               Padding(
@@ -76,12 +75,12 @@ class _AdaptiveTileState extends State<AdaptiveTile> {
                   children: <Widget>[
                     Text(title,
                         style: GoogleFonts.poppins(
-                            color: Color(0xffE2E2E2),
+                            color: isLightTheme ? canvasColor : white,
                             fontWeight: FontWeight.w600,
                             fontSize: 15)),
                     Text(desc,
                         style: GoogleFonts.poppins(
-                            color: Color.fromRGBO(226, 226, 226, 0.65),
+                            color: isLightTheme ? canvasColor : white,
                             fontWeight: FontWeight.w500,
                             fontSize: 12)),
                   ],

@@ -110,28 +110,36 @@ class _FinishDiagnosticState extends State<FinishDiagnostic> {
               String username = userData.username;
               int lessonsToResume = userData.lessonsToResume;
               String subscriptionLevel = userData.subscriptionLevel;
+              bool isLight = userData.isLight;
+              bool sendNotifications = userData.sendNotifications;
 
               await DatabaseService(uid: user.uid).updateUserData(firstName,
-                  lastName, username, updatedPoints, lessonsToResume, subscriptionLevel);
+                  lastName, username, updatedPoints, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
             }
 
             return StreamProvider<List<Data>>.value(
                 value: DatabaseService().data,
                 child: Scaffold(
-                    backgroundColor: Color(0xff181818),
+                    backgroundColor: canvasColor,
                     appBar: AppBar(
                       centerTitle: true,
                       elevation: 0,
-                      backgroundColor: Color(0xff181818),
+                      backgroundColor: canvasColor,
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(
-                            'assets/logo.png',
-                            fit: BoxFit.contain,
-                            height: 30,
-                          ),
+              isLightTheme ?
+              Image.asset(
+                'assets/logo_light.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ) :
+              Image.asset(
+                'assets/logo.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ),
                         ],
                       ),
                     ),
@@ -198,13 +206,13 @@ class _FinishDiagnosticState extends State<FinishDiagnostic> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(11.0),
                                   ),
-                                  textColor: Color(0xffE2E2E2),
-                                  color: Color(0xff0099FF),
+                                  textColor: white,
+                                  color: buttonBlue,
                                   child: Text(
                                     'Continue',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                        color: Color(0xffE2E2E2),
+                                        color: white,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),
                                   ),
@@ -224,7 +232,7 @@ class _FinishDiagnosticState extends State<FinishDiagnostic> {
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                       color:
-                                          Color.fromRGBO(226, 226, 226, 0.65),
+                                          whiteOpacity,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 15.0),
                                 ),

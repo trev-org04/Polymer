@@ -81,7 +81,7 @@ class _ResumeTileState extends State<ResumeTile> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Color(0xff181818),
+                    color: isLightTheme ? whiteOpacity : canvasColor,
                     borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
                   width: (MediaQuery.of(context).size.width / 2) - 65,

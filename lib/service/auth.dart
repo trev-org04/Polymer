@@ -18,12 +18,14 @@ class AuthService {
     int points = 0;
     int lessonsToResume = 0;
     String subscriptionLevel = 'Basic';
+    bool isLight = false;
+    bool sendNotifications = false;
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
       await DatabaseService(uid: user.uid)
-          .updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel);
+          .updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
       return _userFromFirebaseUser(user);
     } catch (e) {
       return null;

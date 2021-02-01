@@ -79,13 +79,13 @@ class _QuestionTileListState extends State<QuestionTileList> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(11.0),
                 ),
-                textColor: Color(0xffE2E2E2),
-                color: Color(0xff0099FF),
+                textColor: white,
+                color: buttonBlue,
                 child: Text(
                   'Ask A Question',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.poppins(
-                      color: Color(0xffE2E2E2),
+                      color: isLightTheme ? canvasColor : white,
                       fontWeight: FontWeight.w600,
                       fontSize: 15.0),
                 ),
@@ -131,12 +131,12 @@ class _QuestionTileListState extends State<QuestionTileList> {
                     children: <Widget>[
                       Text(title,
                           style: GoogleFonts.poppins(
-                              color: Color(0xffE2E2E2),
+                              color: white,
                               fontWeight: FontWeight.w600,
                               fontSize: 15)),
                       Text(desc,
                           style: GoogleFonts.poppins(
-                              color: Color.fromRGBO(226, 226, 226, 0.65),
+                              color: whiteOpacity,
                               fontWeight: FontWeight.w400,
                               fontSize: 12)),
                     ],
@@ -167,14 +167,14 @@ class _QuestionTileListState extends State<QuestionTileList> {
                             padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
                             child: Icon(Icons.thumb_up,
                                 size: 13,
-                                color: isVoted ? white : whiteOpacity),
+                                color: isVoted ? isLightTheme ? canvasColor : white : whiteOpacity),
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 1, 0, 0),
                             child: Text(votes,
                                 style: GoogleFonts.poppins(
                                     color:
-                                        isVoted ? white : whiteOpacity,
+                                        isVoted ? isLightTheme ? canvasColor : white : whiteOpacity,
                                     fontWeight:
                                         isVoted ? FontWeight.w500 : FontWeight.w400,
                                     fontSize: 12)),
@@ -186,7 +186,7 @@ class _QuestionTileListState extends State<QuestionTileList> {
                 ),
                 Text('posted ' + time + ' ago',
                     style: GoogleFonts.poppins(
-                        color: Color.fromRGBO(226, 226, 226, 0.65),
+                        color: whiteOpacity,
                         fontWeight: FontWeight.w400,
                         fontSize: 12)),
               ],

@@ -10,7 +10,7 @@ class DatabaseService {
       Firestore.instance.collection('Data');
 
   Future updateUserData(
-      String firstName, String lastName, String username, int points, int lessonsToResume, String subscriptionLevel) async {
+      String firstName, String lastName, String username, int points, int lessonsToResume, String subscriptionLevel, bool isLight, bool sendNotifications) async {
     return await dataCollection.document(uid).setData({
       'firstName': firstName,
       'lastName': lastName,
@@ -18,6 +18,8 @@ class DatabaseService {
       'points': points,
       'lessonsToResume': lessonsToResume,
       'subscriptionLevel': subscriptionLevel,
+      'isLight': isLight,
+      'sendNotifications': sendNotifications,
     });
   }
 
@@ -30,6 +32,8 @@ class DatabaseService {
         points: doc.data['points'] ?? '',
         lessonsToResume: doc.data['lessonsToResume'] ?? '',
         subscriptionLevel: doc.data['subscriptionLevel'] ?? '',
+        isLight: doc.data['isLight'] ?? '',
+        sendNotifications: doc.data['sendNotifications'] ?? '',
       );
     }).toList();
   }
@@ -43,6 +47,8 @@ class DatabaseService {
       points: snapshot.data['points'],
       lessonsToResume: snapshot.data['lessonsToResume'],
       subscriptionLevel: snapshot.data['subscriptionLevel'],
+      isLight: snapshot.data['isLight'],
+      sendNotifications: snapshot.data['sendNotifications'],
     );
   }
 
@@ -52,6 +58,10 @@ class DatabaseService {
 
   Stream<UserData> get userData {
     return dataCollection.document(uid).snapshots().map(_userDataFromSnapshot);
+  }
+
+  returnPreferences(String uid) {
+    return Firestore.instance.collection("Data").document(uid);
   }
 
   getLessonsInTopic() async {

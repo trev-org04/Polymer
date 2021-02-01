@@ -61,7 +61,7 @@ class _PlanProgressState extends State<PlanProgress> {
           Stack(children: [
             Container(
                 decoration: BoxDecoration(
-                  color: Color(0xff181818),
+                  color: isLightTheme ? whiteOpacity : canvasColor,
                   borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
                 width: (MediaQuery.of(context).size.width) - 93,

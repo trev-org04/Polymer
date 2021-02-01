@@ -31,18 +31,24 @@ class _SignInState extends State<SignIn> {
     return loading
         ? Loading()
         : Scaffold(
-            backgroundColor: Color(0xff181818),
+            backgroundColor: canvasColor,
             appBar: AppBar(
               centerTitle: true,
               elevation: 0,
-              backgroundColor: Color(0xff181818),
+              backgroundColor: canvasColor,
               title: Container(
                 padding: const EdgeInsets.all(10.0),
-                child: Image.asset(
-                  'assets/logo.png',
-                  fit: BoxFit.contain,
-                  height: 45,
-                ),
+                child:               isLightTheme ?
+              Image.asset(
+                'assets/logo_light.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ) :
+              Image.asset(
+                'assets/logo.png',
+                fit: BoxFit.contain,
+                height: 30,
+              ),
               ),
             ),
             body: Center(
@@ -63,7 +69,7 @@ class _SignInState extends State<SignIn> {
                                 "Welcome Back!",
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.poppins(
-                                    color: Color(0xffE2E2E2),
+                                    color: white,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 22.0),
                               ),
@@ -74,7 +80,7 @@ class _SignInState extends State<SignIn> {
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                       color:
-                                          Color.fromRGBO(226, 226, 226, 0.65),
+                                          whiteOpacity,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 15.0),
                                 ),
@@ -89,7 +95,7 @@ class _SignInState extends State<SignIn> {
                           alignment: Alignment.center,
                           child: TextFormField(
                             style: GoogleFonts.poppins(
-                              color: Color.fromRGBO(226, 226, 226, 0.65),
+                              color: whiteOpacity,
                               fontWeight: FontWeight.w500,
                               fontSize: 15.0,
                             ),
@@ -110,7 +116,7 @@ class _SignInState extends State<SignIn> {
                           alignment: Alignment.center,
                           child: TextFormField(
                               style: GoogleFonts.poppins(
-                                  color: Color.fromRGBO(226, 226, 226, 0.65),
+                                  color: whiteOpacity,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 15.0),
                               decoration: textInputDecoration.copyWith(
@@ -133,13 +139,13 @@ class _SignInState extends State<SignIn> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(11.0),
                                   ),
-                                  textColor: Color(0xffE2E2E2),
-                                  color: Color(0xff0099FF),
+                                  textColor: white,
+                                  color: buttonBlue,
                                   child: Text(
                                     'Sign In',
                                     textAlign: TextAlign.center,
                                     style: GoogleFonts.poppins(
-                                        color: Color(0xffE2E2E2),
+                                        color: white,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),
                                   ),
@@ -162,21 +168,16 @@ class _SignInState extends State<SignIn> {
                                                                 Radius.circular(
                                                                     15.0))),
                                                     backgroundColor:
-                                                        Color(0xff181818),
+                                                        canvasColor,
                                                     title: new Text("Error",
                                                         style: GoogleFonts.poppins(
-                                                            color: Color(
-                                                                0xffEDF7F6),
+                                                            color: white,
                                                             fontWeight:
                                                                 FontWeight.w600)),
                                                     content: new Text(error,
                                                         style: GoogleFonts.poppins(
                                                             color:
-                                                                Color.fromRGBO(
-                                                                    226,
-                                                                    226,
-                                                                    226,
-                                                                    0.65),
+                                                                whiteOpacity,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             fontSize: 15.0)),
@@ -185,8 +186,7 @@ class _SignInState extends State<SignIn> {
                                                           child: new Text(
                                                               "Close",
                                                               style: GoogleFonts.poppins(
-                                                                  color: Color(
-                                                                      0xffEDF7F6),
+                                                                  color: white,
                                                                   fontWeight:
                                                                       FontWeight.w500)),
                                                           onPressed: () {

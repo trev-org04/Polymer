@@ -8,8 +8,10 @@ class Data {
   final int points;
   final int lessonsToResume;
   final String subscriptionLevel;
+  final bool isLight;
+  final bool sendNotifications;
 
-  Data({this.uid, this.firstName, this.lastName, this.username, this.points, this.lessonsToResume, this.subscriptionLevel});
+  Data({this.uid, this.firstName, this.lastName, this.username, this.points, this.lessonsToResume, this.subscriptionLevel, this.isLight, this.sendNotifications});
 }
 
 class Question {

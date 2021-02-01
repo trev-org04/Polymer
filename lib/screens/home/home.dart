@@ -27,11 +27,10 @@ class _HomeState extends State<Home> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             UserData userData = snapshot.data;
-
             return StreamProvider<List<Data>>.value(
               value: DatabaseService().data,
               child: Scaffold(
-                backgroundColor: Color(0xff181818),
+                backgroundColor: canvasColor,
                 body: Center(
                     child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -51,7 +50,7 @@ class _HomeState extends State<Home> {
                                   'Welcome,',
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xffE2E2E2),
+                                      color: white,
                                       fontWeight: FontWeight.w400,
                                       fontSize: 20.0),
                                 ),
@@ -62,7 +61,7 @@ class _HomeState extends State<Home> {
                                   userData.firstName,
                                   textAlign: TextAlign.left,
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xffE2E2E2),
+                                      color: white,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 25.0),
                                 ),
@@ -81,9 +80,9 @@ class _HomeState extends State<Home> {
                                       color: white)),
                                                                     IconButton(
                                 icon: Icon(Icons.keyboard_arrow_right,
-                                    color: Color(0xffE2E2E2), size: 22),
+                                    color: white, size: 22),
                                 splashRadius: 0.1,
-                                splashColor: Color(0xff181818),
+                                splashColor: canvasColor,
                                 onPressed: () {
                                   suggestedLessonsModal(context);
                                 },
@@ -120,9 +119,9 @@ class _HomeState extends State<Home> {
                                         color: white)),
                                 IconButton(
                                   icon: Icon(Icons.keyboard_arrow_right,
-                                      color: Color(0xffE2E2E2), size: 22),
+                                      color: white, size: 22),
                                   splashRadius: 0.1,
-                                  splashColor: Color(0xff181818),
+                                  splashColor: canvasColor,
                                   onPressed: () {
                                     planProgressModal(context);
                                   },
