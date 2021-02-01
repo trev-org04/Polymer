@@ -167,7 +167,9 @@ class IsLight extends StatefulWidget {
   _IsLightState createState() => _IsLightState();
 }
 
-class _IsLightState extends State<IsLight> with SingleTickerProviderStateMixin {
+class _IsLightState extends State<IsLight> {
+  bool isLight = false;
+
   @override
   void initState() {
     super.initState();
@@ -177,21 +179,12 @@ class _IsLightState extends State<IsLight> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
     DatabaseService databaseService = new DatabaseService();
-    bool isDark = false;
-    bool isLight = false;
-
+    
     databaseService.returnPreferences(user.uid).get().then((val) {
       setState(() {
-        if(val.data['isLight'] == true) {
-          isLight = true;
-          isDark = false;
-        }
-        else {
-          isLight = false;
-          isDark = true;
-        }
+        isLight = val.data['isLight'];
+        return isLight;
       });
-      return isLight && isDark;
     });
 
     void setTheme() {
@@ -236,207 +229,64 @@ class _IsLightState extends State<IsLight> with SingleTickerProviderStateMixin {
             return StreamProvider<List<Data>>.value(
                 value: DatabaseService().data,
                 child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              setState(() async {
-                                isLight = true;
-                                isDark = false;
-                                setTheme();
-                                String firstName = userData.firstName;
-                                String lastName = userData.lastName;
-                                String username = userData.username;
-                                int points = userData.points;
-                                int lessonsToResume = userData.lessonsToResume;
-                                String subscriptionLevel = userData.subscriptionLevel;
-                                bool isLightT = isLight;
-                                bool sendNotifications = userData.sendNotifications;
-                                await DatabaseService(uid: user.uid).updateUserData(
-                                    firstName,
-                                    lastName,
-                                    username,
-                                    points,
-                                    lessonsToResume,
-                                    subscriptionLevel,
-                                    isLightT,
-                                    sendNotifications);
-                              });
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Light',
-                                    textAlign: TextAlign.left,
-                                    style: GoogleFonts.poppins(
-                                        color: white,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 17.0)),
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: isDark ? white : Colors.transparent),
-                                    shape: BoxShape.circle,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                      child: GestureDetector(
+                        onTap: () {
+                          this.setState(() async {
+                            isLight = true;
+                            setTheme();
+                            print('isLight ' + isLight.toString());
+                            String firstName = userData.firstName;
+                            String lastName = userData.lastName;
+                            String username = userData.username;
+                            int points = userData.points;
+                            int lessonsToResume = userData.lessonsToResume;
+                            String subscriptionLevel =
+                                userData.subscriptionLevel;
+                            bool isLightT = isLight;
+                            bool sendNotifications = userData.sendNotifications;
+                            await DatabaseService(uid: user.uid).updateUserData(
+                                firstName,
+                                lastName,
+                                username,
+                                points,
+                                lessonsToResume,
+                                subscriptionLevel,
+                                isLightT,
+                                sendNotifications);
+                          });
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Light',
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.poppins(
+                                    color: white,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 17.0)),
+                            Container(
+                              width: 20,
+                              height: 20,
+                              decoration: BoxDecoration(
+                                border: Border.all(
                                     color:
-                                        isDark ? Colors.transparent : white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() async {
-                                isLight = false;
-                                isDark = true;
-                                setTheme();
-                              setTheme();
-                              String firstName = userData.firstName;
-                              String lastName = userData.lastName;
-                              String username = userData.username;
-                              int points = userData.points;
-                              int lessonsToResume = userData.lessonsToResume;
-                              String subscriptionLevel = userData.subscriptionLevel;
-                              bool isLightT = isLight;
-                              bool sendNotifications = userData.sendNotifications;
-                              await DatabaseService(uid: user.uid).updateUserData(
-                                  firstName,
-                                  lastName,
-                                  username,
-                                  points,
-                                  lessonsToResume,
-                                  subscriptionLevel,
-                                  isLightT,
-                                  sendNotifications);
-                            });
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Dark',
-                                  textAlign: TextAlign.left,
-                                  style: GoogleFonts.poppins(
-                                      color: white,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 17.0)),
-                              Container(
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: isDark ? Colors.transparent : white),
-                                  shape: BoxShape.circle,
-                                  color:
-                                      isDark ? white : Colors.transparent,
-                                ),
+                                        isLight ? Colors.transparent : white),
+                                shape: BoxShape.circle,
+                                color: isLight ? white : Colors.transparent,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ));
-          } else {
-            return null;
-          }
-        });
-  }
-}
-
-/*class IsLight extends StatefulWidget {
-  @override
-  _IsLightState createState() => _IsLightState();
-}
-
-class _IsLightState extends State<IsLight> with SingleTickerProviderStateMixin {
-  Duration _duration = Duration(milliseconds: 170);
-  Animation<Alignment> _animation;
-  AnimationController _animationController;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
-    DatabaseService databaseService = new DatabaseService();
-    bool isChecked = false;
-
-    databaseService.returnPreferences(user.uid).get().then((val) {
-      setState(() {
-        isChecked = val.data['isLight'];
-        var begin = isChecked ? Alignment.centerRight : Alignment.centerLeft;
-        var end = isChecked ? Alignment.centerLeft : Alignment.centerRight;
-
-        _animationController =
-            AnimationController(vsync: this, duration: _duration);
-
-        _animation = AlignmentTween(begin: begin, end: end).animate(
-          CurvedAnimation(
-              parent: _animationController,
-              curve: Curves.easeInOut,
-              reverseCurve: Curves.easeInOut),
-        );
-      });
-      return isChecked;
-    });
-
-    void setTheme() {
-      if (isChecked == true) {
-        setState(() {
-          navigationColor = Color.fromRGBO(214, 214, 214, 0.75);
-          canvasColor = Color(0xffFFFFFF);
-          buttonBlue = Color(0xff0099FF);
-          adaptiveTile = Color(0xff181818);
-          elementColor = Color(0xffE0E0E0);
-          mathColor = Color(0xff8855FF);
-          scienceColor = Color(0xffCCA000);
-          englishColor = Color(0xffEA3160);
-          readingColor = Color(0xff00CC88);
-          white = Color(0xff3D3D3D);
-          whiteOpacity = Color.fromRGBO(61, 61, 61, 0.65);
-          isLightTheme = true;
-        });
-      } else {
-        setState(() {
-          navigationColor = Color.fromRGBO(24, 24, 24, 0.85);
-          canvasColor = Color(0xff181818);
-          buttonBlue = Color(0xff0099FF);
-          adaptiveTile = Color(0xff272727);
-          elementColor = Color(0xff232323);
-          mathColor = Color(0xff8855FF);
-          scienceColor = Color(0xffCCA000);
-          englishColor = Color(0xffEA3160);
-          readingColor = Color(0xff00CC88);
-          white = Color(0xffE2E2E2);
-          whiteOpacity = Color.fromRGBO(226, 226, 226, 0.65);
-          isLightTheme = false;
-        });
-      }
-    }
-
-    return StreamBuilder<UserData>(
-        stream: DatabaseService(uid: user.uid).userData,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            UserData userData = snapshot.data;
-            return StreamProvider<List<Data>>.value(
-                value: DatabaseService().data,
-                child: AnimatedBuilder(
-                  animation: _animationController,
-                  builder: (context, child) {
-                    return GestureDetector(
+                      ),
+                    ),
+                    GestureDetector(
                       onTap: () {
-                        setState(() async {
-                          if (_animationController.isCompleted) {
-                            _animationController.reverse();
-                          } else {
-                            _animationController.forward();
-                          }
-                          isChecked = !isChecked;
+                        this.setState(() async {
+                          isLight = false;
+                          print('isLight ' + isLight.toString());
                           setTheme();
                           String firstName = userData.firstName;
                           String lastName = userData.lastName;
@@ -444,7 +294,7 @@ class _IsLightState extends State<IsLight> with SingleTickerProviderStateMixin {
                           int points = userData.points;
                           int lessonsToResume = userData.lessonsToResume;
                           String subscriptionLevel = userData.subscriptionLevel;
-                          bool isLight = isChecked;
+                          bool isLightT = isLight;
                           bool sendNotifications = userData.sendNotifications;
                           await DatabaseService(uid: user.uid).updateUserData(
                               firstName,
@@ -453,46 +303,40 @@ class _IsLightState extends State<IsLight> with SingleTickerProviderStateMixin {
                               points,
                               lessonsToResume,
                               subscriptionLevel,
-                              isLight,
+                              isLightT,
                               sendNotifications);
                         });
                       },
-                      child: Container(
-                        width: 60,
-                        height: 25,
-                        padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
-                        decoration: BoxDecoration(
-                            color: isChecked ? Colors.green : Colors.grey,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(40),
-                            )),
-                        child: Stack(
-                          children: <Widget>[
-                            Align(
-                              alignment: _animation.value,
-                              child: Container(
-                                width: 25,
-                                height: 25,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: isChecked
-                                      ? Colors.white
-                                      : Color(0xffE2E2E2),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Dark',
+                              textAlign: TextAlign.left,
+                              style: GoogleFonts.poppins(
+                                  color: white,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 17.0)),
+                          Container(
+                            width: 20,
+                            height: 20,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: isLight ? white : Colors.transparent),
+                              shape: BoxShape.circle,
+                              color: isLight ? Colors.transparent : white,
+                            ),
+                          ),
+                        ],
                       ),
-                    );
-                  },
+                    ),
+                  ],
                 ));
           } else {
             return null;
           }
         });
   }
-}*/
+}
 
 class SendNotifications extends StatefulWidget {
   @override
