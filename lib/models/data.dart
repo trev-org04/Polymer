@@ -37,3 +37,22 @@ class Progress {
   Progress.fromSnapshot(DocumentSnapshot snapshot)
       : inProgress = snapshot['inProgress'];
 }
+
+class Event {
+  final String uid;
+  final String title;
+  final DateTime date;
+  final String subject;
+  final int index;
+
+  Event({this.uid, this.title, this.date, this.subject, this.index});
+}
+
+class EData {
+  final String title;
+  final DateTime date;
+  final String subject;
+  final int index;
+
+  EData({this.title, this.date, this.subject, this.index});
+}

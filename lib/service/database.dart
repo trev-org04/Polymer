@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:project_polymer/models/data.dart';
 import 'package:project_polymer/models/user.dart';
@@ -10,7 +12,14 @@ class DatabaseService {
       Firestore.instance.collection('Data');
 
   Future updateUserData(
-      String firstName, String lastName, String username, int points, int lessonsToResume, String subscriptionLevel, bool isLight, bool sendNotifications) async {
+      String firstName,
+      String lastName,
+      String username,
+      int points,
+      int lessonsToResume,
+      String subscriptionLevel,
+      bool isLight,
+      bool sendNotifications) async {
     return await dataCollection.document(uid).setData({
       'firstName': firstName,
       'lastName': lastName,
@@ -52,12 +61,44 @@ class DatabaseService {
     );
   }
 
+  List<Event> _eventDatatoList(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Event(
+        uid: uid,
+        title: doc.data['title'] ?? '',
+        date: doc.data['date'] ?? '',
+        subject: doc.data['subject'] ?? '',
+      );
+    }).toList();
+  }
+
   Stream<List<Data>> get data {
     return dataCollection.snapshots().map(_dataListFromSnapshot);
   }
 
   Stream<UserData> get userData {
     return dataCollection.document(uid).snapshots().map(_userDataFromSnapshot);
+  }
+
+  Stream<List<Event>> get events {
+    return dataCollection
+        .document(uid)
+        .collection('Events')
+        .snapshots()
+        .map(_eventDatatoList);
+  }
+
+  createEvent(String uid, String title, String subject, DateTime date) {
+    dataCollection.document(uid).collection('Events').document().setData({
+      'title': title,
+      'subject': subject,
+      'date': date,
+    });
+    print(uid);
+  }
+
+  get getEvents {
+    return dataCollection.document(uid).collection('Events');
   }
 
   returnPreferences(String uid) {
@@ -67,25 +108,28 @@ class DatabaseService {
   getLessonsInTopic() async {
     return Firestore.instance.collection("Lessons");
   }
-  
+
   getTopicsInSubject() async {
     return Firestore.instance.collection("Topics");
   }
 
-    getLessonData(String lessonID) async {
-    return Firestore.instance.collection("Lessons").document(lessonID).collection('Questions').getDocuments();
+  getLessonData(String lessonID) async {
+    return Firestore.instance
+        .collection("Lessons")
+        .document(lessonID)
+        .collection('Questions')
+        .getDocuments();
   }
 
-    setProgress(String lessonID) async {
+  setProgress(String lessonID) async {
     return Firestore.instance.collection("Lessons").document(lessonID);
   }
 
-    progressSnapshot() async {
+  progressSnapshot() async {
     return Firestore.instance.collection("Lessons").getDocuments();
   }
 
-    trial(String lessonID) async {
+  trial(String lessonID) async {
     return Firestore.instance.collection("Lessons").document(lessonID);
   }
-
 }

@@ -3,6 +3,10 @@ import 'package:project_polymer/shared/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EventTile extends StatefulWidget {
+  final String title;
+  final String date;
+  final String subject;
+  EventTile({@required this.title, @required this.date, @required this.subject});
   @override
   _EventTileState createState() => _EventTileState();
 }
@@ -10,7 +14,26 @@ class EventTile extends StatefulWidget {
 class _EventTileState extends State<EventTile> {
   @override
   Widget build(BuildContext context) {
-    return buildEventTile(mathLogo, 'Math Diagnostic', 'Take a math diagnostic to see what you know and where you still need practice.');
+
+    var icon;
+
+    if (widget.subject == "Math") {
+      icon = mathLogo;
+    }
+    else if (widget.subject == "English") {
+      icon = englishLogo;
+    }
+    else if (widget.subject == "Science") {
+      icon = scienceLogo;
+    }
+    else if (widget.subject == "Reading") {
+      icon = readingLogo;
+    }
+    else {
+      icon = notiLogo;
+    }
+
+    return buildEventTile(icon, widget.title, widget.date);
   }
 
  Container buildEventTile(Widget logo, String title, String desc) {
@@ -38,7 +61,7 @@ class _EventTileState extends State<EventTile> {
       ),
       /*content from database eventually*/ Padding(
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 8),
-        child: Text(desc,
+        child: Text(desc.toString(),
             textAlign: TextAlign.center,
             style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w400, fontSize: 12.0, color: whiteOpacity)),
