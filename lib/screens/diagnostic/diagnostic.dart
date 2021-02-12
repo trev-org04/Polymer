@@ -49,124 +49,102 @@ class _DiagnosticState extends State<Diagnostic> {
     question.correctOption = docSnap.data['correctAnswer'];
 
     bool an = false;
-    bool isAt = false;
-    bool isSe1 = false;
-    bool isSe2 = false;
-    bool isSe3 = false;
-    bool isSe4 = false;
+    bool isA = false;
+    bool isS1 = false;
+    bool isS2 = false;
+    bool isS3 = false;
+    bool isS4 = false;
 
-    // question.answered = an;
-    // question.isAttempted = isAt;
-    // question.isSelected1 = isSe1;
-    // question.isSelected2 = isSe2;
-    // question.isSelected3 = isSe3;
-    // question.isSelected4 = isSe4;
-
-    Future<void> checkInProgress() async {
-      await databaseService.trial(lessonId).then((pSnapshot) async {
+    databaseService.setProgress(lessonId).then((pSnapshot) async {
         var progressSnapshot = await pSnapshot.get();
         var data = Progress.fromSnapshot(progressSnapshot);
         print(docSnap.data['answerChosen']);
         if (data.inProgress == true) {
           print('inProgress == true');
           if (docSnap.data['answerChosen'] != '') {
-            print('inProgress != ''');
+            print('inProgress is not empty');
             if (docSnap.data['answerChosen'] == answers[0]) {
               print('answers[0]');
               an = true;
-              isAt = true;
-              isSe1 = true;
-              isSe2 = false;
-              isSe3 = false;
-              isSe4 = false;
+              isA = true;
+              isS1 = true;
+              isS2 = false;
+              isS3 = false;
+              isS4 = false;
             }
             else if (docSnap.data['answerChosen'] == answers[1]) {
               print('answers[1]');
               an = true;
-              isAt = true;
-              isSe2 = true;
-              isSe1 = false;
-              isSe3 = false;
-              isSe4 = false;
+              isA = true;
+              isS2 = true;
+              isS1 = false;
+              isS3 = false;
+              isS4 = false;
             }
             else if (docSnap.data['answerChosen'] == answers[2]) {
               print('answers[2]');
               an = true;
-              isAt = true;
-              isSe3 = true;
-              isSe1 = false;
-              isSe2 = false;
-              isSe4 = false;
+              isA = true;
+              isS3 = true;
+              isS1 = false;
+              isS2 = false;
+              isS4 = false;
             }
             else if (docSnap.data['answerChosen'] == answers[3]) {
               print('answers[3]');
               an = true;
-              isAt = true;
-              isSe4 = true;
-              isSe1 = false;
-              isSe2 = false;
-              isSe3 = false;
+              isA = true;
+              isS4 = true;
+              isS1 = false;
+              isS2 = false;
+              isS3 = false;
             }
             else {
               print('something isnt working');
               an = false;
-              isAt = false;
-              isSe4 = false;
-              isSe1 = false;
-              isSe2 = false;
-              isSe3 = false;
+              isA = false;
+              isS4 = false;
+              isS1 = false;
+              isS2 = false;
+              isS3 = false;
             }
           }
           else if (docSnap.data['answerChosen'] == '') {
             print('answerChosen is ""');
             an = false;
-            isAt = false;
-            isSe4 = false;
-            isSe1 = false;
-            isSe2 = false;
-            isSe3 = false;
-          }
-          else if (docSnap.data['answerChosen'] == null) {
-            print('answerChosen is not defined yet');
-            an = false;
-            isAt = false;
-            isSe4 = false;
-            isSe1 = false;
-            isSe2 = false;
-            isSe3 = false;
+            isA = false;
+            isS4 = false;
+            isS1 = false;
+            isS2 = false;
+            isS3 = false;
           }
           else {
             print('answerChosen is not defined yet');
             an = false;
-            isAt = false;
-            isSe4 = false;
-            isSe1 = false;
-            isSe2 = false;
-            isSe3 = false;
+            isA = false;
+            isS4 = false;
+            isS1 = false;
+            isS2 = false;
+            isS3 = false;
           }
         }
         else {
           print('inProgress == false');
           an = false;
-          isAt = false;
-          isSe1 = false;
-          isSe2 = false;
-          isSe3 = false;
-          isSe4 = false;
+          isA = false;
+          isS1 = false;
+          isS2 = false;
+          isS3 = false;
+          isS4 = false;
         }
-          print('answered:' + '$an');
-          print(isAt);
-          print(isSe1);
-          print(isSe2);
-          print(isSe3);
-          print(isSe4);
-          //return a && isA && isS1 && isS2 && isS3 && isS4;
+        question.answered = an;
+        question.isAttempted = isA;
+        question.isSelected1 = isS1;
+        question.isSelected2 = isS2;
+        question.isSelected3 = isS3;
+        question.isSelected4 = isS4;
       });
-    }
 
-    checkInProgress();
-
-    print('a outside of function 2:' + '$an');
     print(docSnap.data['answerChosen']);
 
     question.plus = false;
@@ -205,17 +183,18 @@ class _DiagnosticState extends State<Diagnostic> {
           if (snapshot.hasData) {
             UserData userData = snapshot.data;
 
-            updateUserData(String firstName, String lastName, String username, int points, int lessonsToResume, String subscriptionLevel, bool isLightTheme, bool sendNotifications) async{ 
-              await DatabaseService(uid: user.uid).updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel, isLightTheme, sendNotifications);
+            updateUserData(String firstName, String lastName, String email, String username, int points, int lessonsToResume, String subscriptionLevel, bool isLightTheme, bool sendNotifications) async{ 
+              await DatabaseService(uid: user.uid).updateUserData(firstName, lastName, email, username, points, lessonsToResume, subscriptionLevel, isLightTheme, sendNotifications);
             }
 
             updateLessonsToResume() async {
-              databaseService.trial(lessonId).then((pSnapshot) async {
+              databaseService.setProgress(lessonId).then((pSnapshot) async {
                   var progressSnapshot = await pSnapshot.get();
                   var data = Progress.fromSnapshot(progressSnapshot);
               if (data.inProgress == false) {
                 String firstName = userData.firstName;
                 String lastName = userData.lastName;
+                String email = userData.email;
                 String username = userData.username;
                 int points = userData.points;
                 int currentLessons = userData.lessonsToResume;
@@ -224,7 +203,7 @@ class _DiagnosticState extends State<Diagnostic> {
                 bool isLight = userData.isLight;
                 bool sendNotifications = userData.sendNotifications;
 
-                updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
+                updateUserData(firstName, lastName, email, username, points, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
                 databaseService.setProgress(widget.lessonID).then((val){
                   setState(() {
                     val.updateData({'inProgress': true});
@@ -235,13 +214,14 @@ class _DiagnosticState extends State<Diagnostic> {
               else {
                 String firstName = userData.firstName;
                 String lastName = userData.lastName;
+                String email = userData.email;
                 String username = userData.username;
                 int points = userData.points;
                 int lessonsToResume = userData.lessonsToResume;
                 String subscriptionLevel = userData.subscriptionLevel;
                 bool isLight = userData.isLight;
                 bool sendNotifications = userData.sendNotifications;
-                updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
+                updateUserData(firstName, lastName, email, username, points, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
                 //save answers 
               }
                 });
@@ -507,7 +487,7 @@ class _QuestionTileState extends State<QuestionTile> {
 
   /*setOptionSelected() {
     DatabaseService databaseService = new DatabaseService();
-      databaseService.trial(lessonId).then((pSnapshot) async {
+      databaseService.setProgress(lessonId).then((pSnapshot) async {
         var progressSnapshot = await pSnapshot.get();
         var data = Progress.fromSnapshot(progressSnapshot);
         if (data.inProgress == true) {

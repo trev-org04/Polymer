@@ -169,7 +169,7 @@ class _TopicPageState extends State<TopicPage> {
   }
 }
 
-        Future goToLesson(context, String lessonID, String subject, String lessonName) async {
+  Future goToLesson(context, String lessonID, String subject, String lessonName) async {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Diagnostic(lessonID: lessonID, subject: subject, lessonName: lessonName)));
   }

@@ -233,6 +233,23 @@ var notiLogo = Container(
       ],
     ));
 
+var notiLogoBig = Container(
+    height: 36.0,
+    width: 36.0,
+    padding: EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+      color: buttonBlue,
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+    ),
+    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Icon(Icons.account_circle, size: 20, color: white),
+      ],
+    ));
+
 var mathLogoBig = Container(
     height: 36.0,
     width: 36.0,

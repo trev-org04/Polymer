@@ -107,6 +107,7 @@ class _FinishDiagnosticState extends State<FinishDiagnostic> {
               int updatedPoints = currentPoints + points;
               String firstName = userData.firstName;
               String lastName = userData.lastName;
+              String email = userData.email;
               String username = userData.username;
               int lessonsToResume = userData.lessonsToResume;
               String subscriptionLevel = userData.subscriptionLevel;
@@ -114,7 +115,7 @@ class _FinishDiagnosticState extends State<FinishDiagnostic> {
               bool sendNotifications = userData.sendNotifications;
 
               await DatabaseService(uid: user.uid).updateUserData(firstName,
-                  lastName, username, updatedPoints, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
+                  lastName, email, username, updatedPoints, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
             }
 
             return StreamProvider<List<Data>>.value(

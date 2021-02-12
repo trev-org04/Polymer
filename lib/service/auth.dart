@@ -24,20 +24,42 @@ class AuthService {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-      await DatabaseService(uid: user.uid)
-          .updateUserData(firstName, lastName, username, points, lessonsToResume, subscriptionLevel, isLight, sendNotifications);
+      await DatabaseService(uid: user.uid).updateUserData(
+          firstName,
+          lastName,
+          email,
+          username,
+          points,
+          lessonsToResume,
+          subscriptionLevel,
+          isLight,
+          sendNotifications);
+      DatabaseService().createEventCollection(user.uid);
+      DatabaseService().createLessonCollection(user.uid);
       return _userFromFirebaseUser(user);
     } catch (e) {
       return null;
     }
   }
 
-  Future signInEP(String email, String password) async {
+  Future signInEP(String input, String password) async {
     try {
-      AuthResult result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      FirebaseUser user = result.user;
-      return _userFromFirebaseUser(user);
+      if (input.contains('@')) {
+        AuthResult result = await _auth.signInWithEmailAndPassword(
+            email: input, password: password);
+        FirebaseUser user = result.user;
+        return _userFromFirebaseUser(user);
+      } else {
+        var awaitUser = await DatabaseService().usernameFinder(input).then((snapshot) async {
+          String email = snapshot.documents[0]['email'];
+          String pword = password;
+          AuthResult result = await _auth.signInWithEmailAndPassword(
+              email: email, password: pword);
+          FirebaseUser user = result.user;
+          return _userFromFirebaseUser(user);
+        });
+        return awaitUser;
+      }
     } catch (e) {
       return null;
     }

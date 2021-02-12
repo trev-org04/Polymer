@@ -4,7 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:project_polymer/screens/base/base.dart';
 import 'package:project_polymer/screens/home/modals.dart';
 import 'package:project_polymer/screens/lessons/suggested_tiles/subject_specific_carousel.dart';
-import 'package:project_polymer/screens/lessons/display_lessons_in_topic_page.dart';
+import 'package:project_polymer/screens/lessons/lessons_in_topic.dart';
 import 'package:project_polymer/shared/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:project_polymer/service/database.dart';
@@ -173,8 +173,7 @@ class _SubjectPageState extends State<SubjectPage> {
                 itemCount: snapshot.data.documents.length,
                 itemBuilder: (context, index) {
                   return TopicTile(
-                    title:
-                    snapshot.data.documents[index].data["topicName"],
+                    title: snapshot.data.documents[index].data["topicName"],
                     percentage: snapshot.data.documents[index].data["percentage"],
                     subject: subjectName,
                   );

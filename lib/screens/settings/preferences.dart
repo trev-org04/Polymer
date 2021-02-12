@@ -240,6 +240,7 @@ class _IsLightState extends State<IsLight> {
                             print('isLight ' + isLight.toString());
                             String firstName = userData.firstName;
                             String lastName = userData.lastName;
+                            String email = userData.email;
                             String username = userData.username;
                             int points = userData.points;
                             int lessonsToResume = userData.lessonsToResume;
@@ -250,6 +251,7 @@ class _IsLightState extends State<IsLight> {
                             await DatabaseService(uid: user.uid).updateUserData(
                                 firstName,
                                 lastName,
+                                email,
                                 username,
                                 points,
                                 lessonsToResume,
@@ -290,6 +292,7 @@ class _IsLightState extends State<IsLight> {
                           setTheme();
                           String firstName = userData.firstName;
                           String lastName = userData.lastName;
+                          String email = userData.email;
                           String username = userData.username;
                           int points = userData.points;
                           int lessonsToResume = userData.lessonsToResume;
@@ -299,6 +302,7 @@ class _IsLightState extends State<IsLight> {
                           await DatabaseService(uid: user.uid).updateUserData(
                               firstName,
                               lastName,
+                              email,
                               username,
                               points,
                               lessonsToResume,
@@ -400,6 +404,7 @@ class _SendNotificationsState extends State<SendNotifications>
                           isChecked = !isChecked;
                           String firstName = userData.firstName;
                           String lastName = userData.lastName;
+                          String email = userData.email;
                           String username = userData.username;
                           int points = userData.points;
                           int lessonsToResume = userData.lessonsToResume;
@@ -409,6 +414,7 @@ class _SendNotificationsState extends State<SendNotifications>
                           await DatabaseService(uid: user.uid).updateUserData(
                               firstName,
                               lastName,
+                              email,
                               username,
                               points,
                               lessonsToResume,

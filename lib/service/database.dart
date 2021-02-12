@@ -14,6 +14,7 @@ class DatabaseService {
   Future updateUserData(
       String firstName,
       String lastName,
+      String email,
       String username,
       int points,
       int lessonsToResume,
@@ -23,6 +24,7 @@ class DatabaseService {
     return await dataCollection.document(uid).setData({
       'firstName': firstName,
       'lastName': lastName,
+      'email' : email,
       'username': username,
       'points': points,
       'lessonsToResume': lessonsToResume,
@@ -37,6 +39,7 @@ class DatabaseService {
       return Data(
         firstName: doc.data['firstName'] ?? '',
         lastName: doc.data['lastName'] ?? '',
+        email: doc.data['email'] ?? '',
         username: doc.data['username'] ?? '',
         points: doc.data['points'] ?? '',
         lessonsToResume: doc.data['lessonsToResume'] ?? '',
@@ -52,6 +55,7 @@ class DatabaseService {
       uid: uid,
       firstName: snapshot.data['firstName'],
       lastName: snapshot.data['lastName'],
+      email: snapshot.data['email'],
       username: snapshot.data['username'],
       points: snapshot.data['points'],
       lessonsToResume: snapshot.data['lessonsToResume'],
@@ -68,6 +72,17 @@ class DatabaseService {
         title: doc.data['title'] ?? '',
         date: doc.data['date'] ?? '',
         subject: doc.data['subject'] ?? '',
+      );
+    }).toList();
+  }
+
+  List<ForumQuestion> _questionDatatoList(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return ForumQuestion(
+        title: doc.data['title'] ?? '',
+        content: doc.data['subject'] ?? '',
+        isVoted: doc.data['isVoted'] ?? '',
+        votes: doc.data['votes'] ?? '',
       );
     }).toList();
   }
@@ -94,11 +109,34 @@ class DatabaseService {
       'subject': subject,
       'date': date,
     });
-    print(uid);
+  }
+
+  askQuestion(String uid, String title, String subject, String question) {
+    Firestore.instance.collection('Questions').document().setData({
+      'uid': uid,
+      'content': question,
+      'title': title, 
+      'votes': 1,
+      'isVoted': false,
+      'subject': subject,
+    });
+  }
+
+  usernameFinder(String uname) {
+    Future<QuerySnapshot> userSnap = Firestore.instance.collection('Data').where('username', isEqualTo: uname).getDocuments();
+    return userSnap;
   }
 
   get getEvents {
     return dataCollection.document(uid).collection('Events');
+  }
+
+  Stream<List<ForumQuestion>> get forums {
+    return Firestore.instance.collection('Questions').snapshots().map(_questionDatatoList);
+  }
+
+  get getForums {
+    return Firestore.instance.collection('Questions');
   }
 
   returnPreferences(String uid) {
@@ -113,6 +151,10 @@ class DatabaseService {
     return Firestore.instance.collection("Topics");
   }
 
+  getQuestions() async {
+    return Firestore.instance.collection("Questions");
+  }
+
   getLessonData(String lessonID) async {
     return Firestore.instance
         .collection("Lessons")
@@ -125,11 +167,32 @@ class DatabaseService {
     return Firestore.instance.collection("Lessons").document(lessonID);
   }
 
-  progressSnapshot() async {
-    return Firestore.instance.collection("Lessons").getDocuments();
+  createLessonCollection(String uid) {
+    return Firestore.instance.collection('Data').document(uid).collection('Lessons').add({
+      'title': 'Lesson for Initialization',
+    });
   }
 
-  trial(String lessonID) async {
-    return Firestore.instance.collection("Lessons").document(lessonID);
+  createEventCollection(String uid) {
+    return Firestore.instance.collection('Data').document(uid).collection('Events').add({
+      'date': DateTime.now().subtract(Duration(days: 500)),
+      'subject': 'Initial Event',
+      'title': 'Event for Initialization',
+    });
   }
+
+  /*createLessonDoc(String uid, String lessonID) {
+      return Firestore.instance.collection('Data').document(uid).collection('Lessons').add({
+        'lessonId': lessonID,
+        'inProgress': false,
+        'isCompleted': false,
+    });
+  }
+
+  createUserDataCollectionInLesson(String uid, String lessonID) {
+    return Firestore.instance.collection('Data').document(uid).collection('Lessons').document(lessonID).collection('Answers').add({
+      'selectedAnswer': lessonID,
+    });
+  }*/
+
 }

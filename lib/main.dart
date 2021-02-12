@@ -22,6 +22,8 @@ class MyApp extends StatelessWidget {
         theme: new ThemeData(
           canvasColor: canvasColor,
           accentColor: buttonBlue,
+          primaryColor: canvasColor, 
+          backgroundColor: elementColor,
         ),
         home: Wrapper(),
         debugShowCheckedModeBanner: false,
