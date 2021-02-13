@@ -515,6 +515,7 @@ class _ForumState extends State<Forum> {
   }
 
   var userTypedForumEvents = [];
+  var resultsList = [];
 
   Future resultsLoaded;
   TextEditingController _searchbarController = new TextEditingController();
@@ -525,6 +526,7 @@ class _ForumState extends State<Forum> {
     setState(() {
       userTypedForumEvents = fData.documents;
     });
+    search();
     return fData.documents;
   }
 
@@ -532,32 +534,38 @@ class _ForumState extends State<Forum> {
   void initState() {
     setState(() {
       modalDate = DateTime.now();
+      _searchbarController.addListener(onValueChanged);
     });
-    _searchbarController.addListener(onValueChanged);
     super.initState();
   }
 
   onValueChanged() {
+    search();
+  }
+
+  search() {
     var valList = [];
 
+    print('hello: ' + _searchbarController.text);
     if (_searchbarController.text != '') {
-      setState(() {
-        userTypedInput = true;
-        for(var question in userTypedForumEvents) {
-          var title = UserTypedForumQuery.fromSnapshot(question).title.toLowerCase();
-          if (title.contains(_searchbarController.text.toLowerCase())) {
+      userTypedInput = true;
+      for (var question in userTypedForumEvents) {
+        var title =
+            UserTypedForumQuery.fromSnapshot(question).title.toLowerCase();
+        if (title.contains(_searchbarController.text.toLowerCase())) {
+          setState(() {
             valList.add(question);
-          }
+          });
         }
-      });
+      }
     } else {
       setState(() {
         userTypedInput = false;
-        valList = [];
+        valList = userTypedForumEvents;
       });
     }
     setState(() {
-      userTypedForumEvents = valList;
+      resultsList = valList;
     });
   }
 
@@ -638,10 +646,10 @@ class _ForumState extends State<Forum> {
                                         });
                                       },
                                       child: Icon(
-                                      MdiIcons.windowClose,
-                                      size: 18,
-                                      color: whiteOpacity,
-                                    ))
+                                        MdiIcons.windowClose,
+                                        size: 18,
+                                        color: whiteOpacity,
+                                      ))
                                   : Icon(
                                       Icons.search,
                                       size: 18,
@@ -668,10 +676,6 @@ class _ForumState extends State<Forum> {
                             builder: (context, snapshot) {
                               if (snapshot.hasData) {
                                 QuerySnapshot forumQuestion = snapshot.data;
-                                List initialForumEvents = forumQuestion
-                                    .documents
-                                    .where((forumQ) => forumQ['votes'] > 4)
-                                    .toList();
                                 List userSelectedForumEvents = forumQuestion
                                     .documents
                                     .where((forumQ) =>
@@ -680,94 +684,55 @@ class _ForumState extends State<Forum> {
                                 return StreamProvider<
                                         List<ForumQuestion>>.value(
                                     value: DatabaseService().forums,
-                                    child: userTypedInput
-                                        ? ListView.builder(
-                                            itemCount:
-                                                userTypedForumEvents.length,
-                                            shrinkWrap: true,
-                                            itemBuilder: (BuildContext context,
-                                                int index) {
-                                              return buildQuestionTileFromDatabase(
-                                                  context,
-                                                  userTypedForumEvents[index]);
-                                            },
+                                    child: userSelectedSubject
+                                        ? Column(
+                                            children: [
+                                              for (var forumQ
+                                                  in userSelectedForumEvents)
+                                                (() {
+                                                  Widget icon;
+
+                                                  Widget iconChooser(
+                                                      String subject) {
+                                                    if (subject == 'Math') {
+                                                      icon = mathLogoBig;
+                                                    } else if (subject ==
+                                                        'Reading') {
+                                                      icon = readingLogoBig;
+                                                    } else if (subject ==
+                                                        'English') {
+                                                      icon = englishLogoBig;
+                                                    } else if (subject ==
+                                                        'Science') {
+                                                      icon = scienceLogoBig;
+                                                    } else {
+                                                      icon = notiLogoBig;
+                                                    }
+                                                    return icon;
+                                                  }
+
+                                                  return buildQuestionTile(
+                                                    iconChooser(
+                                                        forumQ['subject']),
+                                                    forumQ['title'],
+                                                    forumQ['content'],
+                                                    forumQ['votes'],
+                                                    '3 mins',
+                                                    forumQ['isVoted'],
+                                                  );
+                                                }())
+                                            ],
                                           )
-                                        : userSelectedSubject
-                                            ? Column(
-                                                children: [
-                                                  for (var forumQ
-                                                      in userSelectedForumEvents)
-                                                    (() {
-                                                      Widget icon;
-
-                                                      Widget iconChooser(
-                                                          String subject) {
-                                                        if (subject == 'Math') {
-                                                          icon = mathLogoBig;
-                                                        } else if (subject ==
-                                                            'Reading') {
-                                                          icon = readingLogoBig;
-                                                        } else if (subject ==
-                                                            'English') {
-                                                          icon = englishLogoBig;
-                                                        } else if (subject ==
-                                                            'Science') {
-                                                          icon = scienceLogoBig;
-                                                        } else {
-                                                          icon = notiLogoBig;
-                                                        }
-                                                        return icon;
-                                                      }
-
-                                                      return buildQuestionTile(
-                                                          iconChooser(forumQ[
-                                                              'subject']),
-                                                          forumQ['title'],
-                                                          forumQ['content'],
-                                                          forumQ['votes'],
-                                                          '3 mins',
-                                                          forumQ['isVoted']);
-                                                    }())
-                                                ],
-                                              )
-                                            : Column(
-                                                children: [
-                                                  for (var forumQ
-                                                      in initialForumEvents)
-                                                    (() {
-                                                      Widget icon;
-
-                                                      Widget iconChooser(
-                                                          String subject) {
-                                                        if (subject == 'Math') {
-                                                          icon = mathLogoBig;
-                                                        } else if (subject ==
-                                                            'Reading') {
-                                                          icon = readingLogoBig;
-                                                        } else if (subject ==
-                                                            'English') {
-                                                          icon = englishLogoBig;
-                                                        } else if (subject ==
-                                                            'Science') {
-                                                          icon = scienceLogoBig;
-                                                        } else {
-                                                          icon = notiLogoBig;
-                                                        }
-                                                        return icon;
-                                                      }
-
-                                                      return buildQuestionTile(
-                                                        iconChooser(
-                                                            forumQ['subject']),
-                                                        forumQ['title'],
-                                                        forumQ['content'],
-                                                        forumQ['votes'],
-                                                        '3 mins',
-                                                        forumQ['isVoted'],
-                                                      );
-                                                    }())
-                                                ],
-                                              ));
+                                        : ListView.builder(
+                                            shrinkWrap: true,
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            itemCount: resultsList.length,
+                                            itemBuilder: (BuildContext context,
+                                                int index) =>
+                                              buildQuestionTileFromDatabase(
+                                                  context, resultsList[index]),
+                                            ));
                               } else {
                                 return Loading();
                               }
